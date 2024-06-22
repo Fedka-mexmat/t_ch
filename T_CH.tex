@@ -19,6 +19,7 @@
 \usepackage{mathptmx}
 \usepackage{graphicx}
 \usepackage{tikz}
+\newcommand{\divisible}{\mathop{\raisebox{-2pt}{\vdots}}}
 \newtheorem{deff}{\textit{Определение}}
 \newtheorem{teo}{\textit{Теорема}}
 \newtheorem{utv}{\textit{Утверждение}}
@@ -59,6 +60,18 @@
     breakable,
     attach boxed title to top left={yshift=-\tcboxedtitleheight/2},
     boxed title style={size=small,colback=red,colframe=blue!50!black},
+    #1
+}
+
+
+\newtcolorbox{formbox}[2][]{
+    colback=white,
+    colframe=blue!50!black,
+    title=#2,
+    fonttitle=\bfseries,
+    enhanced,
+    breakable,
+    attach boxed title to top left={yshift=-\tcboxedtitleheight/2},
     #1
 }
 
@@ -208,13 +221,13 @@
 \begin{mybox}{\hypertarget{bil1}{Билет 1}}
 {\center{Простейшие свойства делимости. Представление наибольшего общего делителя $d$ чисел $a$ и $b$ в форме $d = au+bv$. Теорема о существовании и единственности разложения на простые сомножители. Бесконечность множества простых чисел.}}
 Простейшие свойства делимости.
-\begin{deff} $b|a$, если $\exists q\in \mathbb{Z}: a=bq$
+\begin{deff} $b\mid a$, если $\exists q\in \mathbb{Z}: a=bq$
 \end{deff}
 Свойства делимости:
 \begin{enumerate}
-    \item $b|a_1, \dots, b|a_n \Rightarrow b|(a_1+\cdots+a_n)$
-    \item $b|a_1, \dots, b|a_{n-1}, b\not|a_n \Rightarrow b\not|(a_1+\cdots+a_n)$
-    \item $c|a, d|b \Rightarrow cd|ab$, в частности, $\forall b: c|a \Rightarrow c|ab$
+    \item $b\mid a_1, \dots, b\mid a_n \Rightarrow b\mid(a_1+\cdots+a_n)$
+    \item $b\mid a_1, \dots, b\mid a_{n-1}, b\nmid a_n \Rightarrow b\nmid (a_1+\cdots+a_n)$
+    \item $c\mid a, d\mid b \Rightarrow cd\mid ab$, в частности, $\forall b: c\mid a \Rightarrow c\mid ab$
 \end{enumerate}
 \begin{teo}[Основная теорема арифметики]\q\\
 \begin{enumerate}
@@ -228,11 +241,11 @@ $\pb$ 1) индукция по $a$:\\
 если $a$ простое, то очевидно\\
 иначе $a = bc$, где $1<b,c<a$, откуда по предположению индукции получаем $a = \underbrace{q_1\cdots q_n}_{=b} \underbrace{p_1\cdots p_m}_{=c}$\\\q\\\q\\
 2) Предположим, что существуют числа, которые не единственным образом раскладываются на простые сомножители. В не пустом подмножестве натурального ряда существует минимальный элемент. Пусть это будет $a = p_1\cdots p_m = q_1\cdots q_n$\\
-Если $p_i = q_i$, то $\frac{a}{p_i}$ раскладывается двумя способами $\Rightarrow$ противоречие\\
+Если $p_i = q_j$, то $\frac{a}{p_i}$ раскладывается двумя способами $\Rightarrow$ противоречие\\
 Без ограничения общности пусть $p_1 > q_1$\\
 Рассмотрим $b = \overbrace{(p_1 - q_1)}^{>0}p_2\cdots p_m = p_1\cdots p_m - q_1p_2\cdots p_m = q_1\cdots q_n - q_1 p_2\cdots p_m = q_1 (q_2 \cdots q_n - p_2\cdots p_m)$\\
 Пусть теперь $p_1 - q_1 = u_1\cdots u_s\q\q\q\q q_2\cdots q_n - p_2\cdots p_m = v_1\cdots v_t$\\
-$b = u_1\cdots u_s p_2\cdots p_m = v_1\cdots v_t q_1$ -- два различных разложения. в первое не входит $q_1$, т.к. $(p-q)\not|q$\\
+$b = u_1\cdots u_s p_2\cdots p_m = v_1\cdots v_t q_1$ -- два различных разложения. В первое не входит $q_1$, т.к. $(p-q)\nmid q$\\
 $b < a$, что противоречит минимальности $a$.
  $\pe$\\
 \begin{deff} $a\in \bb{Z}, b\in\bb{N}\Rightarrow \exists ! q,r: \begin{cases} a = bq+r\\0 \le r < b\end{cases} $ --деление с остатком
@@ -243,25 +256,25 @@ $(a,b)$ -- НОД\\
 \begin{teo}[Теорема о представлении НОД]\q\\
 $(a,b) = d \Ra \exists u,v\in\bb{Z}: d = au+bv$
 \end{teo}
-$\pb\\\mu = \{k|k=ax+by>0, x,y\in\bb{Z}\}$\\
+$\pb\\\mu = \{k\mid k=ax+by>0, x,y\in\bb{Z}\}$\\
 \begin{enumerate}
-\item $\mu \not= \varnothing$, т.к. $\pm a; b \in\mu$
+\item $\mu \not= \varnothing$, т.к. $\pm a; \pm b \in\mu$
 \item $d$ -- наименьший элемент $\mu$
-\item Докажем, что $d|a$ и $d|b$\\
-Пусть $d\not|a \Ra a = dq+r, 0 < r < d, r = a - dq = a - (qu+bv)q = a(1-qu) + b(-qu)\in \mu$, но $r<d$  противоречие.\\
-\item $d = (a,b)$, т.к. если $\exists d_1: d_1|a, d_1|b\Ra d_1|d\Ra d_1 \le d$
+\item Докажем, что $d\mid a$ и $d\mid b$\\
+Пусть $d\nmid a \Ra a = dq+r, 0 < r < d, r = a - dq = a - (qu+bv)q = a(1-qu) + b(-qu)\in \mu$, но $r<d$  противоречие.\\
+\item $d = (a,b)$, т.к. если $\exists d_1: d_1\mid a, d_1\mid b\Ra d_1\mid d\Ra d_1 \le d$
 \end{enumerate}
 $\pe$\\
 Следствия:\\
 \begin{enumerate}
-    \item $c|ab, (c,a) = 1\Ra c|b\q\q \pb  \exists u,v: au+cv = 1\Ra \underbrace{ab}_{\vdots c}u + \underbrace{bc}_{\vdots c}v = b \vdots c   \pe$
-    \item $b|a, c|a, (b,c) = 1\Ra bc|a\q\q    \pb  \exists u,v: bu+cv=1\q\q u\underbrace{(ab)}_{\vdots bc} + \underbrace{(ac)}_{\vdots bc}v = a \vdots bc  \pe$
+    \item $c\mid ab, (c,a) = 1\Ra c\mid b\q\q \pb  \exists u,v: au+cv = 1\Ra \underbrace{ab}_{\divisible c}u + \underbrace{bc}_{\divisible c}v = b \divisible c   \pe$
+    \item $b\mid a, c\mid a, (b,c) = 1\Ra bc\mid a\q\q    \pb  \exists u,v: bu+cv=1\q\q u\underbrace{(ab)}_{\divisible bc} + \underbrace{(ac)}_{\divisible bc}v = a \divisible bc  \pe$
 \end{enumerate}
 \q\\\q\\
 Другая формулировка теоремы единственности: $a = p_1^{k_1}\cdots p_n^{k_n} = p_1^{l_1}\cdots p_n^{l_n}\Ra \forall i: k_i = l_i$\\
-\begin{utv} Пусть $a = p_1^{k_1}\cdots p_n^{k_n}, b = p_1^{l_1}\cdots p_n^{l_n}$. Тогда $b|a\iff \forall i: l_i \le k_i$
+\begin{utv} Пусть $a = p_1^{k_1}\cdots p_n^{k_n}, b = p_1^{l_1}\cdots p_n^{l_n}$. Тогда $b\mid a\iff \forall i: l_i \le k_i$
 \end{utv}
-$\pb  \Ra: b|a\Ra a = bc, c = p_1^{m_1}\cdots p_n^{m_n}\Ra a = p_1^{l_1 + m_1}\cdots p_n^{l_n + m_n}\Ra \forall i: k_i = l_i + m_i \ge l_i\\\q\\ \Leftarrow: a = b\cdot p_1^{k_1-l_1}\cdots p_n^{k_n - l_n}\Ra a\vdots b \pe$
+$\pb  \Ra: b\mid a\Ra a = bc, c = p_1^{m_1}\cdots p_n^{m_n}\Ra a = p_1^{l_1 + m_1}\cdots p_n^{l_n + m_n}\Ra \forall i: k_i = l_i + m_i \ge l_i\\\q\\ \Leftarrow: a = b\cdot p_1^{k_1-l_1}\cdots p_n^{k_n - l_n}\Ra a\divisible b \pe$
 
 
 \begin{utv} $(a,b) = p_1^{s_1}\cdots p_n^{s_n}$, где $s_j = \min\{k_j, l_j\}$\\
@@ -269,7 +282,7 @@ $[a,b] = p_1^{t_1}\cdots p_n^{t_n},$ где $t_j = \max\{k_j, l_j\}$
 \end{utv}
 $\pb  $
 \begin{enumerate}
-\item $d|a, d|b, d = p_1^{r_1}\cdots p_n^{r_n}\Ra r_i\le k_i, r_i \le l_i\Ra r_i \le \min\{k_j, l_j\} \Ra \max r_i = \min\{k_j, l_j\}$
+\item $d\mid a, d\mid b, d = p_1^{r_1}\cdots p_n^{r_n}\Ra r_i\le k_i, r_i \le l_i\Ra r_i \le \min\{k_j, l_j\} \Ra \max r_i = \min\{k_j, l_j\}$
 \item Аналогично.
 \end{enumerate}
 $\pe$
@@ -280,7 +293,7 @@ $\pe$
 \end{teo}
 $\pb     $\\
 Пусть простых чисел конечное множество: $p_1,\dots,p_n$. Рассмотрим $N = p_1\cdot p_2\cdots p_n + 1$ -- составное\\
-По теореме о разложении должно существовать $p: p|N$, но по построению $N$, оно не делится на все $p_i$
+По теореме о разложении должно существовать $p: p\mid N$, но по построению $N$, оно не делится на все $p_i$
 $\pe$
 \end{mybox}
 
@@ -291,8 +304,8 @@ $\pe$
 Лемма о равенстве верхних и нижних пределов функций ($\TE(x)/x, \SI(x)/x$ и $\os\pi(x)\ln(x)\cs/x$). Связь между асимптотическим поведением функции Чебышева $\SI(x)$ и сходимостью интеграла $\IL_1^\infty \frac{\SI(x)-x}{x^2}dx$\\
 \q\\
 $\pi(x):=\SL_{p\le x}1$ -- число простых не превосходящих $x$\\
-$\Theta(x):=\SL_{p\le x}\ln(p)$ -- функция Чебышева\\
-$\SI(x):=\SL_{p^k}\le x \ln(p) = \SL_{p\le x}\left[\frac{\ln x}{\ln p}\right]\ln(p) = \SL_{n \le x} \Lambda(n)$\\
+$\theta(x):=\SL_{p\le x}\ln(p)$ -- функция Чебышева\\
+$\SI(x):=\SL_{p^k\le x} \ln(p) = \SL_{p\le x}\left[\frac{\ln x}{\ln p}\right]\ln(p) = \SL_{n \le x} \Lambda(n)$\\
 $\Lambda(n) =\begin{cases}  \ln(p), n = p^k\\0 \end{cases}$ -- функция Мангольта.\\
 $e^{\SI(n)} = [1,\dots,n]$\\
 
@@ -325,9 +338,9 @@ $\pe$\\\q\\
 \begin{mybox}{\hypertarget{bil3}{Билет 3}}
 Оценки Чебышева функции $\pi(x)$. Оценки $n$-го простого числа. Расходимость ряда $\sum_p \frac{1}{p}$\q\\\q\\
 \begin{teo}[Теорема Чебышева]\q\\
-$\exists a.b > 0: \forall x \ge 2:\q a\frac{x}{\ln(x)} <\pi(x) <b\frac{x}{\ln(x)} $
+$\exists a,b > 0: \forall x \ge 2:\q a\frac{x}{\ln(x)} <\pi(x) <b\frac{x}{\ln(x)} $
 \end{teo}
-$\pb$ Сверху: $2^{2n} > C_{2n}^n = \frac{(n+1)\cdots(n+n)}{n!}\ge \prod\limits{n<p\le 2n} p $, в числитель входят все простые $n < p \le 2n$\\
+$\pb$ Сверху: $2^{2n} > C_{2n}^n = \frac{(n+1)\cdots(n+n)}{n!}\ge \prod\limits_{n<p\le 2n} p $, в числитель входят все простые $n < p \le 2n$\\
 $\Ra 2n\ln(2) > \SL_{n < p \le 2n}\ln(p) = \TE(2n) - \TE(n) $. Рассмотрим $n = 2^k$\\
 $\TE(2^k) = \SL_{k=0}^{m-1} (\TE(2^{k+1}) - \TE(2^k)) < \SL_{k=0}^{m-1} 2^k\ln(2) < \ln(2)  \cdot 2^{m+1}  $\\
 $\TE(x)$ неубывающая $\Ra \TE(x) \le \TE(2^m)< 2^{m+1} \ln(2) = 4 \cdot 2^{m-1}\ln(2) \le 4\ln(2)x\Ra  $ подойдет $b = 4\ln(2)$\\\q\\
@@ -337,7 +350,7 @@ $\Ra  \SI(2n+1) >2\ln(2), \q\q \SI(x)\ge \SI(2(\left[\frac{x}{2}\right] - 1) + 1
 
 \begin{teo}[Теорема Эйлера]\q\\$\sum_p \frac{1}{p}$ расходится.
 \end{teo}
-$\pb S_N = \prod\limits_{p \le N} (1 - \frac{1}{p})^{-1} = \prod\limits_{p \le N} \os 1 + \frac{1}{p} + \frac{1}{p^2} + \cdots\cs = \SL_{\underset{ p|n}{p \le N}} > \SL_{n=1}^N\frac{1}{n}$ -- частичная сумма гармонического ряда.\\
+$\pb S_N = \prod\limits_{p \le N} (1 - \frac{1}{p})^{-1} = \prod\limits_{p \le N} \os 1 + \frac{1}{p} + \frac{1}{p^2} + \cdots\cs = \SL_{\underset{ p\mid n}{p \le N}} > \SL_{n=1}^N\frac{1}{n}$ -- частичная сумма гармонического ряда.\\
 $\Ra S_N\to \infty, N\to\infty\Ra \lim\limits_{N\to\infty}\ln(S_N) = \infty$\\
 $\SL_p[-\ln(1-\frac{1}{p})]$ расходится.\\
 При $p\to\infty: -\ln(1-\frac{1}{p}) \sim \frac{1}{p}$, значит по признаку сравнения ряды сходятся и расходятся одновременно.$\pe$\\
@@ -357,7 +370,7 @@ $\Ra p_n < a \frac{p_n}{\ln(p_n)} (\ln(p_n) - \ln(\ln(p_n)) + \ln(a))   < n \ln(
 \begin{mybox}{\hypertarget{bil4}{Билет 4}}
 Аналитичность дзета-функции Римана в области $\sigma > 1$. Разложение в ряд Дирихле ее логарифмической производной. Представление дзета-функции в виде бесконечного произведения.\q\\\q\\
 \begin{deff}
-Дзета-функция Римана: $s = \sigma + it, \zeta (s) := \SL_{n=1}^\infty \frac{1}{n^s}$
+Дзета-функция Римана: $s = \sigma + it, \q\zeta (s) := \SL_{n=1}^\infty \frac{1}{n^s}$
 \end{deff}
 \begin{enumerate}
     \item при $\sigma > 1$ ряд сходится абсолютно \\
@@ -368,14 +381,14 @@ $\Ra p_n < a \frac{p_n}{\ln(p_n)} (\ln(p_n) - \ln(\ln(p_n)) + \ln(a))   < n \ln(
 \end{enumerate}
 
 \begin{teo}\q\\
-$\sigma > 1: -\frac{\zeta'(s)}{\zeta(s)}  \SL_{n=1}^\infty \frac{\Lambda(n)}{n^s} $
+$\sigma > 1: -\frac{\zeta'(s)}{\zeta(s)} = \SL_{n=1}^\infty \frac{\Lambda(n)}{n^s} $
 \end{teo}
 $\pb$
 \begin{lem}\q\\
-$f(n)$ -- вполне мультипликативная, $A = \SL_{k=1}^\infty f(k);\q\q B = \SL_{d=1}^\infty f(d)\Lambda(d)$ -- абсолютно сходятся. Тогда $AB = \SL_{n=1}^\infty f(n) ln(n)$
+$f(n)$ -- вполне мультипликативная, $A = \SL_{k=1}^\infty f(k);\q\q B = \SL_{d=1}^\infty f(d)\Lambda(d)$ -- абсолютно сходятся. Тогда $AB = \SL_{n=1}^\infty f(n) \ln(n)$
 \end{lem}
-$\pb AB = \SL_{k=1}^\infty \SL_{d=1}^\infty f(k)f(d)\Lambda(d) = \SL_{n=1}^\infty f(n) \SL_{d|n} \Lambda(d)$\\
-$\SL_{d|n} \Lambda(d) = \SL_{j=1}^m\SL_{t_j}^{r_j} \Lambda(p_j^{t_j}) = r_1 \ln(p_1) + \cdots r_m \ln(p_m) = \ln(n) \pe$\\\q\\
+$\pb AB = \SL_{k=1}^\infty \SL_{d=1}^\infty f(k)f(d)\Lambda(d) = \SL_{n=1}^\infty f(n) \SL_{d\mid n} \Lambda(d)$\\
+$\SL_{d\mid n} \Lambda(d) = \SL_{j=1}^m\SL_{t_j}^{r_j} \Lambda(p_j^{t_j}) = r_1 \ln(p_1) + \cdots r_m \ln(p_m) = \ln(n) \pe$\\\q\\
 $\zeta(s) \SL_{d=1}^\infty\frac{\Lambda(d)}{d^s} = \SL_{n=1}^\infty \frac{\ln(n)}{n^s} = -\zeta'(s) \pe$\\\q\\
 
 \begin{teo}\q\\
@@ -386,8 +399,8 @@ $\pb$
 $f(n)$ -- вполне мультипликативная, ряд $\sum f(n)$ абсолютно сходится $\Ra S = \SL_{n=2}^\infty f(n) = \prod\limits_p (1-f(p))^{-1}  $
 \end{lem}
 $\pb P(x) = \prod\limits_{p\le x} (1-f(p))^{-1}  \Ra \forall n\in\bb{N}: |f(n)| < 1$, иначе $|f(n^k)| = |f(n)|^k$ и сумма расходится\\
-$P(x) = \prod\limits_{p\le x} (1 + f(p) + f^2(p) + \cdots) = \SL{p_i\le x} f(p_1^{k_1}\cdots p_n^{k_n}) = \SL_{\forall p|n\Ra p \le x}' f(n)$\\
-$|S-P(x)| \le \SL_{\exists p|n:p>x}''|f(n)|\le\SL{n \ge x}|f(n)| < \varepsilon$\\
+$P(x) = \prod\limits_{p\le x} (1 + f(p) + f^2(p) + \cdots) = \SL{p_i\le x} f(p_1^{k_1}\cdots p_n^{k_n}) = \SL_{\forall p\mid n\Ra p \le x}' f(n)$\\
+$|S-P(x)| \le \SL_{\exists p\mid n:p>x}''|f(n)|\le\SL{n \ge x}|f(n)| < \varepsilon$\\
 $\Ra\lim\limits_{x\to\infty}P(x) = S$
 $\pe$\\
 $f(n) = \frac{1}{n^s}, s = \sigma + it, \sigma > 1\Ra$ по лемме все доказано. $\pe$
@@ -408,7 +421,7 @@ $x\in[1,+\infty); \exists$ непрерывная $g'(x), \SL_{n \le x}a_n = A(x
     \item если $\lim\limits_{x\to\infty} A(x)g(x) = 0$, то $\SL_{n=1}^\infty a_ng(n) = \IL_1^\infty A(t)g'(t)dt $
 \end{enumerate}
 \end{teo}
-$\pb 1) x\in \bb{Z} \SL_{n=1}^Na_ng(n) = \SL_{n=1}^N(A(n) - A(n-1))g(n) = \SL_{n=1}^N A(n)g(n) - \SL_{n=0}^{N-1} A(n)g(n+1) = A(N)g(N) - \SL_{n=1}^{N-1} (g(n+1) - g(n))A(n) = A(N)g(N) - \IL_1^N A(t)g'(t)dt  $\\$A(0) = 0$\\\q\\
+$\pb 1) x\in \bb{Z}: \SL_{n=1}^Na_ng(n) = \SL_{n=1}^N(A(n) - A(n-1))g(n) = \SL_{n=1}^N A(n)g(n) - \SL_{n=0}^{N-1} A(n)g(n+1) = A(N)g(N) - \SL_{n=1}^{N-1} (g(n+1) - g(n))A(n) = A(N)g(N) - \IL_1^N A(t)g'(t)dt  $\\$A(0) = 0$\\\q\\
 $2) x\not\in \bb{Z} : N = [x]  $\\
 Достаточно проверить, что при вычитании с обеих сторон одного и того же числа\\
 $\SL_{n\le x}a_ng(n) - \SL_{n=1}^{[x]}a_ng(n)=0 $\\
@@ -440,12 +453,13 @@ $r = \frac{1}{p^\sigma}; e^{i\varphi} = p^{-it}$ и по предыдущей л
 
 \begin{teo} При $\sigma \ge 1 \q \zeta(s) \not= 0$
 \end{teo}
+$\pb$
 При $\sigma > 1: \zeta(\sigma+it)\not=0, т.к. иначе 0\ge1$\\
 Допустим, что $\zeta(1+it) = 0; t\not=0$\\
 Тогда $|\zeta(\sigma)| \le \frac{C_1}{\sigma-1}, 2 \ge \sigma > 1 $ в окрестности полюса.\\
 $\zeta'(1+it) = \lim\limits{\sigma\to1}\frac{\zeta(\sigma+it) - \zeta(1+it)}{\sigma-1}\Ra \left|\frac{\zeta(\sigma+it)}{\sigma-1}\right| \le C_2$\\
 $|\zeta(\sigma+2it)| \le C_3$\\
-$\Ra |\zeta^3(\sigma) \zeta^4(\sigma+it)\zeta(\sigma+2it)| \le \os \frac{C_1}{\sigma-1} \cs^3 (C_2(\sigma-1))^4 C_3 \to 0$. Противоречие с $|\cdot| > 1\pe$
+$\Ra |\zeta^3(\sigma) \zeta^4(\sigma+it)\zeta(\sigma+2it)| \le \os \frac{C_1}{\sigma-1} \cs^3 (C_2(\sigma-1))^4 C_3 \to 0$. \\Противоречие с $|\cdot| > 1\pe$
 \end{mybox}
 
 
@@ -490,8 +504,8 @@ $\zeta(s) = \frac{1}{s-1} + g(s),\q g(s)$  аналитичная.\\
 $-\frac{-\zeta(s)}{s\zeta(s)} = -\frac{-\frac{1}{(s-1)^2} + g'(s)}{s\os \frac{1}{s-1} + g(s) \cs} = \frac{1}{s-1} \cdot \frac{1 - \overbrace{(s-1)^2}^{\to 0} g'(s)}{s (1 + (s-1)g(1))} = \frac{1}{s-1} + f(s)$, в $s = 1$ полюс первого порядка.$\pe$
 \item Из преобразования Абеля $\sigma > 1$: $-\frac{\zeta'(s)}{\zeta(s)} - \frac{1}{s-1} = \IL_1^\infty\frac{\SI(x) - x}{x^{s+1}}dx\Ra f(s) = \IL_1^\infty\frac{\SI(x) - x}{x^{s+1}}dx $\\\q\\
 \item $f_u(s) = \IL_1^u frac{\SI(x) - x}{x^{s+1}}dx$ -- целая, $u > 1$\\
-$\pb  1) \IL_a^b \frac{dx}{x^{s+k}} = \left.\frac{x^{-s-k+1}}{-s-k+1} \right|_a^b = \frac{b^{-s-k+1} - a^{-s-k+1}}{-s-k+1} = \frac{1 + (-s-k+1)\ln(b) + (-s-k+1)^2g(s) -1 - (-s-k+1)\ln(a)}{-s-k+1} $ -- нет особенностей, значит целая. ($\pm 1 $ сокращаются, а дальше числитель делится на знаменатель ура).$\pe$
-\item Считаем вычет $\frac{1}{2\pi i R}\cdot \oint\limits_{\Gamma(\TE,R)}(f(s) - f_u(s)) u^{s-1}\os \frac{s-1}{R} + \frac{R}{s-1}  \cs ds = \frac{1}{R}\cdot (f(1) - f_u(1)) \cdot 1 \cdot R $
+$\pb \IL_a^b \frac{dx}{x^{s+k}} = \left.\frac{x^{-s-k+1}}{-s-k+1} \right|_a^b = \frac{b^{-s-k+1} - a^{-s-k+1}}{-s-k+1} = \frac{1 + (-s-k+1)\ln(b) + (-s-k+1)^2g(s) -1 - (-s-k+1)\ln(a)}{-s-k+1} $ -- нет особенностей, значит целая. ($\pm 1 $ сокращаются, а дальше числитель делится на знаменатель ура).$\pe$
+\item Считаем вычет \\$\frac{1}{2\pi i R}\cdot \oint\limits_{\Gamma(\TE,R)}(f(s) - f_u(s)) u^{s-1}\os \frac{s-1}{R} + \frac{R}{s-1}  \cs ds = \frac{1}{R}\cdot (f(1) - f_u(1)) \cdot 1 \cdot R $
 \item $\left| \frac{1}{2\pi i R} \IL_{C_R}F_k(s)ds \right| \le \frac{B}{R};\q\SI(x) \le Cx, |\SI(x) - x|\le (C+1)x = Bx$\\
 $\pb |f(s) - f_u(s)| = \left| \IL_u^\infty \frac{\SI(x) - x}{x^{s+1}}dx   \right| \le \IL_u^\infty \frac{Bx}{x^{s+1}}dx = \left.B\frac{x^{1-\sigma}}{1-\sigma}\right|_u^\infty = \frac{Bu^{1-\sigma}}{\sigma - 1}  $\\
 $\Ra \left| \frac{s-1}{R} + \frac{R}{s-1}  \right| = 2 |Re\frac{s-1}{R}| = 2 \frac{\sigma - 1}{R} \pe$
@@ -502,6 +516,7 @@ $|  \frac{s-1}{R} + \frac{R}{s-1} | = 2 |Re \frac{s-1}{R}| = 2 \frac{1 - \sigma}
 \item Рассмотрим $J(u) = \frac{1}{2\pi i R} \IL_[ f(s)u^{s-1} \os   \frac{s-1}{R} + \frac{R}{s-1} \cs ds$\\
 Утверждается что предел равен 0.\\
 \includegraphics{p2.png}\q\\
+/*я ничего не понял и мне лень писать сори:(*/
 \end{enumerate}
 \begin{utv} $p_n \sim n\ln(n)$ -- закон распределения $n$-того простого.
 \end{utv}
@@ -516,7 +531,7 @@ $\Ra n\ln(n) = p_n(1 + \alpha_n)(1 + \beta_n) \pe $
 \begin{mybox}{\hypertarget{bil9}{Билет 9}}
 Простейшие свойства сравнений. Группа $\os Z/mZ \cs ^*$. Теорема Эйлера. Малая теорема Ферма. Элементарные доказательства бесконечности множества простых чисел в прогрессиях вида $4n+1$ и $4n+3$.\\\q\\
 \begin{deff}[Сравнения]\q\\
-$a \ee b \pmod{m}\iff m|(a-b) \iff a$ и $b$ дают одинаковые остатки при делении на $m$
+$a \ee b \pmod{m}\iff m\mid (a-b) \iff a$ и $b$ дают одинаковые остатки при делении на $m$
 \end{deff}
 Свойства:
 \begin{enumerate}
@@ -530,7 +545,7 @@ $a \ee b \pmod{m}\iff m|(a-b) \iff a$ и $b$ дают одинаковые ос�
 \end{enumerate}
 Уравнение в факторкольце.\\
 $\bb{Z}/m\bb{Z} = \{\bar{a}: \bar{a} = a + mt, t\in\bb{Z}\} \q\q a\ee b \iff \bar{a} = \bar{b}$\\
-$\os \bb{Z}/m\bb{Z}  \cs^* = \{\bar{a}: \bar{a} = a + mt, (a,m) = 1\}$ !!ЭТО НЕ КОЛЬЦО, (т.к. нет сложения)!!! Но это группа по умножению: $1) \exists 1, 2) \exists a^{-1}$
+$\os \bb{Z}/m\bb{Z}  \cs^* = \{\bar{a}: \bar{a} = a + mt, (a,m) = 1\}$ !!ЭТО НЕ КОЛЬЦО, (т.к. нет сложения)!!! Но это группа по умножению: $1) \exists 1,\q 2) \exists a^{-1}$
 \begin{lem} $ax\ee b\pmod{m}, (a,m) = 1\Ra \exists!c<m:x\ee c\pmod{m}$
 \end{lem}
 $\pb 1) ax\ee b\pmod{m} $\\
@@ -544,7 +559,7 @@ $ax_1\ee b\pmod{m}, ax_2\ee b\pmod{m}\Ra ax_1 \ee ax_2\pmod{m}\Ra x_1\ee x_2\pmo
 \end{teo}
 \begin{teo}[Малая теорема Ферма] $p$-простое, $(p,a) = 1\Ra a^{p-1} \ee 1\pmod{p}$
 \end{teo}
-\begin{utv} $p|(a^2+b^2), p\not|a, p\not=2 \Ra p = 4m+1$
+\begin{utv} $p\mid (a^2+b^2), p\nmid a, p\not=2 \Ra p = 4m+1$
 \end{utv}
 $\pb a^2 + b^2 \ee 0\pmod{p}$\\
 $a^2 \ee -b^2\pmod{p}, (a^2)^{\frac{p-1}{2}} \ee (b^2)^{\frac{p-1}{2}}\pmod{p}$\\
@@ -552,7 +567,7 @@ $a^{p-1}\ee b^{p-1} (-1)^{\frac{p-1}{2}} \Ra 1 \ee (-1)^{\frac{p-1}{2}}\pmod{p}\
 \begin{utv} Бесконечность множества простых вида $4n-1$.
 \end{utv}
 $\pb $ Пусть их конечное число. Пусть $p_n$ -- максимальное из них.\\
-Рассмотрим $p = 4(p_1\cdots p_n) - 1$ не простое. $\exists q|p:q = 4k-1$, т.к. если все делители имеют вид $4k+1$, то и $p \ee 1 \pmod{4}$, но $q \not= p_j$ противоречие.$\pe$
+Рассмотрим $p = 4(p_1\cdots p_n) - 1$ не простое. $\exists q\mid p:q = 4k-1$, т.к. если все делители имеют вид $4k+1$, то и $p \ee 1 \pmod{4}$, но $q \not= p_j$ противоречие.$\pe$
 \begin{utv} Бесконечность множества простых вида $4n+1$.
 \end{utv}
 $\pb $ Пусть $p_1,\dots,p_n$ -- все простые числа такого вида.\\
@@ -585,10 +600,10 @@ $\pb$
 \item $\chi_1\chi_2 (g_1 g_2) = \chi_1(g_1)\chi_1(g_2)\chi_2(g_1)\chi_2(g_2) = \chi_1\chi_2(g_1)\chi_1\chi_2(g_2)$
 \item $\exists \chi^{-1}: \chi^{-1}(g) =\chi(g^{-1}) = \frac{1}{\chi(g)}$
 \item $\exists 1: \chi\chi^{-1}(g) = 1$
-\end{enumerate}
+\end{enumerate} $\pe$
 Пусть $G = G_1\otimes \cdots \otimes G_n$, где все $G_i$ циклические. $ord g_i = h_i$\\
-$ord G = h = h_1\cdots h_n$\\
-$\forall g\in G g = g_1^{r_1}\cdots g_n^{r_n},\q\q 0\le r_i\le h_i$ и такое представление единственно.\\
+$ord (G) = h = h_1\cdots h_n$\\
+$\forall g\in G: g = g_1^{r_1}\cdots g_n^{r_n},\q\q 0\le r_i\le h_i$ и такое представление единственно.\\
 Рассмотрим набор корней из 1:$\zeta_1,\dots,\zeta_n: \zeta_i^{h_i} = 1$\\
 $\chi(g) = \zeta_1^{r_1}\cdots \zeta_n^{r_n}$
 \begin{utv} Это характер и любой характер можно записать так.
@@ -622,7 +637,7 @@ $\chi(ab) = \chi(a)\chi(b) $\\
 $\chi(a)\not=0 \iff (a,m)=1$\\\q\\
 $\SL_{x=1}^m \chi(x) = \begin{cases} \FI(m), \chi = \chi_0\\0 \end{cases} $\\
 $\SL_{\chi} \chi(x) = \begin{cases} \FI(m), x = 1\\0 \end{cases} $\\
-$|\SL_{x=1}^{mq+r} \chi(x) | = |\SL_{x=mq+1}^{mq+r} \chi(x)|\le r\le m$
+$\left|\SL_{x=1}^{mq+r} \chi(x) \right| = \left|\SL_{x=mq+1}^{mq+r} \chi(x)\right|\le r\le m$
 \end{mybox}
 
 
@@ -636,10 +651,10 @@ $|\SL_{x=1}^{mq+r} \chi(x) | = |\SL_{x=mq+1}^{mq+r} \chi(x)|\le r\le m$
 $L(s,\chi) = \SL_{n=1}^\infty \frac{\chi(n)}{n^s}$ -- функция Дирихле.
 \end{deff}
 $\zeta(s) = \SL_{n=1}^\infty \frac{1}{n^s};$ если $\SL_{n=1}^\infty f(n) = A, \SL_{d=1}^\infty f(d)\Lambda(d) = B$ -- абсолютно сходящийся ряд. $\Lambda(n) = \begin{cases} \ln(p), n=p^k\\0  \end{cases} \q\q \Ra AB = \SL_{n=1}^\infty f(n)\ln(n)$\\\q\\
-$\SL_{n=1}^\infty f(n) = \prod\limits_p \os 1 - f(p)\cs^{-1}$ Если $f(n) = \frac{\chi(n)}{n^s}\Ra L(s,\chi) = \prod\limits_p \os 1 - \frac{\chi(p)}{p^s}   \cs^{-1} $\\
+$\SL_{n=1}^\infty f(n) = \prod\limits_p \os 1 - f(p)\cs^{-1}$.\\ Если $f(n) = \frac{\chi(n)}{n^s}\Ra L(s,\chi) = \prod\limits_p \os 1 - \frac{\chi(p)}{p^s}   \cs^{-1} $\\
 $L(s,\chi) \cdot \SL_{n=1}^\infty \frac{\chi(n)\Lambda(n)}{n^s} = \SL_{n=1}^\infty \frac{\chi(n)\ln(n)}{n^s}  = -L'(s,\chi)\Ra $ в области $\sigma > 1: L(s,\chi)\not=0$\\
-$\chi_0(p) = \begin{cases} 1, (m,p) = 1\\0  \end{cases}\Ra L(s,\chi) = \prod\limits_{p\not|m}(1 - \frac{1}{p^s})^{-1} $\\
-$L(s,\chi_0) = \zeta(s) \prod\limits_{p|m} (1 - \frac{1}{p^s})^{-1} = \os \frac{1}{s-1} + f(s) \cs  \prod\limits_{p|m} (1 - \frac{1}{p^s})^{-1} = \frac{a_m}{s-1} + f_m(s),\q\q a_m = \prod\limits_{p|m} (1 - \frac{1}{p^s}) = \frac{\FI(m)}{m} > 0 \Ra  L(s,\chi_0)$  аналитична в области $\sigma > 0$
+$\chi_0(p) = \begin{cases} 1, (m,p) = 1\\0  \end{cases}\Ra L(s,\chi) = \prod\limits_{p\nmid m}(1 - \frac{1}{p^s})^{-1} $\\
+$L(s,\chi_0) = \zeta(s) \prod\limits_{p\mid m} (1 - \frac{1}{p^s})^{-1} = \os \frac{1}{s-1} + f(s) \cs  \prod\limits_{p\mid m} (1 - \frac{1}{p^s})^{-1} = \frac{a_m}{s-1} + f_m(s),\\ a_m = \prod\limits_{p\mid m} (1 - \frac{1}{p^s}) = \frac{\FI(m)}{m} > 0 \Ra  L(s,\chi_0)$  аналитична в области $\sigma > 0$
 \end{mybox}
 
 
@@ -654,13 +669,13 @@ $L(s,\chi_0) = \zeta(s) \prod\limits_{p|m} (1 - \frac{1}{p^s})^{-1} = \os \frac{
 \item $f(s)$ аналитична в области $\sigma > 0,$ где $f(s) = \SL_n\frac{a_n}{n^s}$
 \end{enumerate}
 \end{utv}
-$\pb$ Определение равномерной сходимости: $\forall \varepsilon > 0 \exists M(\varepsilon): \forall N > M, \forall s\in D(\delta, \TE): |R_N(s)| = |\SL_{n = N+1}^\infty \frac{a_n}{n^s}| < \varepsilon$\\
+$\pb$ Определение равномерной сходимости: $\forall \varepsilon > 0 \exists M(\varepsilon): \forall N > M, \forall s\in D(\delta, \TE): \left|R_N(s)\right| = \left|\SL_{n = N+1}^\infty \frac{a_n}{n^s}\right| < \varepsilon$\\
 Перепишем: $R_N(s) = \SL_{k=0}^\infty \frac{a_{N+k}}{(N+k)^s}\q\q A(x) = \SL_{k\le x}a_k; g(x) = \frac{1}{(N+x)^s}$\\
 $|A(x)| \le 2C; \q g(x) \to 0\Ra A(x)g(x)\to0$\\
 $g'(x) = -s(N+x)^{-s-1}, s\IL_1^\infty A(t)(N+t)^{-s-1}dt $ сходится, значит можно использовать преобразование Абеля.\\
 $\SL_{k=1}^\infty g(k) a_k = -\IL_1^\infty A(t) g'(t) dt = -s\IL_1^\infty A(t)(N+t)^{-s-1}dt = R_N(s) $\\
-$|R_N(s)| \le |s|\IL_1^\infty 2C(N+t)^{-s-1}dt = |s| \cdot 2C\left.\frac{(N+t)^{-\sigma}}{-\sigma}\right|_1^\infty = 2C\frac{(N+1)^{-\sigma}}{\sigma}|s|$\\
-В области $D(\delta, \TE): \q\q |R_N(s)|\le 2CN^{-\delta}\frac{1}{\cos(\TE)} < \varepsilon \Ra$ выполняется равномерная сходимость.\\
+$\left|R_N(s)\right| \le |s|\IL_1^\infty 2C(N+t)^{-s-1}dt = |s| \cdot 2C\left.\frac{(N+t)^{-\sigma}}{-\sigma}\right|_1^\infty = 2C\frac{(N+1)^{-\sigma}}{\sigma}|s|$\\
+В области $D(\delta, \TE): \q \left|R_N(s)\right|\le 2CN^{-\delta}\frac{1}{\cos(\TE)} < \varepsilon \Ra$ выполняется равномерная сходимость.\\
 Для любой точки правее нуля можно подобрать такие $\delta$ и $\TE$, чтобы она попала в область. Раз в таких областях ряд сходится равномерно, значит его можно дифференцировать бесконечное число раз, значит функция аналитична.$\pe$
 
 \end{mybox}
@@ -673,13 +688,14 @@ $|R_N(s)| \le |s|\IL_1^\infty 2C(N+t)^{-s-1}dt = |s| \cdot 2C\left.\frac{(N+t)^{
 \begin{mybox}{\hypertarget{bil13}{Билет 13}}
 Теорема об области сходимости ряда Дирихле с неотрицательными коэффициентами.\\\q\\
 Пусть есть  ряд $f(s) = \sum a_n n^{-1}, \q \sigma_1 < \sigma_2 < \sigma_0$\\
-\begin{teo} Пусть функция $f(s):$
+\begin{teo} Пусть функция $f(s) = \SL_{n=1}^\infty \frac{a_n}{n^s}, \sigma_1 <\sigma_2 < \sigma_0 $
 \begin{enumerate}
 \item $f(s)$ аналитична при $\sigma > \sigma_1$
 \item $f(s) = \SL_{n=1}^\infty  \frac{a_n}{n^s},\q(\sigma > \sigma_2) $
 \item $a_n \ge 0$
 \end{enumerate}
-Тогда $f(s)$ раскладывается в ряд Дирихле при $\sigma > \sigma_1$ и его можно почленно дифференцировать. $///<WTF?$
+Тогда $f(s)$ раскладывается в ряд Дирихле при $\sigma > \sigma_1$ и его можно почленно дифференцировать. $///<WTF?$\\
+/*P.S. в другом источнике: Тогда $f(s)$ аналитична при $\sigma > \sigma_1$, т.е. можно продлить представление рядом.*/
 \end{teo}
 $\pb $ Если $f(s) \sum \frac{a_n}{n^s}$ сходится при $s = s_0 = \sigma_0 + it_0$, то ряд Дирихле задаёт функцию, аналитичную в области $\sigma > \sigma_0\Ra$ можно дифференцировать.\\
 $\Ra$ есть прямая, разделяющая области сходимости и расходимости.\\
@@ -705,10 +721,10 @@ $f(\sigma) = \SL_{k=0}^\infty \frac{f^{(k)}}{k!}(\sigma - \sigma_0)^k = \SL_{k=0
 \item $\SL_{n=1}^\infty \frac{a_n}{\sqrt{n}} $ расходится.
 \end{enumerate}
 \end{lem}
-$\pb f(s) = \SL_{k=1}^\infty \frac{1}{k^s}  \SL_{d=1}^\infty \frac{\chi(d)}{d} = \SL_{n=1}^\infty \frac{1}{n^s} \SL_{d|n}\chi(d)$\\
-Если $n = p_1^{k_1}\cdots p_r^{k_k}$, то $a_n = \SL_{d|n}\chi_d  \prod\limits_{j=1}^n (1 + \chi(p_j) + \chi(p_j^2) + \cdots)  = \prod\limits_{j=1}^n (1 + \chi(p_j) + \chi(p_j^2) + \cdots) =  \prod\limits_{j=1}^n (1 + \chi(p_j) + \chi^2(p_j) + \cdots)$\\
-где $a_{n_j} = \begin{cases} 1, \chi(p_j) = 0\\k_j + 1, \chi(p_j)=1\\1, \chi(p_j) = -1, k_j\%2==0\\0  \end{cases}$\\
-Если $n = k^2,$ то все $k_j \%2==0\Ra$\\
+$\pb f(s) = \SL_{k=1}^\infty \frac{1}{k^s}  \SL_{d=1}^\infty \frac{\chi(d)}{d} = \SL_{n=1}^\infty \frac{1}{n^s} \SL_{d\mid n}\chi(d)$\\
+Если $n = p_1^{k_1}\cdots p_r^{k_k}$, то $a_n = \SL_{d\mid n}\chi_d  \prod\limits_{j=1}^n (1 + \chi(p_j) + \chi(p_j^2) + \cdots)  = \prod\limits_{j=1}^n (1 + \chi(p_j) + \chi(p_j^2) + \cdots) =  \prod\limits_{j=1}^n (1 + \chi(p_j) + \chi^2(p_j) + \cdots)$\\
+где $a_{n_j} = \begin{cases} 1, &\chi(p_j) = 0\\k_j + 1, &\chi(p_j)=1\\1, &\chi(p_j) = -1, k_j=2m\\0 &\chi(p_j) = -1, k_j=2m+1 \end{cases}$\\
+Если $n = k^2,$ то все $k_j=2m\Ra$\\
 $\prod\limits_{j=1}^r  a_{n_j} \ge 1 \Ra 1)+2)+3)$ ////<WTF??\\
 $4) \SL_{n=1}^\infty \frac{a_n}{\sqrt{n}} \ge \SL_{k=1}^\infty \frac{a_{k^2}}{k}  \Ra$ расходится. $\pe$
 
@@ -729,7 +745,7 @@ $f(s) = \zeta(s) L(s,\chi) = g(s) + g(s)h(s)(s-1)  $ представляетс�
 \begin{lem} Пусть $s\in \bb{R}, s > 1$, тогда $A:= |L^3(s,\chi_0)\cdot L^4(s,\chi)\cdot L(s, \chi^2)| \ge 1$
 \end{lem}
 $\pb L(s, \chi) = \prod\limits_p \os 1 - \frac{\chi(p)}{p^s} \cs ^{-1} $\\
-$A = \prod\limits_{p|m} \left|\os 1 - \frac{1}{p^s} \cs^3  \os 1 - \frac{\chi(p)}{p^s} \cs^4  \os 1 - \frac{\chi^2(p)}{p^s} \cs^3  \right|^{-1}   $\\
+$A = \prod\limits_{p\mid m} \left|\os 1 - \frac{1}{p^s} \cs^3  \os 1 - \frac{\chi(p)}{p^s} \cs^4  \os 1 - \frac{\chi^2(p)}{p^s} \cs^3  \right|^{-1}   $\\
 Из \hyperlink{bil6}{билета 6} $|(1-r)^3 (1-re^{i\varphi})^4 (1 - re^{2i\FI})| \le 1 \q\q\Ra r = \frac{1}{p}\Ra \pe$
 
 \begin{teo} При $\chi \not= \chi_0: L(1,\chi)\not=0$
@@ -783,7 +799,7 @@ $\pb f(x)$ имеет кратные корни, тогда $f(x)$ имеет о
 Степень алгебраического числа $\AL$ -- степень неприводимого многочлена, имеющего корень $\AL$
 \end{deff}
 
-$\forall n \exists$ неприводимый многочлен степени $n$ (например $x^n - 2$), значит существуют алгебраические числа любой степени.
+$\forall n \q\exists$ неприводимый многочлен степени $n$ (например $x^n - 2$), значит существуют алгебраические числа любой степени.
 
 \begin{deff} Пусть $\AL$ -- алгебраическое число степени $n, \exists f\in\bb{Q}[x], deg(f) = n, \AL$ -- корень $f$, старший коэффициент $f = 1$, тогда $f$ -- минимальный многочлен.\\
 Корни $\AL_1,\dots,\AL_n$ минимального многочлена -- сопряженные с $\AL$ 
@@ -810,9 +826,9 @@ $\pb B(x) = A(x)B_1(x), \forall x: B_1(x) = 0: A(x) = 0 \Ra B(x) = A^2(x)B_2 \cd
 \begin{lem}[Гаусса] $A(x),B(x)$ примитивные, тогда $C(x) = A(x)B(x)$ тоже примитивный.
 \end{lem}
 $\pb B(x) = b_mx^m + \cdots b_0,\q\q A(x) = a_nx^n+\cdots +a_0$\\
-Покажем, что $\forall p: \exists c_j: p\not|c_j$\\
-$\forall p \exists a_s, b_t: p\not|a_s, p\not|b_t, p|a_0, \dots a_n, b_0,\dots b_m$.\\
-Тогда $c_{s+t} = \SL_{k+l = s+t} a_kb_l = \underbrace{a_sb_t}_{\not\vdots p} + \underbrace{\SL resid}_{\vdots p} \not\vdots p\pe$
+Покажем, что $\forall p: \exists c_j: p\nmid c_j$\\
+$\forall p \exists a_s, b_t: p\nmid a_s, p\nmid b_t, p\mid a_0, \dots a_n, b_0,\dots b_m$.\\
+Тогда $c_{s+t} = \SL_{k+l = s+t} a_kb_l = \underbrace{a_sb_t}_{\not\divisible p} + \underbrace{\SL resid}_{\divisible p} \not\divisible p\pe$
 Доказательство теоремы.\\
 $B(x)$ обнуляется $\AL; A(x) = x^n + \cdots a_0 \in\bb{Q}[x]$ -- минимальный многочлен $\AL$. Тогда $B(x) = A(x)C(x) = \frac{u}{v} \tilde{A}(x)\tilde{C}(x) $, где с тильдами целые. Тогда $\tilde{A}, \tilde{C}$ -- примитивные, значит $vB(x)$ тоже примитивный. По лемме Гаусса $v = 1\Ra \tilde{A}\tilde{C} = B\Ra \tilde{A}$ -- минимальный целый многочлен, значит $\AL$ -- целое алгебраическое число.$\pe$
 
@@ -828,6 +844,100 @@ $B(x)$ обнуляется $\AL; A(x) = x^n + \cdots a_0 \in\bb{Q}[x]$ -- ми�
 \newpage
 \begin{mybox}{\hypertarget{bil18}{Билет 18}}
 Формулировка основной теоремы о симметричных многочленах. Теорема о симметричном многочлене от нескольких систем сопряженных алгебраических чисел. Поле алгебраических чисел и кольцо целых алгебраических чисел. Алгебраическая замкнутость поля алгебраических чисел.\\\q\\
+Пусть $K$ -- коммутативное кольцо с 1, $K[\AL_1, \dots, \AL_n]$ -- кольцо многочленов с коэффициентами из $K$ от $\AL_1,\dots,\AL_n$.\\
+
+
+\begin{deff} Многочлен $P(\AL_1,\dots,\AL_n) \in K[\AL_1, \AL_n]$ симметрический, если он не изменяется при любой перестановке переменных.
+\end{deff}
+Обозначим $\sigma_1 = \AL_1 +\cdots + \AL_n; \sigma_2 = \AL_1\AL_2 \cdots \AL_{n-1}\AL_n; \cdots; \sigma_n = \AL_1\cdots\AL_n$ -- элементарные симметричные многочлены. С точностью до знака это коэффициенты $(x-\AL_1)\cdots(x-\AL_n)$
+
+\begin{teo} [о симметричных многочленах] Любой симметричный многочлен от переменных $\AL_1, \dots, \AL_n$  единственным образом представляется в виде $P(\AL_1,\dots,\AL_n) = H(\sigma_1, \sigma_n),$ где $H\in K[\sigma_1, \dots, \sigma_n], \q \sigma_1, \dots, \sigma_n$ -- элементарные симметричные.
+\end{teo}
+Рассмотрим несколько систем переменных $\AL_1,\dots,\AL_n, \delta_1,\dots,\delta_s$; Пусть $\sigma_1, \dots, \sigma_n, \eta_1,\dots,\eta_s$ -- их элементарные симметричные многочлены.
+\begin{deff} $P(\AL_1, \dots, \AL_n, \delta_1,\dots,\delta_s)$ -- симметричный многочлен относительно нескольких систем переменных, если он не изменяется при любой перестановке внутри системы.
+\end{deff}
+
+\end{mybox}
+
+
+
+
+
+
+
+
+\newpage
+\begin{mybox}{\hypertarget{bil19}{Билет 19}}
+Алгебраическое числовое поле конечной степени. Каноническая форма представления его элементов. Теорема о числах, сопряженных в алгебраическом числовом поле. Теорема о примитивном элементе.\\\q\\
+
+\end{mybox}
+
+
+
+
+\newpage
+\begin{mybox}{\hypertarget{bil20}{Билет 20}}
+Две теоремы о приближении действительных чисел рациональными дробями. Построение чисел, имеющих заданный порядок приближений.\\\q\\
+
+\end{mybox}
+
+\newpage
+\begin{mybox}{\hypertarget{bil21}{Билет 21}}
+Теорема Лиувилля о приближении алгебраических чисел. Построение трансцендентных чисел при помощи теоремы Лиувилля.\\\q\\
+
+\end{mybox}
+
+\newpage
+\begin{mybox}{\hypertarget{bil22}{Билет 22}}
+Обобщение теоремы Лиувилля на многочлены от нескольких алгебраических чисел.\\\q\\
+
+\end{mybox}
+
+\newpage
+\begin{mybox}{\hypertarget{bil23}{Билет 23}}
+Теорема Бореля о характере приближений \textquotedblleft  почти всех\textquotedblright  действительных чисел.\\\q\\
+
+\end{mybox}
+
+\newpage
+\begin{mybox}{\hypertarget{bil24}{Билет 24}}
+Иррациональность и трансцендентность числа $e$.\\\q\\
+
+\end{mybox}
+
+\newpage
+\begin{mybox}{\hypertarget{bil25}{Билет 25}}
+Иррациональность числа $\pi$.\\\q\\
+
+\end{mybox}
+
+\newpage
+\begin{mybox}{\hypertarget{bil26}{Билет 26}}
+Лемма Зигеля об оценках решений систем линейных уравнений с целыми коэффициентами.\\\q\\
+
+\end{mybox}
+
+\newpage
+\begin{mybox}{\hypertarget{bil27}{Билет 27}}
+Формулировка теоремы Линдемана. Ее следствия. Построение вспомогательной функции для доказательства теоремы Линдемана, оценки ее порядка нуля.\\\q\\
+
+\end{mybox}
+
+\newpage
+\begin{mybox}{\hypertarget{bil28}{Билет 28}}
+Оценки вспомогательной функции и завершение доказательства теоремы Линдемана. Ее связь с проблемой квадратуры круга.\\\q\\
+
+\end{mybox}
+
+\newpage
+\begin{mybox}{\hypertarget{bil29}{Билет 29}}
+Седьмая проблема Гильберта. Формулировка теоремы Гельфонда-Шнейдера. Ее следствия. Построение вспомогательной функции для доказательства теоремы Гельфонда-Шнейдера, оценки ее порядка нуля.\\\q\\
+
+\end{mybox}
+
+\newpage
+\begin{mybox}{\hypertarget{bil30}{Билет 30}}
+Оценки вспомогательной функции и завершение доказательства теоремы Гельфонда-Шнейдера.\\\q\\
 
 \end{mybox}
 
@@ -846,102 +956,32 @@ $B(x)$ обнуляется $\AL; A(x) = x^n + \cdots a_0 \in\bb{Q}[x]$ -- ми�
 
 
 
+
+
+
+
 \newpage
 
-\section{Определения и формулировки}
-\begin{deff2} $b|a$, если $\exists q\in \mathbb{Z}: a=bq$
+\section{Определения}
+\begin{formbox}{}
+\begin{deff2} $b\mid a$, если $\exists q\in \mathbb{Z}: a=bq$
 \end{deff2}
-\begin{teo2}[Основная теорема арифметики]\q\\
-\begin{enumerate}
-    \item всякое $a \in \bb{N}, a > 1$ представляется в виде $a = p_1\cdots p_n$, где $p_i$ простые.
-    \item это представление единственно с точностью до порядка сомножителей.
-\end{enumerate}
-\end{teo2}
-
+\end{formbox}
+\begin{formbox}{}
 \begin{deff2} $a\in \bb{Z}, b\in\bb{N}\Rightarrow \exists ! q,r: \begin{cases} a = bq+r\\0 \le r < b\end{cases} $ --деление с остатком
 \end{deff2}
-
-\begin{teo2}[Теорема о представлении НОД]\q\\
-$(a,b) = d \Ra \exists u,v\in\bb{Z}: d = au+bv$
-\end{teo2}
-\begin{utv2} Пусть $a = p_1^{k_1}\cdots p_n^{k_n}, b = p_1^{l_1}\cdots p_n^{l_n}$. Тогда $b|a\iff \forall i: l_i \le k_i$
-\end{utv2}
-
-\begin{utv2} $(a,b) = p_1^{s_1}\cdots p_n^{s_n}$, где $s_j = \min\{k_j, l_j\}$\\
-$[a,b] = p_1^{t_1}\cdots p_n^{t_n},$ где $t_j = \max\{k_j, l_j\}$
-\end{utv2}
-\begin{teo2}[Теорема о бесконечности простых чисел]\q\\
-Простых чисел бесконечно много.
-\end{teo2}
-
-\begin{lem2}
-$0\le l_1 = l_2 = l_3 \le L_1 = L_2 = L_3 \le +\infty$
-\end{lem2}
-
-\begin{utv2} $f(x)$ неубывающая на $[1;\infty]\Ra$ если $\IL_1^\infty \frac{f(x) - x}{x^2}dx$ сходится то \\$f(x)\sim x, x\to\infty$
-\end{utv2}
-\begin{teo2}[Теорема Чебышева]\q\\
-$\exists a.b > 0: \forall x \ge 2:\q a\frac{x}{\ln(x)} <\pi(x) <b\frac{x}{\ln(x)} $
-\end{teo2}
-\begin{teo2}[Теорема Эйлера]\q\\$\sum_p \frac{1}{p}$ расходится.
-\end{teo2}
-\begin{utv2} $\alpha n \ln(n) < p_n < \beta n \ln(n)   $
-\end{utv2}
-
+\end{formbox}
+\begin{formbox}{}
 \begin{deff2}
 Дзета-функция Римана: $s = \sigma + it, \zeta (s) := \SL_{n=1}^\infty \frac{1}{n^s}$
 \end{deff2}
-
-\begin{teo2}\q\\
-$\sigma > 1: -\frac{\zeta'(s)}{\zeta(s)}  \SL_{n=1}^\infty \frac{\Lambda(n)}{n^s} $
-\end{teo2}
-\begin{lem2}\q\\
-$f(n)$ -- вполне мультипликативная, $A = \SL_{k=1}^\infty f(k);\q\q B = \SL_{d=1}^\infty f(d)\Lambda(d)$ -- абсолютно сходятся. Тогда $AB = \SL_{n=1}^\infty f(n) ln(n)$
-\end{lem2}
-\begin{teo2}\q\\
-В области $\sigma > 1: \zeta(s) = \prod\limits_p (1 - \frac{1}{p^s})^{-1}$
-\end{teo2}
-\begin{lem2}\q\\
-$f(n)$ -- вполне мультипликативная, ряд $\sum f(n)$ абсолютно сходится $\Ra S = \SL_{n=2}^\infty f(n) = \prod\limits_p (1-f(p))^{-1}  $
-\end{lem2}
-\begin{teo2}
-Преобразование Абеля. $\SL_{n\le x} a_n g(n), a_n\in \bb{C}, g(x)$ -- комплекснозначная функция действительного аргумента.\\
-$x\in[1,+\infty); \exists$ непрерывная $g'(x), \SL_{n \le x}a_n = A(x)$\\
-\begin{enumerate}
-    \item $\SL_{n\le x}a_ng(n) = A(x)g(x) - \IL_1^x A(t)g'(t)dt $
-    \item если $\lim\limits_{x\to\infty} A(x)g(x) = 0$, то $\SL_{n=1}^\infty a_ng(n) = \IL_1^\infty A(t)g'(t)dt $
-\end{enumerate}
-\end{teo2}
-
-
-\begin{lem2} $\forall 0 < r < 1, \varphi\in \bb{R} \Ra M = \left| (1-r)^3(1-re^{i\varphi})^4 (1 - re^{2i\varphi}) \right| \le 1 $
-\end{lem2}
-\begin{lem2} При $\sigma > 1: |\zeta^3(\sigma)\zeta^4(\sigma+it)\zeta(\sigma+2it)| \ge 1$
-\end{lem2}
-\begin{teo2} При $\sigma \ge 1 \q \zeta(s) \not= 0$
-\end{teo2}
-\begin{teo2}[Асимптотический закон распределения простых чисел.]\q\\
-$\pi(x)\sim \frac{x}{\ln(x)}, x\to\infty$
-\end{teo2}
-\begin{utv2} $f(s) = -\frac{\zeta'(s)}{zeta(s)} - \frac{1}{s-1} $ аналитическая при $\sigma \ge 1$
-\end{utv2}
-\begin{utv2} $p_n \sim n\ln(n)$ -- закон распределения $n$-того простого.
-\end{utv2}
+\end{formbox}
+\begin{formbox}{}
 \begin{deff2}[Сравнения]\q\\
-$a \ee b \pmod{m}\iff m|(a-b) \iff a$ и $b$ дают одинаковые остатки при делении на $m$
+$a \ee b \pmod{m}\iff m\mid (a-b) \iff a$ и $b$ дают одинаковые остатки при делении на $m$
 \end{deff2}
-\begin{lem2} $ax\ee b\pmod{m}, (a,m) = 1\Ra \exists!c<m:x\ee c\pmod{m}$
-\end{lem2}
-\begin{teo2}[Теорема Эйлера] $(a,m) = 1\Ra a^{\FI(m)} \ee 1\pmod{m}$
-\end{teo2}
-\begin{teo2}[Малая теорема Ферма] $p$-простое, $(p,a) = 1\Ra a^{p-1} \ee 1\pmod{p}$
-\end{teo2}
-\begin{utv2} $p|(a^2+b^2), p\not|a, p\not=2 \Ra p = 4m+1$
-\end{utv2}
-\begin{utv2} Бесконечность множества простых вида $4n-1$.
-\end{utv2}
-\begin{utv2} Бесконечность множества простых вида $4n+1$.
-\end{utv2}
+\end{formbox}
+\begin{formbox}{}
 \begin{deff2} [Определение характера]\q\\
 Пусть $G$ -- конечная группа, коммутативная по умножению.\\
 $\chi:G\to\bb{C}$ -- характер
@@ -950,34 +990,207 @@ $\chi:G\to\bb{C}$ -- характер
 \item $\chi(g_1 \cdot g_2) = \chi(g_1)\cdot \chi(g_2)  $
 \end{enumerate}
 \end{deff2}
+\end{formbox}
+\begin{formbox}{}
+\begin{deff2}
+$L(s,\chi) = \SL_{n=1}^\infty \frac{\chi(n)}{n^s}$ -- функция Дирихле.
+\end{deff2}
+\end{formbox}
+\begin{formbox}{}
+\begin{deff2} Характер $\chi$ действительный, если $\chi^2 = \chi_0 = 1$
+\end{deff2}
+\end{formbox}
+\begin{formbox}{}
+\begin{deff2} Число $\AL$ -- алгебраическое, если оно является корнем многочлена с рациональными коэффициентами, иначе трансцендентное.\\
+Степень алгебраического числа $\AL$ -- степень неприводимого многочлена, имеющего корень $\AL$
+\end{deff2}
+\end{formbox}
+\begin{formbox}{}
+\begin{deff2} Пусть $\AL$ -- алгебраическое число степени $n, \exists f\in\bb{Q}[x], deg(f) = n, \AL$ -- корень $f$, старший коэффициент $f = 1$, тогда $f$ -- минимальный многочлен.\\
+Корни $\AL_1,\dots,\AL_n$ минимального многочлена -- сопряженные с $\AL$ 
+\end{deff2}
+\end{formbox}
+\begin{formbox}{}
+\begin{deff2} Если $A(x)\in\bb{Z}[x]$, старший коэффициент = 1 -- минимальный многочлен для $\AL$, то $\AL$ -- целое алгебраическое число.
+\end{deff2}
+\end{formbox}
+\begin{formbox}{}
+\begin{deff2} $A(x) = a_nx^n + \cdots + a_0\in\bb{Z}$ примитивный, если $(a_0,\dots,a_n) = 1$
+\end{deff2}
+\end{formbox}
+\begin{formbox}{}
+\begin{deff2} Многочлен $P(\AL_1,\dots,\AL_n) \in K[\AL_1, \AL_n]$ симметрический, если он не изменяется при любой перестановке переменных.
+\end{deff2}
+\end{formbox}
+\begin{formbox}{}
+\begin{deff2} $P(\AL_1, \dots, \AL_n, \delta_1,\dots,\delta_s)$ -- симметричный многочлен относительно нескольких систем переменных, если он не изменяется при любой перестановке внутри системы.
+\end{deff2}
+\end{formbox}
 
+\newpage
+\section{Формулировки}
+\begin{formbox}{}
+\begin{teo2}[Основная теорема арифметики]\q\\
+\begin{enumerate}
+\item всякое $a \in \bb{N}, a > 1$ представляется в виде $a = p_1\cdots p_n$, где $p_i$ простые.
+\item это представление единственно с точностью до порядка сомножителей.
+\end{enumerate}
+\end{teo2}
+\end{formbox}
+\begin{formbox}{}
+\begin{teo2}[Теорема о представлении НОД]\q\\
+$(a,b) = d \Ra \exists u,v\in\bb{Z}: d = au+bv$
+\end{teo2}
+\end{formbox}
+\begin{formbox}{}
+\begin{utv2} Пусть $a = p_1^{k_1}\cdots p_n^{k_n}, b = p_1^{l_1}\cdots p_n^{l_n}$. Тогда $b\mid a\iff \forall i: l_i \le k_i$
+\end{utv2}
+\end{formbox}
+\begin{formbox}{}
+\begin{utv2} $(a,b) = p_1^{s_1}\cdots p_n^{s_n}$, где $s_j = \min\{k_j, l_j\}$\\
+$[a,b] = p_1^{t_1}\cdots p_n^{t_n},$ где $t_j = \max\{k_j, l_j\}$
+\end{utv2}
+\end{formbox}
+\begin{formbox}{}
+\begin{teo2}[Теорема о бесконечности простых чисел]\q\\
+Простых чисел бесконечно много.
+\end{teo2}
+\end{formbox}
+\begin{formbox}{}
+\begin{lem2}
+$0\le l_1 = l_2 = l_3 \le L_1 = L_2 = L_3 \le +\infty$
+\end{lem2}
+\end{formbox}
+\begin{formbox}{}
+\begin{utv2} $f(x)$ неубывающая на $[1;\infty]\Ra$ если $\IL_1^\infty \frac{f(x) - x}{x^2}dx$ сходится то \\$f(x)\sim x, x\to\infty$
+\end{utv2}
+\end{formbox}
+\begin{formbox}{}
+\begin{teo2}[Теорема Чебышева]\q\\
+$\exists a.b > 0: \forall x \ge 2:\q a\frac{x}{\ln(x)} <\pi(x) <b\frac{x}{\ln(x)} $
+\end{teo2}
+\end{formbox}
+\begin{formbox}{}
+\begin{teo2}[Теорема Эйлера]\q\\$\sum_p \frac{1}{p}$ расходится.
+\end{teo2}
+\end{formbox}
+\begin{formbox}{}
+\begin{utv2} $\alpha n \ln(n) < p_n < \beta n \ln(n)   $
+\end{utv2}
+\end{formbox}
+\begin{formbox}{}
+\begin{teo2}\q\\
+$\sigma > 1: -\frac{\zeta'(s)}{\zeta(s)}  \SL_{n=1}^\infty \frac{\Lambda(n)}{n^s} $
+\end{teo2}
+\end{formbox}
+\begin{formbox}{}
+\begin{lem2}\q\\
+$f(n)$ -- вполне мультипликативная, $A = \SL_{k=1}^\infty f(k);\q\q B = \SL_{d=1}^\infty f(d)\Lambda(d)$ -- абсолютно сходятся. Тогда $AB = \SL_{n=1}^\infty f(n) \ln(n)$
+\end{lem2}
+\end{formbox}
+\begin{formbox}{}
+\begin{teo2}\q\\
+В области $\sigma > 1: \zeta(s) = \prod\limits_p (1 - \frac{1}{p^s})^{-1}$
+\end{teo2}
+\end{formbox}
+\begin{formbox}{}
+\begin{lem2}
+$f(n)$ -- вполне мультипликативная, ряд $\sum f(n)$ абсолютно сходится $\Ra S = \SL_{n=2}^\infty f(n) = \prod\limits_p (1-f(p))^{-1}  $
+\end{lem2}
+\end{formbox}
+\begin{formbox}{}
+\begin{teo2}
+Преобразование Абеля. $\SL_{n\le x} a_n g(n), a_n\in \bb{C}, g(x)$ -- комплекснозначная функция действительного аргумента.\\
+$x\in[1,+\infty); \exists$ непрерывная $g'(x), \SL_{n \le x}a_n = A(x)$\\
+\begin{enumerate}
+    \item $\SL_{n\le x}a_ng(n) = A(x)g(x) - \IL_1^x A(t)g'(t)dt $
+    \item если $\lim\limits_{x\to\infty} A(x)g(x) = 0$, то $\SL_{n=1}^\infty a_ng(n) = \IL_1^\infty A(t)g'(t)dt $
+\end{enumerate}
+\end{teo2}
+\end{formbox}
+\begin{formbox}{}
+\begin{lem2} $\forall 0 < r < 1, \varphi\in \bb{R} \Ra M = \left| (1-r)^3(1-re^{i\varphi})^4 (1 - re^{2i\varphi}) \right| \le 1 $
+\end{lem2}
+\end{formbox}
+\begin{formbox}{}
+\begin{lem2} При $\sigma > 1: |\zeta^3(\sigma)\zeta^4(\sigma+it)\zeta(\sigma+2it)| \ge 1$
+\end{lem2}
+\end{formbox}
+\begin{formbox}{}
+\begin{teo2} При $\sigma \ge 1 \q \zeta(s) \not= 0$
+\end{teo2}
+\end{formbox}
+\begin{formbox}{}
+\begin{teo2}[Асимптотический закон распределения простых чисел.]\q\\
+$\pi(x)\sim \frac{x}{\ln(x)}, x\to\infty$
+\end{teo2}
+\end{formbox}
+\begin{formbox}{}
+\begin{utv2} $f(s) = -\frac{\zeta'(s)}{zeta(s)} - \frac{1}{s-1} $ аналитическая при $\sigma \ge 1$
+\end{utv2}
+\end{formbox}
+\begin{formbox}{}
+\begin{utv2} $p_n \sim n\ln(n)$ -- закон распределения $n$-того простого.
+\end{utv2}
+\end{formbox}
+\begin{formbox}{}
+\begin{lem2} $ax\ee b\pmod{m}, (a,m) = 1\Ra \exists!c<m:x\ee c\pmod{m}$
+\end{lem2}
+\end{formbox}
+\begin{formbox}{}
+\begin{teo2}[Теорема Эйлера] $(a,m) = 1\Ra a^{\FI(m)} \ee 1\pmod{m}$
+\end{teo2}
+\end{formbox}
+\begin{formbox}{}
+\begin{teo2}[Малая теорема Ферма] $p$-простое, $(p,a) = 1\Ra a^{p-1} \ee 1\pmod{p}$
+\end{teo2}
+\end{formbox}
+\begin{formbox}{}
+\begin{utv2} $p\mid (a^2+b^2), p\nmid a, p\not=2 \Ra p = 4m+1$
+\end{utv2}
+\end{formbox}
+\begin{formbox}{}
+\begin{utv2} Бесконечность множества простых вида $4n-1$.
+\end{utv2}
+\end{formbox}
+\begin{formbox}{}
+\begin{utv2} Бесконечность множества простых вида $4n+1$.
+\end{utv2}
+\end{formbox}
+\begin{formbox}{}
+Рассмотрим набор корней из 1:$\zeta_1,\dots,\zeta_n: \zeta_i^{h_i} = 1$\q
+$\chi(g) = \zeta_1^{r_1}\cdots \zeta_n^{r_n}$
+\begin{utv2} Это характер и любой характер можно записать так.
+\end{utv2}
+\end{formbox}
+\begin{formbox}{}
 \begin{utv2}
 \begin{enumerate}
 \item $S = \SL_{g\in G}\chi(g) = \begin{cases}h, \chi = \chi_0\\ 0, \chi \not= \chi_0\end{cases}$
 \item $\sigma = \SL_{\chi}\chi(g) = \begin{cases}h, g = e\\ 0, e \not= e\end{cases}$
 \end{enumerate}
 \end{utv2}
-
-\begin{deff2}
-$L(s,\chi) = \SL_{n=1}^\infty \frac{\chi(n)}{n^s}$ -- функция Дирихле.
-\end{deff2}
-
+\end{formbox}
+\begin{formbox}{}
 \begin{utv2}\q\\
 \begin{enumerate}
 \item Ряд $\SL_n \frac{a_n}{n^s} $ равномерно сходится в $D(\delta, \TE)$
 \item $f(s)$ аналитична в области $\sigma > 0,$ где $f(s) = \SL_n\frac{a_n}{n^s}$
 \end{enumerate}
 \end{utv2}
-\begin{teo2} Пусть функция $f(s):$
+\end{formbox}
+\begin{formbox}{}
+\begin{teo2} Пусть функция $f(s) = \SL_{n=1}^\infty \frac{a_n}{n^s}, \sigma_1 <\sigma_2 < \sigma_0 $
 \begin{enumerate}
 \item $f(s)$ аналитична при $\sigma > \sigma_1$
 \item $f(s) = \SL_{n=1}^\infty  \frac{a_n}{n^s},\q(\sigma > \sigma_2) $
 \item $a_n \ge 0$
 \end{enumerate}
-Тогда $f(s)$ раскладывается в ряд Дирихле при $\sigma > \sigma_1$ и его можно почленно дифференцировать.
+Тогда $f(s)$ раскладывается в ряд Дирихле при $\sigma > \sigma_1$ и его можно почленно дифференцировать. \\
+/*P.S. в другом источнике: Тогда $f(s)$ аналитична при $\sigma > \sigma_1$, т.е. можно продлить представление рядом.*/
 \end{teo2}
-\begin{deff2} Характер $\chi$ действительный, если $\chi^2 = \chi_0 = 1$
-\end{deff2}
+\end{formbox}
+\begin{formbox}{}
 \begin{lem2} $f(s):= \zeta(s) L(s,\chi) \Ra$
 \begin{enumerate}
 \item $f(s) = \SL_{n=1}^\infty \frac{a_n}{n^s},\q\sigma > 1 $
@@ -986,40 +1199,47 @@ $L(s,\chi) = \SL_{n=1}^\infty \frac{\chi(n)}{n^s}$ -- функция Дирих�
 \item $\SL_{n=1}^\infty \frac{a_n}{\sqrt{n}} $ расходится.
 \end{enumerate}
 \end{lem2}
+\end{formbox}
+\begin{formbox}{}
 \begin{teo2} $\chi$-- действительный характер, тогда $L(1, \chi) \not=0$
 \end{teo2}
+\end{formbox}
+\begin{formbox}{}
 \begin{lem2} Пусть $s\in \bb{R}, s > 1$, тогда $A:= |L^3(s,\chi_0)\cdot L^4(s,\chi)\cdot L(s, \chi^2)| \ge 1$
 \end{lem2}
-
+\end{formbox}
+\begin{formbox}{}
 \begin{teo2} При $\chi \not= \chi_0: L(1,\chi)\not=0$
 \end{teo2}
-
-
+\end{formbox}
+\begin{formbox}{}
 \begin{teo2}[Теорема Дирихле] Пусть $m\ge 2$. В прогрессии $mx+l, (m,l) = 1$ бесконечно много простых.
 \end{teo2}
+\end{formbox}
+\begin{formbox}{}
 \begin{lem2} Если $\FI(x)\in\bb{Q}[x]   $ имеет общий корень с неприводимым многочленом $f(x)$, то $f(x)$ -- делитель $\FI(x)\Ra $ каждый корень $f(x)$ является корнем $\FI(x)$
 \end{lem2}
-
+\end{formbox}
+\begin{formbox}{}
 \begin{lem2} Неприводимый многочлен $f(x)\in\bb{Q}[x]$ не может иметь кратных корней.
 \end{lem2}
-
-\begin{deff2} Число $\AL$ -- алгебраическое, если оно является корнем многочлена с рациональными коэффициентами, иначе трансцендентное.\\
-Степень алгебраического числа $\AL$ -- степень неприводимого многочлена, имеющего корень $\AL$
-\end{deff2}
-
-\begin{deff2} Пусть $\AL$ -- алгебраическое число степени $n, \exists f\in\bb{Q}[x], deg(f) = n, \AL$ -- корень $f$, старший коэффициент $f = 1$, тогда $f$ -- минимальный многочлен.\\
-Корни $\AL_1,\dots,\AL_n$ минимального многочлена -- сопряженные с $\AL$ 
-\end{deff2}
+\end{formbox}
+\begin{formbox}{}
 \begin{utv2} $B(x) \in \bb{Q}[x], A(x) $ -- минимальный многочлен $\AL$, $\forall$ корня $B(x)$ это корень $A(x)\Ra B(x) = \Lambda  A^m(x)$
 \end{utv2}
-
-
-\begin{deff2} Если $A(x)\in\bb{Z}[x]$, старший коэффициент = 1 -- минимальный многочлен для $\AL$, то $\AL$ -- целое алгебраическое число.
-\end{deff2}
+\end{formbox}
+\begin{formbox}{}
 \begin{teo2} Пусть $B(x) \in \bb{Z}[x], B(\AL) = 0 \Ra \AL$ -- целое алгебраическое.
 \end{teo2}
-\begin{deff2} $A(x) = a_nx^n + \cdots + a_0\in\bb{Z}$ примитивный, если $(a_0,\dots,a_n) = 1$
-\end{deff2}
+\end{formbox}
+\begin{formbox}{}
+\begin{lem2}[Гаусса] $A(x),B(x)$ примитивные, тогда $C(x) = A(x)B(x)$ тоже примитивный.
+\end{lem2}
+\end{formbox}
+\begin{formbox}{}
+\begin{teo2} [о симметричных многочленах] Любой симметричный многочлен от переменных $\AL_1, \dots, \AL_n$  единственным образом представляется в виде $P(\AL_1,\dots,\AL_n) = H(\sigma_1, \sigma_n),$ где $H\in K[\sigma_1, \dots, \sigma_n], \q \sigma_1, \dots, \sigma_n$ -- элементарные симметричные.
+\end{teo2}
+\end{formbox}
 \end{document}
 
 
