@@ -1205,23 +1205,23 @@ $\pb$ Рассмотрим случай $Q(\AL, \beta), A$ -- минимальн
 \end{teo}
 \end{formbox}
 $\pb $ Пусть $t = 0,\dots,x$. Рассмотрим $\{\AL t\}$. Разделим $[0,1]$ на $x$ равных частей. Хотя бы две дробные доли попадут в одну часть. Пусть это будут $\AL t_1$ и $\AL t_2,\; 0\le t_1 \le t_2$\\
-$\Ra \left| \{\AL t_1\} - \{\AL t_2\}  \right| < \frac{1}{x} \iff \left| \AL \underbrace{(t_1 - t_2)}_q - \underbrace{([\AL t_2] - [\AL t_1])}_p \right| \pe$
+$\Ra \left| \{\AL t_1\} - \{\AL t_2\}  \right| < \frac{1}{x} \iff \left| \AL \underbrace{(t_1 - t_2)}_q - \underbrace{([\AL t_2] - [\AL t_1])}_p \right| < \frac{1}{x}\pe$
 
 \begin{formbox}{}
-\begin{teo}[Теорема Дирихле//(опять??)] $\AL \in \bb{R} \setminus \bb{Q} \Ra $ неравенство $\left|\AL - \frac{p}{q} \right| < \frac{1}{q^2}$ имеет бесконечное число решений в рациональных дробях.
+\begin{teo}[Теорема Дирихле] $\AL \in \bb{R} \setminus \bb{Q} \Ra $ неравенство $\left|\AL - \frac{p}{q} \right| < \frac{1}{q^2}$ имеет бесконечное число решений в рациональных дробях.
 \end{teo}
 \end{formbox}
 $\pb \forall x \exists \left\{\frac{p_x}{q_x}\right\}, x = 1,2,\dots: \q \left|\AL - \frac{p_x}{q_x} \right| < \frac{1}{x q_x}, \; 1 \le q_x\le x\q\Ra \left|\AL - \frac{p_x}{q_x} \right| < \frac{1}{q_x^2}$\\
-Предположим, что таких конечное число. Рассмотрим $\underbrace{\min\limits_{x}\left|\AL - \frac{p_x}{q_x} \right|}_{const > 0} < \frac{1}{x q_x} < \frac{1}{x} \to0, \;x\to\infty\pe$
+Предположим, что таких конечное число. \\Рассмотрим $\underbrace{\min\limits_{x}\left|\AL - \frac{p_x}{q_x} \right|}_{const > 0} < \frac{1}{x q_x} < \frac{1}{x} \to0, \;x\to\infty\pe$
 
 \begin{formbox}{}
-\begin{teo} $\forall f(q) > 0\: \exists \AL:\:0 < \left|\AL - \frac{p}{q} \right| < f(q)$ имеет бесконечное число решений. (т.е. существует сколь угодно хорошее приближение рациональными дробями).
+\begin{teo} $\forall f(q) > 0\: \exists \AL:\:0 < \left|\AL - \frac{p}{q} \right| < f(q)$ имеет бесконечное число решений. (т.е. существует сколь угодно хорошо приближаемые числа).
 \end{teo}
 \end{formbox}
-$\pb \AL =\SL_{k=0}^\infty 10^{-n_k}, n_0 = 0, n_1 \le n_2 \le \cdots$\\
+$\pb $Пусть $\AL =\SL_{k=0}^\infty 10^{-n_k}, n_0 = 0, n_1 < n_2 < \cdots$\\
 $\frac{p_m}{q_m} = \SL_{k=0}^m 10^{-n_k}, q_m = 10^{n_m}$\\
-$\left|\AL - \frac{p_0}{q_0} \right| = \SL_{k=m_1}^\infty 10^{-n_k} < 2 \cdot 10^{-m_1} < f(q_0)$ (выбрали $m_1$ так чтобы выполнялось)\\
-$\left|\AL - \frac{p_1}{q_1} \right| = \SL_{k=m_2}^\infty 10^{-n_k} < 2 \cdot 10^{-m_2} < f(q_1)$ и т.д. $\pe$
+$\left|\AL - \frac{p_0}{q_0} \right| = \SL_{k=n_1}^\infty 10^{-n_k} < 2 \cdot 10^{-m_1} < f(q_0)$ (выбрали $m_1$ так чтобы выполнялось)\\
+$\left|\AL - \frac{p_1}{q_1} \right| = \SL_{k=n_2}^\infty 10^{-n_k} < 2 \cdot 10^{-m_2} < f(q_1)$ и т.д. $\pe$
 
 \end{mybox2}
 
@@ -1231,6 +1231,33 @@ $\left|\AL - \frac{p_1}{q_1} \right| = \SL_{k=m_2}^\infty 10^{-n_k} < 2 \cdot 10
 \begin{formbox}{}
 Теорема Лиувилля о приближении алгебраических чисел. Построение трансцендентных чисел при помощи теоремы Лиувилля.
 \end{formbox}
+
+\begin{formbox}{}
+\begin{teo} [Лиувилля] $\AL \in A\cap \bb{R}, n = deg(\AL) \ge 2\Ra \exists C = C(\AL) > 0: \forall \frac{p}{q}:\q \left|\AL - \frac{p}{q} \right| > \frac{C}{q^n} $
+\end{teo}
+\end{formbox}
+$\pb A(x) = a_nx^n +\cdots + a_0 \in \bb{Z}[x], a_n > 0, A(\AL) = 0 $ -- минимальный многочлен.\\
+$A(\frac{p}{q})\not=0$, иначе был бы приводим, значит не минимальный.\\
+$q^n A(\frac{p}{q}) \in\bb{Z}\Ra |q^n A(\frac{p}{q})| \ge 1 \Ra |A(\frac{p}{q})| \ge \frac{1}{q^n}$\\
+$A(x) = (x-\AL)B(x)\Ra \left| \frac{p}{q} - \AL\right| \cdot |B(\frac{p}{q})| \ge \frac{1}{q^n}$\\
+При $\left| \frac{p}{q} - \AL\right| > 1$ неравенство выполнено. Теперь интересует остальное.\\
+$\left| \frac{p}{q} - \AL\right| \le 1\Ra -1 \le \frac{p}{q} - \AL \le 1\Ra \frac{p}{q}\in[\AL-1, \AL+1], \; B(\frac{p}{q}) \le C_1\Ra \left| \frac{p}{q} - \AL\right| > \frac{C}{q^n} = \frac{1}{C_1 q^n} \pe$\\
+Замечание: Для $deg(\AL) = 1\; \AL\in\bb{Q}\Ra \AL = \frac{a}{b} \left| \AL - \frac{p}{q} \right| = \frac{|aq - bp|}{bq} > \frac{C}{bq} $ при $\frac{p}{q} \not=\frac{a}{b}\pe$
+\begin{formbox}{}
+\begin{deff} $\AL$ -- число Лиувилля, если $\forall m\in\bb{N} \exists$ бесконечно много дробей $\frac{p}{q}: \q 0 < |\AL - \frac{p}{q}| < \frac{1}{q^m}$
+\end{deff}
+\end{formbox}
+
+\begin{formbox}{}
+\begin{utv} Числа Лиувилля трансцендентные.
+\end{utv}
+\end{formbox}
+$\pb$ Предположим, что $\AL$ -- алгебраическое число Лиувилля. $n = deg(\AL), m = n+1\Ra \frac{C}{q^n}< |\AL - \frac{p}{q}| < \frac{1}{q^m}\Ra q<\frac{1}{C},$ но $|\frac{p}{q}| - |\AL| \le |\frac{p}{q} - \AL| \le 1\Ra |p| \le |q|(|\AL| + 1) < \frac{1}{C} (|\AL| + 1)\Ra$ конечное число дробей. Противоречие. $\pe$\\
+Пример числа Лиувилля.\\
+$\AL = \SL_{k=0}^\infty 10^{-k!},\;\frac{p_N}{q_N} = \SL_{k=0}^N 10^{-k!}$\\
+$0 < \AL - \frac{p_N}{q_N} < 10^{-N\cdot N!}$\\
+$\Ra 0 < \AL - \frac{p_N}{q_N} < \frac{1}{q_N^N} $
+
 
 \end{mybox}
 
