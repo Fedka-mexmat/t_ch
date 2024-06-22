@@ -90,7 +90,7 @@
 \usepackage{blindtext}
 \usepackage{titlesec}
 \title{ТЧ-8 2024}
-\author{SFS, AAG}
+\author{SFS, AAG, PNS}
 \date{\today}
 \begin{document}
 \maketitle
@@ -530,7 +530,7 @@ $r = \frac{1}{p^\sigma}; e^{i\varphi} = p^{-it}$ и по предыдущей л
 \end{teo}
 \end{formbox}
 $\pb$
-При $\sigma > 1: \zeta(\sigma+it)\not=0, т.к. иначе 0\ge1$\\
+При $\sigma > 1: \zeta(\sigma+it)\not=0$, \\(т.к. если нет, то: $\zeta(\sigma+it)=0\Ra |\zeta^3(\sigma)\zeta^4(\sigma + it)\zeta(\sigma + 2it)| = 0 \ge 1$)\\
 Допустим, что $\zeta(1+it) = 0; t\not=0$\\
 Тогда $|\zeta(\sigma)| \le \frac{C_1}{\sigma-1}, 2 \ge \sigma > 1 $ в окрестности полюса.\\
 $\zeta'(1+it) = \lim\limits{\sigma\to1}\frac{\zeta(\sigma+it) - \zeta(1+it)}{\sigma-1}\Ra \left|\frac{\zeta(\sigma+it)}{\sigma-1}\right| \le C_2$\\
@@ -1287,6 +1287,14 @@ $|M_Q| <\SL_{q > Q}\SL_{p=0}^{q} |I(q,p)| = \SL_{q > Q}(q+1)\frac{2}{q^m} < 4\cd
 
 \end{mybox}
 
+
+
+
+
+
+
+
+
 \newpage
 \begin{mybox2}{\hypertarget{bil24}{Билет 24}}
 
@@ -1294,7 +1302,64 @@ $|M_Q| <\SL_{q > Q}\SL_{p=0}^{q} |I(q,p)| = \SL_{q > Q}(q+1)\frac{2}{q^m} < 4\cd
 Иррациональность и трансцендентность числа $e$.
 \end{formbox}
 
+\begin{formbox}{}
+\begin{utv} $e$ иррационально.
+\end{utv}
+\end{formbox}
+$\pb e = \SL_{k=0}^\infty \frac{1}{k!}$. Предположим, что $e = \frac{m}{n}, \; m,n\in\bb{N}$\\
+Тогда $\underbrace{n!e}_{\in\bb{Z}} = \underbrace{n!\SL_{k=0}^n}_{\in\bb{Z}} + R_n\Ra 0 < R_n = n!\SL_{k=n+1}^\infty \frac{1}{k!} < \frac{1}{n+1} + \frac{1}{(n+1)^2} + \cdots = \frac{1}{n+1}\cdot \frac{1}{1-\frac{1}{n+1}} = \frac{1}{n} < 1 $ \\
+$R_n\in\bb{Z}, 0 < R_n < 1$. Противоречие.$\pe$
+\begin{formbox}{}
+\begin{utv} $e$ трансцендентно.
+\end{utv}
+\end{formbox}
+$\pb$ Рассмотрим $f(x)\in\bb{Q}[x]$ -- многочлен с рациональными коэффициентами.\\
+Обозначим $M_0 = \IL_0^\infty f(x) e^{-x}dx = \IL_0^k f(x) e^{-x}dx + \underbrace{\IL_k^\infty f(x) e^{-x}dx}_{J_k}, \; k\in\bb{Z}_+$\\
+$= $
+
+
+
 \end{mybox2}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \newpage
 \begin{mybox}{\hypertarget{bil25}{Билет 25}}
@@ -1329,6 +1394,8 @@ $|M_Q| <\SL_{q > Q}\SL_{p=0}^{q} |I(q,p)| = \SL_{q > Q}(q+1)\frac{2}{q^m} < 4\cd
 \begin{formbox}{}
 Оценки вспомогательной функции и завершение доказательства теоремы Линдемана. Ее связь с проблемой квадратуры круга.
 \end{formbox}
+
+
 
 \end{mybox2}
 
@@ -1738,6 +1805,13 @@ $\chi(g) = \zeta_1^{r_1}\cdots \zeta_n^{r_n}$
 \end{teo2}
 \end{formbox}
 
-
+\begin{formbox}{}
+\begin{utv2} $e$ иррационально.
+\end{utv2}
+\end{formbox}
+\begin{formbox}{}
+\begin{utv2} $e$ трансцендентно.
+\end{utv2}
+\end{formbox}
 
 \end{document}
