@@ -1199,6 +1199,30 @@ $\pb$ Рассмотрим случай $Q(\AL, \beta), A$ -- минимальн
 Две теоремы о приближении действительных чисел рациональными дробями. Построение чисел, имеющих заданный порядок приближений.
 \end{formbox}
 
+
+\begin{formbox}{}
+\begin{teo}[Теорема Дирихле] Пусть $\AL\in\bb{R}\Ra \forall  x \in\bb{N} \exists \frac{p}{q}: \begin{cases} \left|\AL - \frac{q}{p}\right| < \frac{1}{xq} \\ x \ge q \ge 1   \end{cases} $
+\end{teo}
+\end{formbox}
+$\pb $ Пусть $t = 0,\dots,x$. Рассмотрим $\{\AL t\}$. Разделим $[0,1]$ на $x$ равных частей. Хотя бы две дробные доли попадут в одну часть. Пусть это будут $\AL t_1$ и $\AL t_2,\; 0\le t_1 \le t_2$\\
+$\Ra \left| \{\AL t_1\} - \{\AL t_2\}  \right| < \frac{1}{x} \iff \left| \AL \underbrace{(t_1 - t_2)}_q - \underbrace{([\AL t_2] - [\AL t_1])}_p \right| \pe$
+
+\begin{formbox}{}
+\begin{teo}[Теорема Дирихле//(опять??)] $\AL \in \bb{R} \setminus \bb{Q} \Ra $ неравенство $\left|\AL - \frac{p}{q} \right| < \frac{1}{q^2}$ имеет бесконечное число решений в рациональных дробях.
+\end{teo}
+\end{formbox}
+$\pb \forall x \exists \left\{\frac{p_x}{q_x}\right\}, x = 1,2,\dots: \q \left|\AL - \frac{p_x}{q_x} \right| < \frac{1}{x q_x}, \; 1 \le q_x\le x\q\Ra \left|\AL - \frac{p_x}{q_x} \right| < \frac{1}{q_x^2}$\\
+Предположим, что таких конечное число. Рассмотрим $\underbrace{\min\limits_{x}\left|\AL - \frac{p_x}{q_x} \right|}_{const > 0} < \frac{1}{x q_x} < \frac{1}{x} \to0, \;x\to\infty\pe$
+
+\begin{formbox}{}
+\begin{teo} $\forall f(q) > 0\: \exists \AL:\:0 < \left|\AL - \frac{p}{q} \right| < f(q)$ имеет бесконечное число решений. (т.е. существует сколь угодно хорошее приближение рациональными дробями).
+\end{teo}
+\end{formbox}
+$\pb \AL =\SL_{k=0}^\infty 10^{-n_k}, n_0 = 0, n_1 \le n_2 \le \cdots$\\
+$\frac{p_m}{q_m} = \SL_{k=0}^m 10^{-n_k}, q_m = 10^{n_m}$\\
+$\left|\AL - \frac{p_0}{q_0} \right| = \SL_{k=m_1}^\infty 10^{-n_k} < 2 \cdot 10^{-m_1} < f(q_0)$ (выбрали $m_1$ так чтобы выполнялось)\\
+$\left|\AL - \frac{p_1}{q_1} \right| = \SL_{k=m_2}^\infty 10^{-n_k} < 2 \cdot 10^{-m_2} < f(q_1)$ и т.д. $\pe$
+
 \end{mybox2}
 
 \newpage
