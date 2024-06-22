@@ -94,6 +94,7 @@
 \date{\today}
 \begin{document}
 \maketitle
+При нахождении ошибок обращайтесь @fedorrrMM\\
 
 
 \tableofcontents
@@ -460,7 +461,7 @@ $f(n)$ -- вполне мультипликативная, ряд $\sum f(n)$ а
 \end{lem}
 \end{formbox}
 $\pb P(x) = \prod\limits_{p\le x} (1-f(p))^{-1}  \Ra \forall n\in\bb{N}: |f(n)| < 1$, иначе $|f(n^k)| = |f(n)|^k$ и сумма расходится\\
-$P(x) = \prod\limits_{p\le x} (1 + f(p) + f^2(p) + \cdots) = \SL{p_i\le x} f(p_1^{k_1}\cdots p_n^{k_n}) = \SL_{\forall p\mid n\Ra p \le x}' f(n)$\\
+$P(x) = \prod\limits_{p\le x} (1 + f(p) + f^2(p) + \cdots) = \SL_{p_i\le x} f(p_1^{k_1}\cdots p_n^{k_n}) = \SL_{\forall p\mid n\Ra p \le x}' f(n)$\\
 $|S-P(x)| \le \SL_{\exists p\mid n:p>x}''|f(n)|\le\SL{n \ge x}|f(n)| < \varepsilon$\\
 $\Ra\lim\limits_{x\to\infty}P(x) = S$
 $\pe$\\
