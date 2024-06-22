@@ -1267,7 +1267,25 @@ $\Ra 0 < \AL - \frac{p_N}{q_N} < \frac{1}{q_N^N} $
 \begin{formbox}{}
 Обобщение теоремы Лиувилля на многочлены от нескольких алгебраических чисел.
 \end{formbox}
+\begin{formbox}{}
+\begin{deff} Длина многочлена -- сумма модулей коэффициентов. $L(P)$
+\end{deff}
+\end{formbox}
 
+\begin{formbox}{}
+\begin{teo} Пусть $\AL_1,\dots,\AL_s$ -- алгебраические числа степеней $m_1,\dots, m_s$. Тогда $\exists$ положительная постоянная $C = C(\AL_1, \dots, \AL_s): \forall P(x_1,\dots,x_s)\in\bb{Z}[x_1,\dots,x_s]$, тогда $P(\AL_1, \dots, \AL_s) = 0$  или $|P(\AL_1, \dots, \AL_s)|\ge L^{1-(m_1\cdots m_s)}C^{-d}, \q d,L$ -- степень и длина $P$
+\end{teo}
+\end{formbox}
+$\pb$
+\begin{enumerate}
+\item $\exists a\in\bb{N}: \; a\AL_1,\dots,a\AL_s\in Z_A$ (очевидно, нужно взять старшие коэффициенты канонических многочленов $\AL_i$)
+\item $\beta = a^d P(\AL_1,\dots,\AL_s) \in Z_A$ -- очевидно, т.к. если $k_1,\dots, k_s:\; k_1 + \cdots + k_s \le d$, то $a^d \AL_1^{k_1}\cdots\AL_s^{k_s} = (a\AL_1)^{k_1}\cdots(a\AL_s)^{k_s}\cdot a^{d-k_1 - \cdots - k_s}$
+\item Пусть $\AL_{i_1},\dots,\AL_{i_m}$ сопряженные с $\AL_i$. Тогда все числа $|a^d P(\AL_{1,r_1},\dots,\AL_{s,r_s})| \le C_1^dL,\q C_1$ не зависит от $P\q (C_1 = a\cdot \max\limits_{i,j}\{1, |\AL_{i,j}|\})$
+\item $A(x) = \prod\limits_{r_1=1}^{m_1} \cdots \prod\limits_{r_s=1}^{m_s} (x - a^dP(\AL_{1,r_1}, \dots,\AL_{s,r_s})) \in \bb{Q}[x],$  т.к. $A$ -- симметричный относительно $\AL_i = (\AL_{i1}, \dots,\AL_{im_i})$
+\item Пусть $B(x) = x^n + b_{n-1}x^{n-1} + \cdots b_0 = (x-\beta_1)\cdots(x-\beta_n) $ -- минимальный многочлен числа $\beta = \beta_1$. Поскольку $\beta\in Z_A$, то $B(x)\in \bb{Z}[x], |b_0|\ge 1$ если $P(\AL_1,\dots,\AL_s) \not=0$ \\
+\item Многочлены $A(x)$ и $B(x)$ имеют коэффииенты из $\bb{Q}$ и общий корень $\beta$, значит $B(x)\mid A(x)$ и все корни $B$ являются корнями $A$, тогда из 5): $1 \le |b_0| = |\beta|\cdot|\beta_2 \cdots \beta_n| \le a^d\cdot |P(\AL_1, \dots, \AL_s)|\cdot(C_1^d L)^{n-1},\;\; n \le m_1\cdots m_s$
+\end{enumerate}
+$\pe$
 \end{mybox2}
 
 \newpage
