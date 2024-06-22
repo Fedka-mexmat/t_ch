@@ -1138,7 +1138,55 @@ $\pb$ Рассмотрим $P(x) =\prod\limits_{i=1}^n\cdots\prod\limits_{l=1}^s
 Алгебраическое числовое поле конечной степени. Каноническая форма представления его элементов. Теорема о числах, сопряженных в алгебраическом числовом поле. Теорема о примитивном элементе.
 \end{formbox}
 Пусть $C(x)$ -- минимальный многочлен для $\TE$ степени $n$.\\
-$Q(\TE) = \left\{  \frac{f(\TE)}{g(\TE), }\right\} $
+$Q(\TE) = \left\{  \frac{f(\TE)}{g(\TE)}, \q f(x), g(x) \in\bb{Q}[x], g(\TE)\not=0 \right\} $
+
+\begin{formbox}{}
+\begin{teo} $Q(\TE) = \{r_{n-1}(\TE), r_{n-1}(\TE)\in\bb{Q}[x], deg(r_{n-1})\le n - 1\q\} $
+\end{teo}
+\end{formbox}
+$\pb \AL = \frac{f(\TE)}{g(\TE)}, \q (C(x), g(x)) = 1$, т.к. если есть общий корень, то $g(\TE) = 0$\\
+$\exists u,v \in\bb{Q}[x]: ug+vC = 1$\\
+$\underbrace{C(\TE)}_{=0}v(\TE) + g(\TE)u(\TE) = 1\Ra g(\TE) = \frac{1}{u(\TE)}  $\\
+Тогда $\AL = f(\TE)u(\TE) = h(\TE);\q h = qC+r_{n-1}\Ra \AL:=r_{n-1} \pe$\\\q\\
+Следствие: $Q(\TE) = <\{1, \TE, \TE^2, \dots, \TE^{n-1}\}>$ -- алгебраическое числовое поле конечной степени, $n$ -- степень поля.\\
+Рассмотрим $r_{n-1}(\TE_j)$ (б.о.о. $\TE = \TE_1$). Обозначим $r_{n-1}: r$. Положим $r(\TE_1) = \AL,\q \AL_1,\dots, \AL_n$ -- сопряженные с $\AL$.\\
+
+\begin{formbox}{}
+\begin{teo} $r(\TE_1),\dots,r(\TE_n)$ -- тот же набор, что и $\AL_1, \dots, \AL_m, \frac{n}{m}\in\bb{N}$%\q ////<< WWTTFF??
+\end{teo}
+\end{formbox}
+$\pb P(x) = (x - r(\TE_1))\cdots(x - r(\TE_n)) \in \bb{Q}[x] $\\
+Пусть $A$ -- минимальный многочлен для $\AL$\\
+$A(r(\TE)) = A(\AL) = 0 \Ra$ у $A(r(x))$ все сопряженные $\TE$ тоже корни.\\
+Любой корень $P$ -- корень $A\Ra P(x) = \lambda A^k(x), \lambda = 1$\\
+Тогда $deg(P) = n = km \Ra k = \frac{n}{m}\in\bb{N} \pe$\\
+Следствие. $\AL\in K \Ra deg(\AL) \mid deg(\TE) = deg(K)$ (т.е. в расширении с $\sqrt[3]{2}$ квадратных корней нет).
+
+\begin{formbox}{}
+\begin{deff} $\AL = r(\TE)\Ra N(\AL) := r(\TE_1)\cdots r(\TE_n)$ -- норма алгебраических чисел в поле.
+\end{deff}
+\end{formbox}
+
+\begin{enumerate}
+\item $\AL \not= 0 \Ra N(\AL) \not=0$
+\item $N(\AL\beta) = N(\AL)N(\beta)$
+\item $N(\AL) = (\AL_1\cdots\AL_m)^{\frac{n}{m}}$
+\end{enumerate}
+Пусть $Q(\TE) = \{\frac{f(\TE)}{g(\TE)}, \q g(\TE)\not=0\}$. Можно рассмотреть $Q(\TE, \eta) = \{\frac{f(\TE,\eta)}{g(\TE,\eta)}\}$\\
+\end{mybox}
+
+\newpage
+\begin{mybox}{{Билет 19}}
+\begin{formbox}{}
+\begin{teo} [о примитивном элементе] $Q(\AL_1,\dots, \AL_n)$. Тогда $\exists \TE:\;Q(\AL_1,\dots, \AL_n) = Q(\TE)$
+\end{teo}
+\end{formbox}
+$\pb$ Рассмотрим случай $Q(\AL, \beta), A$ -- минимальный многочлен $\AL, B$ -- для $\beta$. Степени $n, m$.\\
+Будем искать $\TE$ в виде $\TE = \AL+t\beta, t\in\bb{N}$.\\
+У многочленов $A(\TE - tx)$ и $B(x)\; \exists \beta$ -- общий корень. Хотим отсутствие других корней, т.е. $(A(\TE - tx), B(x)) = x - \beta$. (Иначе $A(x - t\beta_j) = 0\Ra \TE - t\beta_j = \AL_k \Ra \TE = \AL_k + t\beta_j\Ra \AL_t\beta = \AL_k + t\beta_j, \; \beta \not= \beta_j\Ra t = \frac{\AL_k - \AL}{\beta - \beta_j}$ -- конечное число значений.)\\
+Рассмотрим $t\in\bb{N}\forall l,m:\; t\not=\frac{\AL_l-\AL}{\beta_m - \beta}$\\
+Тогда у $A(\TE - tx)$ и $B(x)$ НОД $ = x - \beta \in Q(\TE)[x]\Ra \overbrace{\AL}^{\text{выражается через $\TE, \beta$}}, \underbrace{\beta}_{\text{как коэффициенты}} \in Q(\TE) \Ra \pe $
+
 \end{mybox}
 
 
