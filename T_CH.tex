@@ -62,6 +62,17 @@
     boxed title style={size=small,colback=red,colframe=blue!50!black},
     #1
 }
+\newtcolorbox{mybox2}[2][]{
+    colback=white,
+    colframe=blue!50!black,
+    title=#2,
+    fonttitle=\bfseries,
+    enhanced,
+    breakable,
+    attach boxed title to top left={yshift=-\tcboxedtitleheight/2},
+    boxed title style={size=small,colback=blue,colframe=blue!50!black},
+    #1
+}
 
 
 \newtcolorbox{formbox}[2][]{
@@ -324,7 +335,7 @@ $\pe$
 
 
 \newpage
-\begin{mybox}{\hypertarget{bil2}{Билет 2}}
+\begin{mybox2}{\hypertarget{bil2}{Билет 2}}
 \begin{formbox}{}
 Лемма о равенстве верхних и нижних пределов функций ($\TE(x)/x, \SI(x)/x$ и $\os\pi(x)\ln(x)\cs/x$). Связь между асимптотическим поведением функции Чебышева $\SI(x)$ и сходимостью интеграла $\IL_1^\infty \frac{\SI(x)-x}{x^2}dx$
 \end{formbox}
@@ -356,16 +367,16 @@ $\Ra \frac{\TE(x)}{x} \ge \alpha \frac{\pi(x)\ln(x)}{x} - \alpha \overbrace{\fra
 \end{utv}
 \end{formbox}
 
-\end{mybox}
+\end{mybox2}
 \newpage
-\begin{mybox}{{Билет 2}}
+\begin{mybox2}{{Билет 2}}
 $\pb$ Предположим противное. $\lim\limits_{x\to\infty} \frac{f(x)}{x}\not=1\Ra\exists \delta > 0: \forall A > 1 \exists y > A: a) f(y) > (1+\delta)y; b) f(y) < (1-\delta)y$\\
 $a)\IL_y^{(1+\delta)y} \frac{f(x) - x}{x^2}dx \ge \IL_y^{(1+\delta)y} \frac{f(y) - x}{x^2}dx > \IL_y^{(1+\delta)y} \frac{(1+\delta)y - x}{x^2}dx = \IL_1^{1+\delta} \frac{(1+\delta)y - ty}{t^2y^2}ydt = \IL_1^{1+\delta} \frac{1+\delta - t}{t^2}dt = \varepsilon > 0\Ra$ отрицание критерия Коши.\\
 $b) \IL_{(1-\delta)y}^y  \frac{f(x) - x}{x^2}dx \le \IL_{(1-\delta)y}^y  \frac{f(y) - x}{x^2}dx \le \IL_{(1-\delta)y}^y  \frac{(1-\delta)y - x}{x^2}dx = \IL_{1-\delta}^1 \frac{1-\delta - t}{t^2}dt = -\varepsilon < 0$\\\q\\
 Критерий Коши: $\forall \varepsilon > 0 \exists A > 1: \forall y: |\int dx| < \varepsilon$, тогда интеграл сходится. 
 $\pe$\\\q\\
 Таким образом, если $\IL_1^\infty\frac{\SI(x) - x}{x^2}dx$ сходится $\Ra \SI(x)\sim x\Ra \lim\limits_{x\to\infty}\frac{\SI(x)}{x} = 1$
-\end{mybox}
+\end{mybox2}
 
 
 
@@ -415,7 +426,7 @@ $\Ra p_n < a \frac{p_n}{\ln(p_n)} (\ln(p_n) - \ln(\ln(p_n)) + \ln(a))   < n \ln(
 
 
 \newpage
-\begin{mybox}{\hypertarget{bil4}{Билет 4}}
+\begin{mybox2}{\hypertarget{bil4}{Билет 4}}
 
 \begin{formbox}{}
 Аналитичность дзета-функции Римана в области $\sigma > 1$. Разложение в ряд Дирихле ее логарифмической производной. Представление дзета-функции в виде бесконечного произведения.
@@ -455,9 +466,9 @@ $\zeta(s) \SL_{d=1}^\infty\frac{\Lambda(d)}{d^s} = \SL_{n=1}^\infty \frac{\ln(n)
 \end{teo}
 \end{formbox}
 $\pb$
-\end{mybox}
+\end{mybox2}
 \newpage
-\begin{mybox}{{Билет 4}}
+\begin{mybox2}{{Билет 4}}
 \begin{formbox}{}
 \begin{lem}\q\\
 $f(n)$ -- вполне мультипликативная, ряд $\sum f(n)$ абсолютно сходится $\Ra S = \SL_{n=2}^\infty f(n) = \prod\limits_p (1-f(p))^{-1}  $
@@ -470,7 +481,7 @@ $\Ra\lim\limits_{x\to\infty}P(x) = S$
 $\pe$\\
 $f(n) = \frac{1}{n^s}, s = \sigma + it, \sigma > 1\Ra$ по лемме все доказано. $\pe$
 
-\end{mybox}
+\end{mybox2}
 
 
 
@@ -508,7 +519,7 @@ $I_n(s)\to \ln\frac{n+1}{n} $ при $s\to 1$\\
 
 
 \newpage
-\begin{mybox}{\hypertarget{bil6}{Билет 6}}
+\begin{mybox2}{\hypertarget{bil6}{Билет 6}}
 
 \begin{formbox}{}
 Отсутствие нулей дзета-функции в области $\sigma \ge 1$.
@@ -540,7 +551,7 @@ $\pb$
 $\zeta'(1+it) = \lim\limits{\sigma\to1}\frac{\zeta(\sigma+it) - \zeta(1+it)}{\sigma-1}\Ra \left|\frac{\zeta(\sigma+it)}{\sigma-1}\right| \le C_2$\\
 $|\zeta(\sigma+2it)| \le C_3$\\
 $\Ra |\zeta^3(\sigma) \zeta^4(\sigma+it)\zeta(\sigma+2it)| \le \os \frac{C_1}{\sigma-1} \cs^3 (C_2(\sigma-1))^4 C_3 \to 0$. \\Противоречие с $|\cdot| > 1\pe$
-\end{mybox}
+\end{mybox2}
 
 
 
@@ -577,7 +588,7 @@ $g(s) = \frac{1}{2\pi i R}f(s)\os \frac{s-1}{R} + \frac{R}{s-1}    \cs $ огр�
 
 
 \newpage
-\begin{mybox}{\hypertarget{bil8}{Билет 8}}
+\begin{mybox2}{\hypertarget{bil8}{Билет 8}}
 
 \begin{formbox}{}
 Доказательство асимптотического распределения распределения простых чисел. Асимптотическая формула $n$-го простого числа.
@@ -606,9 +617,9 @@ $|f_u(s)| = |\IL_1^u \frac{\SI(x)-x}{x^{s+1}}dx|\le B \frac{u^{1-\sigma}}{1-\sig
 $|  \frac{s-1}{R} + \frac{R}{s-1} | = 2 |Re \frac{s-1}{R}| = 2 \frac{1 - \sigma}{R}$
 \end{enumerate}
 
-\end{mybox}
+\end{mybox2}
 \newpage
-\begin{mybox}{{Билет 8}}
+\begin{mybox2}{{Билет 8}}
 7. Рассмотрим $J(u) = \frac{1}{2\pi i R} \IL_[ f(s)u^{s-1} \os   \frac{s-1}{R} + \frac{R}{s-1} \cs ds$\\
 Утверждается что предел равен 0.\\
 \includegraphics{p2.png}\q\\
@@ -622,7 +633,7 @@ $|  \frac{s-1}{R} + \frac{R}{s-1} | = 2 |Re \frac{s-1}{R}| = 2 \frac{1 - \sigma}
 $\pb n = \pi(p_n) = \frac{p_n}{\ln(p_n)}(1+\alpha_n) $\\
 $\ln(n)  = \ln(p_n) - \ln(\ln(p_n)) + \ln(1+\alpha_n) = \ln(p_n)(1 + \beta_n)  $\\
 $\Ra n\ln(n) = p_n(1 + \alpha_n)(1 + \beta_n) \pe $
-\end{mybox}
+\end{mybox2}
 
 
 
@@ -698,7 +709,7 @@ $(2p_1\cdots p_n)^2 + 1^2 = q_1\cdots q_m \Ra q_i = 4m_i+1$ по лемме, з�
 
 
 \newpage
-\begin{mybox}{\hypertarget{bil10}{Билет 10}}
+\begin{mybox2}{\hypertarget{bil10}{Билет 10}}
 
 \begin{formbox}{}
 Простейшие свойства групповых характеров. Построение характеров. Вычисление сумм $\sum_{a\in G} \chi(a)$ и $\sum_\chi \chi(a)$ для характеров $\chi$ группы $G$. Определение и свойства числовых характеров.
@@ -741,9 +752,9 @@ $\chi(g) = \zeta_1^{r_1}\cdots \zeta_n^{r_n}$
 $\pb 1) g = g_1^{k_1}\cdots g_n^{k_n}\q\q k_j = r_j + a_jh_j\Ra g = g_1^{r_1}\cdots g_n^{r_n} $ а дальше рассмотрим характер и такие ого записался.\\
 $2) a = g_1^{a_1}\cdots g_n^{a_n};\q b = g_1^{b_1}\cdots g_n^{b_n}$\\
 $ab = g_1^{a_1 + b_1}\cdots g_n^{a_n + b_n}$ и получаем что характер произведения равен произведению характеров. Проверили. $\pe$
-\end{mybox}
+\end{mybox2}
 \newpage
-\begin{mybox}{{Билет 10}}
+\begin{mybox2}{{Билет 10}}
 Если $\chi \not=\chi_0$, то $\exists g: \chi(g) \not=1$\\
 Если $g\not=e$, то $\exists \chi: \chi(g)\not=1$
 
@@ -774,7 +785,7 @@ $\chi(a)\not=0 \iff (a,m)=1$\\\q\\
 $\SL_{x=1}^m \chi(x) = \begin{cases} \FI(m), \chi = \chi_0\\0 \end{cases} $\\
 $\SL_{\chi} \chi(x) = \begin{cases} \FI(m), x = 1\\0 \end{cases} $\\
 $\left|\SL_{x=1}^{mq+r} \chi(x) \right| = \left|\SL_{x=mq+1}^{mq+r} \chi(x)\right|\le r\le m$
-\end{mybox}
+\end{mybox2}
 
 
 
@@ -800,7 +811,7 @@ $L(s,\chi_0) = \zeta(s) \prod\limits_{p\mid m} (1 - \frac{1}{p^s})^{-1} = \os \f
 
 
 \newpage
-\begin{mybox}{\hypertarget{bil12}{Билет 12}}
+\begin{mybox2}{\hypertarget{bil12}{Билет 12}}
 
 \begin{formbox}{}
 Теорема о почленном дифференцировании ряда Дирихле. Область аналитичности функции $L(s, \chi)$ при $\chi \not= \chi_0$.
@@ -825,7 +836,7 @@ $\left|R_N(s)\right| \le |s|\IL_1^\infty 2C(N+t)^{-s-1}dt = |s| \cdot 2C\left.\f
 В области $D(\delta, \TE): \q \left|R_N(s)\right|\le 2CN^{-\delta}\frac{1}{\cos(\TE)} < \varepsilon \Ra$ выполняется равномерная сходимость.\\
 Для любой точки правее нуля можно подобрать такие $\delta$ и $\TE$, чтобы она попала в область. Раз в таких областях ряд сходится равномерно, значит его можно дифференцировать бесконечное число раз, значит функция аналитична.$\pe$
 
-\end{mybox}
+\end{mybox2}
 
 
 
@@ -862,7 +873,7 @@ $f(\sigma) = \SL_{k=0}^\infty \frac{f^{(k)}}{k!}(\sigma - \sigma_0)^k = \SL_{k=0
 
 
 \newpage
-\begin{mybox}{\hypertarget{bil14}{Билет 14}}
+\begin{mybox2}{\hypertarget{bil14}{Билет 14}}
 
 \begin{formbox}{}
 Неравенство $L(1,\chi)\not=0$ для действительного характера $\chi$.
@@ -895,7 +906,7 @@ $4) \SL_{n=1}^\infty \frac{a_n}{\sqrt{n}} \ge \SL_{k=1}^\infty \frac{a_{k^2}}{k}
 $\pb L(1,\chi) = 0\Ra L(s\chi) = (s-1)g(s), \q g(s)$ аналитичная\\
 $\zeta(s) =\frac{1}{s-1} + h(s) $ -- тоже аналитичная\\
 $f(s) = \zeta(s) L(s,\chi) = g(s) + g(s)h(s)(s-1)  $ представляется сходящимся рядом Дирихле в $\sigma > 0$ а это противоречие с пунктом 4 леммы $\pe$ 
-\end{mybox}
+\end{mybox2}
 
 
 
@@ -930,7 +941,7 @@ $1 \le A\le \left| \os  \frac{2}{s-1} \cs^3 (C_1 (s-1))^4 C_2  \right| \to 0$ п
 
 
 \newpage
-\begin{mybox}{\hypertarget{bil16}{Билет 16}}
+\begin{mybox2}{\hypertarget{bil16}{Билет 16}}
 
 \begin{formbox}{}
 Доказательство теоремы Дирихле о бесконечности множества простых чисел в арифметической прогрессии.
@@ -951,7 +962,7 @@ $0 \le R(s)  = \FI(m)\SL_{p}\SL_{k=2, p^k \ee l\pmod{m}}  \frac{\ln(p)}{p^s}\le 
 Если число простых конечно, то $F(s) $ ограничена. Противоречие.$\pe$
 \end{enumerate}
 
-\end{mybox}
+\end{mybox2}
 
 
 
@@ -1039,7 +1050,7 @@ $B(x)$ обнуляется $\AL; A(x) = x^n + \cdots a_0 \in\bb{Q}[x]$ -- ми�
 
 
 \newpage
-\begin{mybox}{\hypertarget{bil18}{Билет 18}}
+\begin{mybox2}{\hypertarget{bil18}{Билет 18}}
 
 \begin{formbox}{}
 Формулировка основной теоремы о симметричных многочленах. Теорема о симметричном многочлене от нескольких систем сопряженных алгебраических чисел. Поле алгебраических чисел и кольцо целых алгебраических чисел. Алгебраическая замкнутость поля алгебраических чисел.
@@ -1071,9 +1082,9 @@ $B(x)$ обнуляется $\AL; A(x) = x^n + \cdots a_0 \in\bb{Q}[x]$ -- ми�
 \end{formbox}
 $\pb $ считаем все переменные кроме $\AL_1,\dots,\AL_n$ константами, тогда $P = H_1(\sigma_1, \dots, \sigma_n, \eta_1,\dots, \eta_m)$, далее рассмотрим коэффициенты и будем их рассматривать как симметричные с меньшим числом систем, значит доказали по индукции. (база индукции предыдущая теорема и я хз где доказательство...)$\pe$ 
 
-\end{mybox}
+\end{mybox2}
 \newpage
-\begin{mybox}{{Билет 18}}
+\begin{mybox2}{{Билет 18}}
 \begin{formbox}{}
 \begin{lem} Пусть $\AL,\dots,\delta$ -- алгебраические числа, $\AL_1,\dots,\AL_n,\delta_1,\dots,\delta_m$ -- соответствующие сопряженные. $P(x,\AL_1,\dots, \delta_m)\in\bb{Q}[x,\AL_1,\dots, \delta_m]$ -- симметрический относительно систем. Тогда $P\in\bb{Q}[x]$, т.е. не зависит от корней, а если не зависит от х, то тоже  $\in\bb{Q}[x]$%Тогда он не зависит от $\AL, \delta$
 \end{lem}
@@ -1103,7 +1114,7 @@ $\frac{\AL}{\beta} = \AL\cdot \beta^{-1}\pe$\\P.S. Кажется что $\beta^
 \end{formbox}
 $\pb$ Рассмотрим $P(x) =\prod\limits_{i=1}^n\cdots\prod\limits_{l=1}^s (x^m + \AL_i x^{m-1} + \cdots + \delta_l)$ -- симметричный от систем переменных с коэффициентами из $\bb{Z}$. По лемме $P(x)\in\bb{Q}[x]$. $P(x)\divisible \FI(x) \Ra P(\xi) = 0 \Ra \xi$ алгебраическое. $\pe$
 
-\end{mybox}
+\end{mybox2}
 
 
 
@@ -1125,13 +1136,13 @@ $\pb$ Рассмотрим $P(x) =\prod\limits_{i=1}^n\cdots\prod\limits_{l=1}^s
 
 
 \newpage
-\begin{mybox}{\hypertarget{bil20}{Билет 20}}
+\begin{mybox2}{\hypertarget{bil20}{Билет 20}}
 
 \begin{formbox}{}
 Две теоремы о приближении действительных чисел рациональными дробями. Построение чисел, имеющих заданный порядок приближений.
 \end{formbox}
 
-\end{mybox}
+\end{mybox2}
 
 \newpage
 \begin{mybox}{\hypertarget{bil21}{Билет 21}}
@@ -1143,13 +1154,13 @@ $\pb$ Рассмотрим $P(x) =\prod\limits_{i=1}^n\cdots\prod\limits_{l=1}^s
 \end{mybox}
 
 \newpage
-\begin{mybox}{\hypertarget{bil22}{Билет 22}}
+\begin{mybox2}{\hypertarget{bil22}{Билет 22}}
 
 \begin{formbox}{}
 Обобщение теоремы Лиувилля на многочлены от нескольких алгебраических чисел.
 \end{formbox}
 
-\end{mybox}
+\end{mybox2}
 
 \newpage
 \begin{mybox}{\hypertarget{bil23}{Билет 23}}
@@ -1161,13 +1172,13 @@ $\pb$ Рассмотрим $P(x) =\prod\limits_{i=1}^n\cdots\prod\limits_{l=1}^s
 \end{mybox}
 
 \newpage
-\begin{mybox}{\hypertarget{bil24}{Билет 24}}
+\begin{mybox2}{\hypertarget{bil24}{Билет 24}}
 
 \begin{formbox}{}
 Иррациональность и трансцендентность числа $e$.
 \end{formbox}
 
-\end{mybox}
+\end{mybox2}
 
 \newpage
 \begin{mybox}{\hypertarget{bil25}{Билет 25}}
@@ -1179,13 +1190,13 @@ $\pb$ Рассмотрим $P(x) =\prod\limits_{i=1}^n\cdots\prod\limits_{l=1}^s
 \end{mybox}
 
 \newpage
-\begin{mybox}{\hypertarget{bil26}{Билет 26}}
+\begin{mybox2}{\hypertarget{bil26}{Билет 26}}
 
 \begin{formbox}{}
 Лемма Зигеля об оценках решений систем линейных уравнений с целыми коэффициентами.
 \end{formbox}
 
-\end{mybox}
+\end{mybox2}
 
 \newpage
 \begin{mybox}{\hypertarget{bil27}{Билет 27}}
@@ -1197,13 +1208,13 @@ $\pb$ Рассмотрим $P(x) =\prod\limits_{i=1}^n\cdots\prod\limits_{l=1}^s
 \end{mybox}
 
 \newpage
-\begin{mybox}{\hypertarget{bil28}{Билет 28}}
+\begin{mybox2}{\hypertarget{bil28}{Билет 28}}
 
 \begin{formbox}{}
 Оценки вспомогательной функции и завершение доказательства теоремы Линдемана. Ее связь с проблемой квадратуры круга.
 \end{formbox}
 
-\end{mybox}
+\end{mybox2}
 
 \newpage
 \begin{mybox}{\hypertarget{bil29}{Билет 29}}
@@ -1215,13 +1226,13 @@ $\pb$ Рассмотрим $P(x) =\prod\limits_{i=1}^n\cdots\prod\limits_{l=1}^s
 \end{mybox}
 
 \newpage
-\begin{mybox}{\hypertarget{bil30}{Билет 30}}
+\begin{mybox2}{\hypertarget{bil30}{Билет 30}}
 
 \begin{formbox}{}
 Оценки вспомогательной функции и завершение доказательства теоремы Гельфонда-Шнейдера.
 \end{formbox}
 
-\end{mybox}
+\end{mybox2}
 
 
 
