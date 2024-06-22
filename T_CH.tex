@@ -203,32 +203,6 @@
 
 \large
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 \newpage
 \begin{mybox}{\hypertarget{bil1}{Билет 1}}
 
@@ -306,6 +280,7 @@ $\pe$\\
 \begin{utv} Пусть $a = p_1^{k_1}\cdots p_n^{k_n}, b = p_1^{l_1}\cdots p_n^{l_n}$. Тогда $b\mid a\iff \forall i: l_i \le k_i$
 \end{utv}
 \end{formbox}
+
 $\pb  \Ra: b\mid a\Ra a = bc, c = p_1^{m_1}\cdots p_n^{m_n}\Ra a = p_1^{l_1 + m_1}\cdots p_n^{l_n + m_n}\Ra \forall i: k_i = l_i + m_i \ge l_i\\\q\\ \Leftarrow: a = b\cdot p_1^{k_1-l_1}\cdots p_n^{k_n - l_n}\Ra a\divisible b \pe$
 
 
@@ -314,6 +289,7 @@ $\pb  \Ra: b\mid a\Ra a = bc, c = p_1^{m_1}\cdots p_n^{m_n}\Ra a = p_1^{l_1 + m_
 $[a,b] = p_1^{t_1}\cdots p_n^{t_n},$ где $t_j = \max\{k_j, l_j\}$
 \end{utv}
 \end{formbox}
+
 $\pb  $
 \begin{enumerate}
 \item $d\mid a, d\mid b, d = p_1^{r_1}\cdots p_n^{r_n}\Ra r_i\le k_i, r_i \le l_i\Ra r_i \le \min\{k_j, l_j\} \Ra \max r_i = \min\{k_j, l_j\}$
@@ -327,6 +303,7 @@ $\pe$
 Простых чисел бесконечно много.
 \end{teo}
 \end{formbox}
+
 $\pb     $\\
 Пусть простых чисел конечное множество: $p_1,\dots,p_n$. Рассмотрим $N = p_1\cdot p_2\cdots p_n + 1$ -- составное\\
 По теореме о разложении должно существовать $p: p\mid N$, но по построению $N$, оно не делится на все $p_i$
@@ -750,10 +727,11 @@ $\pb$
 Пусть $G = G_1\otimes \cdots \otimes G_n$, где все $G_i$ циклические. $ord g_i = h_i$\\
 $ord (G) = h = h_1\cdots h_n$\\
 $\forall g\in G: g = g_1^{r_1}\cdots g_n^{r_n},\q\q 0\le r_i\le h_i$ и такое представление единственно.\\
+\begin{formbox}{}
 Рассмотрим набор корней из 1:$\zeta_1,\dots,\zeta_n: \zeta_i^{h_i} = 1$\\
 $\chi(g) = \zeta_1^{r_1}\cdots \zeta_n^{r_n}$
 
-\begin{formbox}{}
+
 \begin{utv} Это характер и любой характер можно записать так.
 \end{utv}
 \end{formbox}
@@ -1295,6 +1273,18 @@ $\pe$
 Теорема Бореля о характере приближений \textquotedblleft  почти всех\textquotedblright  действительных чисел.
 \end{formbox}
 
+\begin{formbox}{}
+\begin{teo} [Бореля] Рассмотрим $M = \{\AL\in\bb{R}: 0 < \left|\AL - \frac{p}{q}\right| < \frac{1}{q^m},\; m>2$ имеют бесконечное число решений $\}$, тогда $\mu(M) = 0$
+\end{teo}
+\end{formbox}
+$\pb$ Б.о.о. $\AL\in[0,1]$, т.к. добавление целого не влияет на приближение.\\
+$M_Q = \{\AL\in\bb{R}: 0 < \left|\AL - \frac{p}{q}\right| < \frac{1}{q^m},\; m>2$ имеет хотя бы одно решение с $q > Q \}$. Очевидно, $M \subset M_Q$\\
+Пусть $\AL \in \left( \frac{p}{q} - \frac{1}{q^m}; \frac{p}{q} + \frac{1}{q^m}  \right) = I(p,q), |I(p,q)| = \frac{2}{q^m} $\\
+$M_Q\subset \bigcup\limits_{q>Q}\bigcup\limits_{p=0}^{q} I(p,q)$\\
+$|M_Q| <\SL_{q > Q}\SL_{p=0}^{q} |I(q,p)| = \SL_{q > Q}(q+1)\frac{2}{q^m} < 4\cdot\SL_{q>Q}\frac{1}{q^{m-1}}< \varepsilon \pe $
+
+
+
 \end{mybox}
 
 \newpage
@@ -1382,6 +1372,7 @@ $\pe$
 \newpage
 
 \section{Определения}
+
 \begin{formbox}{}
 \begin{deff2} $b\mid a$, если $\exists q\in \mathbb{Z}: a=bq$
 \end{deff2}
@@ -1392,7 +1383,7 @@ $\pe$
 \end{formbox}
 \begin{formbox}{}
 \begin{deff2}
-Дзета-функция Римана: $s = \sigma + it, \zeta (s) := \SL_{n=1}^\infty \frac{1}{n^s}$
+Дзета-функция Римана: $s = \sigma + it, \q\zeta (s) := \SL_{n=1}^\infty \frac{1}{n^s}$
 \end{deff2}
 \end{formbox}
 \begin{formbox}{}
@@ -1445,14 +1436,39 @@ $L(s,\chi) = \SL_{n=1}^\infty \frac{\chi(n)}{n^s}$ -- функция Дирих�
 \begin{deff2} $P(\AL_1, \dots, \AL_n, \delta_1,\dots,\delta_s)$ -- симметричный многочлен относительно нескольких систем переменных, если он не изменяется при любой перестановке внутри каждой системы.
 \end{deff2}
 \end{formbox}
+\begin{formbox}{}
+\begin{deff2} $A$ -- поле алгебраических чисел, расширение поля $\bb{Q}$
+\end{deff2}
+\end{formbox}
+\begin{formbox}{}
+\begin{deff2} $\AL = r(\TE)\Ra N(\AL) := r(\TE_1)\cdots r(\TE_n)$ -- норма алгебраических чисел в поле.
+\end{deff2}
+\end{formbox}
+
+\begin{formbox}{}
+\begin{deff2} $\AL$ -- число Лиувилля, если $\forall m\in\bb{N} \exists$ бесконечно много дробей $\frac{p}{q}: \q 0 < |\AL - \frac{p}{q}| < \frac{1}{q^m}$
+\end{deff2}
+\end{formbox}
+\begin{formbox}{}
+\begin{deff2} Длина многочлена -- сумма модулей коэффициентов. $L(P)$
+\end{deff2}
+\end{formbox}
+
+
+
+
+
+
+
+
 
 \newpage
 \section{Формулировки}
 \begin{formbox}{}
 \begin{teo2}[Основная теорема арифметики]\q\\
 \begin{enumerate}
-\item всякое $a \in \bb{N}, a > 1$ представляется в виде $a = p_1\cdots p_n$, где $p_i$ простые.
-\item это представление единственно с точностью до порядка сомножителей.
+    \item всякое $a \in \bb{N}, a > 1$ представляется в виде $a = p_1\cdots p_n$, где $p_i$ простые.
+    \item это представление единственно с точностью до порядка сомножителей.
 \end{enumerate}
 \end{teo2}
 \end{formbox}
@@ -1465,11 +1481,13 @@ $(a,b) = d \Ra \exists u,v\in\bb{Z}: d = au+bv$
 \begin{utv2} Пусть $a = p_1^{k_1}\cdots p_n^{k_n}, b = p_1^{l_1}\cdots p_n^{l_n}$. Тогда $b\mid a\iff \forall i: l_i \le k_i$
 \end{utv2}
 \end{formbox}
+
 \begin{formbox}{}
 \begin{utv2} $(a,b) = p_1^{s_1}\cdots p_n^{s_n}$, где $s_j = \min\{k_j, l_j\}$\\
 $[a,b] = p_1^{t_1}\cdots p_n^{t_n},$ где $t_j = \max\{k_j, l_j\}$
 \end{utv2}
 \end{formbox}
+
 \begin{formbox}{}
 \begin{teo2}[Теорема о бесконечности простых чисел]\q\\
 Простых чисел бесконечно много.
@@ -1486,20 +1504,22 @@ $0\le l_1 = l_2 = l_3 \le L_1 = L_2 = L_3 \le +\infty$
 \end{formbox}
 \begin{formbox}{}
 \begin{teo2}[Теорема Чебышева]\q\\
-$\exists a.b > 0: \forall x \ge 2:\q a\frac{x}{\ln(x)} <\pi(x) <b\frac{x}{\ln(x)} $
-\end{teo2}
-\end{formbox}
-\begin{formbox}{}
-\begin{teo2}[Теорема Эйлера]\q\\$\sum_p \frac{1}{p}$ расходится.
+$\exists a,b > 0: \forall x \ge 2:\q a\frac{x}{\ln(x)} <\pi(x) <b\frac{x}{\ln(x)} $
 \end{teo2}
 \end{formbox}
 \begin{formbox}{}
 \begin{utv2} $\alpha n \ln(n) < p_n < \beta n \ln(n)   $
 \end{utv2}
 \end{formbox}
+
+\begin{formbox}{}
+\begin{teo2}[Теорема Эйлера]\q\\$\sum_p \frac{1}{p}$ расходится.
+\end{teo2}
+\end{formbox}
+
 \begin{formbox}{}
 \begin{teo2}\q\\
-$\sigma > 1: -\frac{\zeta'(s)}{\zeta(s)}  \SL_{n=1}^\infty \frac{\Lambda(n)}{n^s} $
+$\sigma > 1: -\frac{\zeta'(s)}{\zeta(s)} = \SL_{n=1}^\infty \frac{\Lambda(n)}{n^s} $
 \end{teo2}
 \end{formbox}
 \begin{formbox}{}
@@ -1513,7 +1533,7 @@ $f(n)$ -- вполне мультипликативная, $A = \SL_{k=1}^\infty
 \end{teo2}
 \end{formbox}
 \begin{formbox}{}
-\begin{lem2}
+\begin{lem2}\q\\
 $f(n)$ -- вполне мультипликативная, ряд $\sum f(n)$ абсолютно сходится $\Ra S = \SL_{n=2}^\infty f(n) = \prod\limits_p (1-f(p))^{-1}  $
 \end{lem2}
 \end{formbox}
@@ -1545,7 +1565,7 @@ $\pi(x)\sim \frac{x}{\ln(x)}, x\to\infty$
 \end{teo2}
 \end{formbox}
 \begin{formbox}{}
-\begin{utv2} $f(s) = -\frac{\zeta'(s)}{zeta(s)} - \frac{1}{s-1} $ аналитическая при $\sigma \ge 1$
+\begin{utv2} $f(s) = -\frac{\zeta'(s)}{\zeta(s)} - \frac{1}{s-1} $ аналитическая при $\sigma \ge 1$
 \end{utv2}
 \end{formbox}
 \begin{formbox}{}
@@ -1577,13 +1597,13 @@ $\pi(x)\sim \frac{x}{\ln(x)}, x\to\infty$
 \end{utv2}
 \end{formbox}
 \begin{formbox}{}
-Рассмотрим набор корней из 1:$\zeta_1,\dots,\zeta_n: \zeta_i^{h_i} = 1$\q
+Рассмотрим набор корней из 1:$\zeta_1,\dots,\zeta_n: \zeta_i^{h_i} = 1$\\
 $\chi(g) = \zeta_1^{r_1}\cdots \zeta_n^{r_n}$
 \begin{utv2} Это характер и любой характер можно записать так.
 \end{utv2}
 \end{formbox}
 \begin{formbox}{}
-\begin{utv2}
+\begin{utv2}\q\\
 \begin{enumerate}
 \item $S = \SL_{g\in G}\chi(g) = \begin{cases}h, \chi = \chi_0\\ 0, \chi \not= \chi_0\end{cases}$
 \item $\sigma = \SL_{\chi}\chi(g) = \begin{cases}h, g = e\\ 0, e \not= e\end{cases}$
@@ -1605,7 +1625,7 @@ $\chi(g) = \zeta_1^{r_1}\cdots \zeta_n^{r_n}$
 \item $f(s) = \SL_{n=1}^\infty  \frac{a_n}{n^s},\q(\sigma > \sigma_2) $
 \item $a_n \ge 0$
 \end{enumerate}
-Тогда $f(s)$ раскладывается в ряд Дирихле при $\sigma > \sigma_1$ и его можно почленно дифференцировать. \\
+Тогда $f(s)$ раскладывается в ряд Дирихле при $\sigma > \sigma_1$ и его можно почленно дифференцировать. $///<WTF?$\\
 /*P.S. в другом источнике: Тогда $f(s)$ аналитична при $\sigma > \sigma_1$, т.е. можно продлить представление рядом.*/
 \end{teo2}
 \end{formbox}
@@ -1648,7 +1668,7 @@ $\chi(g) = \zeta_1^{r_1}\cdots \zeta_n^{r_n}$
 \end{utv2}
 \end{formbox}
 \begin{formbox}{}
-\begin{teo2} Пусть $B(x) \in \bb{Z}[x], B(\AL) = 0 \Ra \AL$ -- целое алгебраическое.
+\begin{teo2} Пусть $B(x) \in \bb{Z}[x], b_n = 1, B(\AL) = 0 \Ra \AL$ -- целое алгебраическое.
 \end{teo2}
 \end{formbox}
 \begin{formbox}{}
@@ -1656,18 +1676,68 @@ $\chi(g) = \zeta_1^{r_1}\cdots \zeta_n^{r_n}$
 \end{lem2}
 \end{formbox}
 \begin{formbox}{}
-\begin{teo2} [о симметричных многочленах] Любой симметричный многочлен от переменных $\AL_1, \dots, \AL_n$  единственным образом представляется в виде $P(\AL_1,\dots,\AL_n) = H(\sigma_1, \sigma_n),$ где $H\in K[\sigma_1, \dots, \sigma_n], \q \sigma_1, \dots, \sigma_n$ -- элементарные симметричные.
+\begin{teo2} [о симметричных многочленах] Любой симметричный многочлен от переменных $\AL_1, \dots, \AL_n$  единственным образом представляется в виде $P(\AL_1,\dots,\AL_n) = H(\sigma_1, \dots, \sigma_n),$ где $H\in K[\sigma_1, \dots, \sigma_n], \q \sigma_1, \dots, \sigma_n$ -- элементарные симметричные.
 \end{teo2}
 \end{formbox}
-
-
-
 \begin{formbox}{}
+
 \begin{teo2} [о симметричных многочленах от нескольких систем] Любой симметричный многочлен от нескольких систем переменных $\AL_1, \dots, \AL_n, \delta_1,\dots,\delta_m$  единственным образом представляется в виде $P(\AL_1,\dots,\AL_n,\delta_1,\dots,\delta_m) = H(\sigma_1, \dots, \sigma_n, \eta_1,\dots, \eta_m),$ где $\sigma_1, \dots, \sigma_n, \eta_1,\dots, \eta_m$ -- элементарные симметричные.
 \end{teo2}
 \end{formbox}
+\begin{formbox}{}
+\begin{lem2} Пусть $\AL,\dots,\delta$ -- алгебраические числа, $\AL_1,\dots,\AL_n,\delta_1,\dots,\delta_m$ -- соответствующие сопряженные. $P(x,\AL_1,\dots, \delta_m)\in\bb{Q}[x,\AL_1,\dots, \delta_m]$ -- симметрический относительно систем. Тогда $P\in\bb{Q}[x]$, т.е. не зависит от корней, а если не зависит от х, то тоже  $\in\bb{Q}[x]$%Тогда он не зависит от $\AL, \delta$
+\end{lem2}
+\end{formbox}
+\begin{formbox}{}
+\begin{teo2}
+Если $\AL, \beta$ -- алгебраические числа, то $\AL+\beta, \; \AL-\beta,\; \AL\beta, \; \frac{\AL}{\beta}\; (\beta \not=0)$ -- тоже алгебраические. (что значит что множество алгебраических чисел образуют поле)
+\end{teo2}
+\end{formbox}
+\begin{formbox}{}
+\begin{teo2} $A$ -- алгебраически замкнутое (и любой многочлен разлагается на линейные множители), т.е. если $\xi$ -- корень $\FI(x) = x^m + \AL x^{m-1} + \cdots + \delta, \q\AL,\dots,\delta $ -- алгебраические, то $\xi$ алгебраическое.
+\end{teo2}
+\end{formbox}
+\begin{formbox}{}
+\begin{teo2} $Q(\TE) = \{r_{n-1}(\TE), r_{n-1}(\TE)\in\bb{Q}[x], deg(r_{n-1})\le n - 1\q\} $
+\end{teo2}
+\end{formbox}
+\begin{formbox}{}
+\begin{teo2} $r(\TE_1),\dots,r(\TE_n)$ -- тот же набор, что и $\AL_1, \dots, \AL_m, \frac{n}{m}\in\bb{N}$%\q ////<< WWTTFF??
+\end{teo2}
+\end{formbox}
+\begin{formbox}{}
+\begin{teo2} [о примитивном элементе] $Q(\AL_1,\dots, \AL_n)$. Тогда $\exists \TE:\;Q(\AL_1,\dots, \AL_n) = Q(\TE)$
+\end{teo2}
+\end{formbox}
+\begin{formbox}{}
+\begin{teo2}[Теорема Дирихле] Пусть $\AL\in\bb{R}\Ra \forall  x \in\bb{N} \exists \frac{p}{q}: \begin{cases} \left|\AL - \frac{q}{p}\right| < \frac{1}{xq} \\ x \ge q \ge 1   \end{cases} $
+\end{teo2}
+\end{formbox}
+\begin{formbox}{}
+\begin{teo2}[Теорема Дирихле] $\AL \in \bb{R} \setminus \bb{Q} \Ra $ неравенство $\left|\AL - \frac{p}{q} \right| < \frac{1}{q^2}$ имеет бесконечное число решений в рациональных дробях.
+\end{teo2}
+\end{formbox}
+\begin{formbox}{}
+\begin{teo2} $\forall f(q) > 0\: \exists \AL:\:0 < \left|\AL - \frac{p}{q} \right| < f(q)$ имеет бесконечное число решений. (т.е. существует сколь угодно хорошо приближаемые числа).
+\end{teo2}
+\end{formbox}
+\begin{formbox}{}
+\begin{teo2} [Лиувилля] $\AL \in A\cap \bb{R}, n = deg(\AL) \ge 2\Ra \exists C = C(\AL) > 0: \forall \frac{p}{q}:\q \left|\AL - \frac{p}{q} \right| > \frac{C}{q^n} $
+\end{teo2}
+\end{formbox}
+\begin{formbox}{}
+\begin{utv2} Числа Лиувилля трансцендентные.
+\end{utv2}
+\end{formbox}
+\begin{formbox}{}
+\begin{teo2} Пусть $\AL_1,\dots,\AL_s$ -- алгебраические числа степеней $m_1,\dots, m_s$. Тогда $\exists$ положительная постоянная $C = C(\AL_1, \dots, \AL_s): \forall P(x_1,\dots,x_s)\in\bb{Z}[x_1,\dots,x_s]$, тогда $P(\AL_1, \dots, \AL_s) = 0$  или $|P(\AL_1, \dots, \AL_s)|\ge L^{1-(m_1\cdots m_s)}C^{-d}, \q d,L$ -- степень и длина $P$
+\end{teo2}
+\end{formbox}
+\begin{formbox}{}
+\begin{teo2} [Бореля] Рассмотрим $M = \{\AL\in\bb{R}: 0 < \left|\AL - \frac{p}{q}\right| < \frac{1}{q^m},\; m>2$ имеют бесконечное число решений $\}$, тогда $\mu(M) = 0$
+\end{teo2}
+\end{formbox}
+
+
+
 \end{document}
-
-
-
-
