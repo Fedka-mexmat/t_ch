@@ -19,6 +19,7 @@
 \usepackage{mathptmx}
 \usepackage{graphicx}
 \usepackage{tikz}
+\usepackage{mathtools}
 \newcommand{\divisible}{\mathop{\raisebox{-2pt}{\vdots}}}
 \newtheorem{deff}{\textit{Определение}}
 \newtheorem{teo}{\textit{Теорема}}
@@ -379,50 +380,57 @@ $\pe$\\\q\\
 \end{mybox2}
 
 
-
 \newpage
 \begin{mybox}{\hypertarget{bil3}{Билет 3}}
 
 \begin{formbox}{}
 Оценки Чебышева функции $\pi(x)$. Оценки $n$-го простого числа. Расходимость ряда $\sum_p \frac{1}{p}$
 \end{formbox}
+
 \begin{formbox}{}
 \begin{teo}[Теорема Чебышева]\q\\
 $\exists a,b > 0: \forall x \ge 2:\q a\frac{x}{\ln(x)} <\pi(x) <b\frac{x}{\ln(x)} $
 \end{teo}
 \end{formbox}
-$\pb$ Сверху: $2^{2n} > C_{2n}^n = \frac{(n+1)\cdots(n+n)}{n!}\ge \prod\limits_{n<p\le 2n} p $, в числитель входят все простые $n < p \le 2n$\\
-$\Ra 2n\ln(2) > \SL_{n < p \le 2n}\ln(p) = \TE(2n) - \TE(n) $. Рассмотрим $n = 2^k$\\
-$\TE(2^k) = \SL_{k=0}^{m-1} (\TE(2^{k+1}) - \TE(2^k)) < \SL_{k=0}^{m-1} 2^k\ln(2) < \ln(2)  \cdot 2^{m+1}  $\\
+$\pb$ 
+На отрезке $[2, N]$ (компакте), для $\forall N \in \bb{N}, N > 2$ функция $\frac{\pi \ln(x)}{x}$ ограничена и непрерывна. Значит достигает своего минимума и максимума. Теперь докажем для предельного случая. \\
+Сверху: $2^{2n} > C_{2n}^n = \frac{(n+1)\cdots(n+n)}{n!}\ge \smashoperator{\prod_{n<p\le 2n}} p $, в числитель входят все простые $n < p \le 2n$\\
+Логарифмируем неравенство:\\
+$2n\ln(2) > \SL_{n < p \le 2n}\ln(p) = \TE(2n) - \TE(n) $. Рассмотрим $n = 2^k$\\
+$\TE(2^k) = \SL_{i=0}^{k-1} (\TE(2^{i+1}) - \TE(2^i)) < \SL_{i=0}^{k-1} 2^{i+1}\ln(2) < \ln(2)  \cdot 2^{k+1}  $\\
 $\TE(x)$ неубывающая $\Ra \TE(x) \le \TE(2^m)< 2^{m+1} \ln(2) = 4 \cdot 2^{m-1}\ln(2) \le 4\ln(2)x\Ra  $ подойдет $b = 4\ln(2)$\\\q\\
 Снизу:$0 < I_n = \IL_0^1 x^n(1-x)^n dx< \os \frac{1}{4} \cs^n\q\q\q x^n(1-x)^n = a_0 + a_1x + a_2x^2 +\dots +a_{2n}x^{2n}\Ra I_n = \frac{a_0}{1} + \dots + \frac{a_{2n}}{2n+1}  $\\
 Пусть $Q_{2n+1} := [1,2,\dots, 2n+1]\Ra Q_{2n+1}I_n\in \bb{Z}  , Q_{2n+1}I_n > 0\Ra 1 \le  Q_{2n+1}I_n \le  e^{\SI(2n+1)}  \os \frac{1}{4} \cs^n    $\\
-$\Ra  \SI(2n+1) >2\ln(2), \q\q \SI(x)\ge \SI(2(\left[\frac{x}{2}\right] - 1) + 1)\ge 2 2(\left[\frac{x}{2}\right] - 1)\ln(2) \ge (x-4)\ln(2)\Ra $ подойдет $a = \ln(2)\pe$
-
-\begin{formbox}{}
-\begin{teo}[Теорема Эйлера]\q\\$\sum_p \frac{1}{p}$ расходится.
-\end{teo}
-\end{formbox}
-$\pb S_N = \prod\limits_{p \le N} (1 - \frac{1}{p})^{-1} = \prod\limits_{p \le N} \os 1 + \frac{1}{p} + \frac{1}{p^2} + \cdots\cs = \SL_{\underset{ p\mid n}{p \le N}} > \SL_{n=1}^N\frac{1}{n}$ -- частичная сумма гармонического ряда.\\
-$\Ra S_N\to \infty, N\to\infty\Ra \lim\limits_{N\to\infty}\ln(S_N) = \infty$\\
-$\SL_p[-\ln(1-\frac{1}{p})]$ расходится.\\
-При $p\to\infty: -\ln(1-\frac{1}{p}) \sim \frac{1}{p}$, значит по признаку сравнения ряды сходятся и расходятся одновременно.$\pe$\\
-Следствие -- бесконечность множества простых чисел.\\\q\\
-Оценки $n$-того простого числа. $\pi(p_n) = n$
-\end{mybox}
-\newpage
-\begin{mybox}{{Билет 3}}
+$\Ra  \SI(2n+1) >2n\ln(2), \q\q \SI(x) \ge \SI(2(\left[\frac{x}{2}\right] - 1) + 1) > 2(\left[\frac{x}{2}\right] - 1)\ln(2) > (x-4)\ln(2) > x\ln(2) \Ra $ подойдет $a = \ln(2)\pe$
 
 \begin{formbox}{}
 \begin{utv} $\alpha n \ln(n) < p_n < \beta n \ln(n)   $
 \end{utv}
 \end{formbox}
 $\pb a \frac{p_n}{\ln(p_n)} < \pi(p_n) < b \frac{p_n}{\ln(p_n)} $\\
+Логарифмируем:\\
 $\ln(p_n)  -\ln(\ln(p_n)) + \ln_a < \ln(n) < \ln (p_n) - \ln(\ln(p_n)) + \ln(b)  $\\
 $\Ra p_n < a \frac{p_n}{\ln(p_n)} (\ln(p_n) - \ln(\ln(p_n)) + \ln(a))   < n \ln(n) <  b \frac{p_n}{\ln(p_n)} (\ln(p_n) - \ln(\ln(p_n)) + \ln(b))$\\$ \Ra \frac{1}{b} n \ln(n) < p_n < \frac{1}{a}n \ln(n)\pe $
 
+\begin{formbox}{}
+\begin{teo}[Теорема Эйлера]\q\\$\sum_p \frac{1}{p}$ расходится.
+\end{teo}
+\end{formbox}
 \end{mybox}
+\newpage
+\begin{mybox}{{Билет 3}}
 
+$\pb S_N = \prod\limits_{p \le N} (1 - \frac{1}{p})^{-1} = \prod\limits_{p \le N} \os 1 + \frac{1}{p} + \frac{1}{p^2} + \cdots\cs = \SL_{\underset{ p|n}{p \le N}} > \SL_{n=1}^N\frac{1}{n}$ -- частичная сумма гармонического ряда.\\
+$\Ra S_N\to \infty, N\to\infty\Ra \lim\limits_{N\to\infty}\ln(S_N) = \infty$\\
+$\SL_p[-\ln(1-\frac{1}{p})]$ расходится.\\
+При $p\to\infty: -\ln(1-\frac{1}{p}) \sim \frac{1}{p}$, значит по признаку сравнения ряды сходятся и расходятся одновременно.$\pe$\\
+Следствие -- бесконечность множества простых чисел.\\\q\\
+Оценки $n$-того простого числа. $\pi(p_n) = n$ $\pe$ \\
+Другое доказательство:
+
+$ \pb \frac{1}{p_n} > \frac{1}{\beta}n \ln (n) \Ra [$по интегральному признаку Коши ряды сходятся/расходятся одновременно$] \Ra \int_{\alpha}^{+\infty}\frac{dx}{x \ln(x)} = \ln(\ln(+\infty)) - \ln(\ln(\alpha)) = +\infty $ $\pe$
+
+\end{mybox}
 
 
 \newpage
@@ -1129,7 +1137,8 @@ $\pb$ Рассмотрим $P(x) =\prod\limits_{i=1}^n\cdots\prod\limits_{l=1}^s
 \begin{formbox}{}
 Алгебраическое числовое поле конечной степени. Каноническая форма представления его элементов. Теорема о числах, сопряженных в алгебраическом числовом поле. Теорема о примитивном элементе.
 \end{formbox}
-
+Пусть $C(x)$ -- минимальный многочлен для $\TE$ степени $n$.\\
+$Q(\TE) = \left\{  \frac{f(\TE)}{g(\TE), }\right\} $
 \end{mybox}
 
 
