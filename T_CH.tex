@@ -711,19 +711,24 @@ $\chi:G\to\bb{C}$ -- характер
 \item $\chi(e) = 1\q\q \pb \chi(e\cdot e) = \chi(e)\cdot \chi(e) \pe$
 \item $g^h=e\Ra (\chi(g))^h = 1 \Ra $ характеры принимают значения только корней из 1.
 \item $\chi(g^{-1}) = \frac{1}{\chi(g)}$
-\item $\chi_0(g)\ee 1$ -- главный характер.
-\item $\chi_1 \chi_2 (g):= \chi_1(g)\cdot\chi_2(g)$
 \end{enumerate}
-Характеры образуют группу.
+ $\chi_0(g)\ee 1$ -- главный характер.\\
+ $\chi_1 \chi_2 (g):= \chi_1(g)\cdot\chi_2(g)$\\
+
+Характеры образуют группу относительно операции \(\chi_1 \chi_2 (g)\)
 $\pb$
 \begin{enumerate}
 \item $\chi_1\chi_2 (g_1 g_2) = \chi_1(g_1)\chi_1(g_2)\chi_2(g_1)\chi_2(g_2) = \chi_1\chi_2(g_1)\chi_1\chi_2(g_2)$
 \item $\exists \chi^{-1}: \chi^{-1}(g) =\chi(g^{-1}) = \frac{1}{\chi(g)}$
 \item $\exists 1: \chi\chi^{-1}(g) = 1$
-\end{enumerate} $\pe$
+\item $(\chi_1\chi_2)\chi_3 (g) = \chi_1(\chi_2\chi_3) (g)$\\$\pb (\chi_1\chi_2)\chi_3 (g) = (\chi_1(g)\chi_2(g))\chi_3(g) = \chi_1(g)(\chi_2(g)\chi_3(g)) = \chi_1(\chi_2\chi_3) (g)\pe$
+\end{enumerate} $\pe$\\
 Пусть $G = G_1\otimes \cdots \otimes G_n$, где все $G_i$ циклические. $ord g_i = h_i$\\
 $ord (G) = h = h_1\cdots h_n$\\
 $\forall g\in G: g = g_1^{r_1}\cdots g_n^{r_n},\q\q 0\le r_i\le h_i$ и такое представление единственно.\\
+\end{mybox2}
+\newpage
+\begin{mybox2}{{Билет 10}}
 \begin{formbox}{}
 Рассмотрим набор корней из 1:$\zeta_1,\dots,\zeta_n: \zeta_i^{h_i} = 1$\\
 $\chi(g) = \zeta_1^{r_1}\cdots \zeta_n^{r_n}$
@@ -735,9 +740,7 @@ $\chi(g) = \zeta_1^{r_1}\cdots \zeta_n^{r_n}$
 $\pb 1) g = g_1^{k_1}\cdots g_n^{k_n}\q\q k_j = r_j + a_jh_j\Ra g = g_1^{r_1}\cdots g_n^{r_n} $ а дальше рассмотрим характер и такие ого записался.\\
 $2) a = g_1^{a_1}\cdots g_n^{a_n};\q b = g_1^{b_1}\cdots g_n^{b_n}$\\
 $ab = g_1^{a_1 + b_1}\cdots g_n^{a_n + b_n}$ и получаем что характер произведения равен произведению характеров. Проверили. $\pe$
-\end{mybox2}
-\newpage
-\begin{mybox2}{{Билет 10}}
+
 Если $\chi \not=\chi_0$, то $\exists g: \chi(g) \not=1$\\
 Если $g\not=e$, то $\exists \chi: \chi(g)\not=1$
 
@@ -765,7 +768,9 @@ $\chi_0(x) = \begin{cases} 1, (x,m)=1\\0,(x,m) \not=1 \end{cases} $\\\q\\
 $a\ee b \pmod{m} \Ra \chi(a) = \chi(b) $\\
 $\chi(ab) = \chi(a)\chi(b) $\\
 $\chi(a)\not=0 \iff (a,m)=1$\\\q\\
-$\SL_{x=1}^m \chi(x) = \begin{cases} \FI(m), \chi = \chi_0\\0 \end{cases} $\\
+$\SL_{x=1}^m \chi(x) = \begin{cases} \FI(m), \chi = \chi_0\\0 \end{cases} $\\\end{mybox2}
+\newpage
+\begin{mybox2}{{Билет 10}}
 $\SL_{\chi} \chi(x) = \begin{cases} \FI(m), x = 1\\0 \end{cases} $\\
 $\left|\SL_{x=1}^{mq+r} \chi(x) \right| = \left|\SL_{x=mq+1}^{mq+r} \chi(x)\right|\le r\le m$
 \end{mybox2}
