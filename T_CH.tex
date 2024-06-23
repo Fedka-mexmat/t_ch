@@ -1337,49 +1337,43 @@ $0 < \varepsilon^{(n)}<1, \q \lim \varepsilon_k^{(n)} = 0\Ra \sum a_kM_k + \sum 
 \end{mybox2}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 \newpage
 \begin{mybox}{\hypertarget{bil25}{Билет 25}}
 
 \begin{formbox}{}
 Иррациональность числа $\pi$.
 \end{formbox}
+\begin{formbox}{}
+\begin{utv} $\pi$ иррационально.
+\end{utv}
+\end{formbox}
+
+
+$\pb $ Рассмотрим \(f(x) \in\bb{Q}[x]\)\\
+\(\IL_0^\pi f(x)\sin(x)dx = F(0) - F(\pi),\q F(x) = f(x) - f''(x) + f^{(4)}(x)-\cdots\)\\
+\(\frac{d}{dx} = (F'(x)\sin(x) - F(x)\cos(x)) = (F''(x) + F(x))\sin(x) = f(x)\sin(x) \)\\
+Пусть \(\pi = \frac{a}{b}, b > 0.\q f(x) = \frac{b^n}{n!}x^n (\pi - x)^n= \frac{1}{n!}x^n(a-bx)^n.\)\\
+\(f(x): f(0) = 0,\) порядок 0 \( = n\Ra f(0) = f'(0) = \cdots = f^{(n-1)}(0) = 0 \)\\
+Все коэффициенты производной $l$-того порядка делятся на $l!\Ra$ при $l \ge n f^{(l)}(x)\in\bb{Z}[x]\Ra f(0), \dots, f^{(2n)}(0)\in\bb{Z}$\\
+\(f(x) = f(\pi - x)\Ra f^{(l)}(x) = (-1)^l f^{(l)}(\pi-x)\Ra \) при \(x = \pi\q f^{(l)}(\pi) = (-1)^l f^{(l)}(0) \)\\
+Значит $F(0) + F(\pi) \in\bb{Z}$\\
+При достаточно большом \(n:\q 0 < \IL_0^\pi f(x)\sin(x)dx < 1\Ra \not\in\bb{Z}\)\\
+Подынтегральное выражение больше 0.\\
+\(\exists n_0\in\bb{N}:\;\IL_0^\pi f(x)\sin(x)dx \le \IL_0^\pi f(x)dx < \frac{b^n}{n!}\pi^{2n}\IL_0^\pi dx = \pi\frac{\os \frac{a^2}{b} \cs^n}{n!} < 1\; \forall n \ge n_0 \pe\)
 
 \end{mybox}
+
+
+
+
+
+
+
+
+
+
+
+
 
 \newpage
 \begin{mybox2}{\hypertarget{bil26}{Билет 26}}
@@ -1824,5 +1818,8 @@ $\chi(g) = \zeta_1^{r_1}\cdots \zeta_n^{r_n}$
 \begin{utv2} $e$ трансцендентно.
 \end{utv2}
 \end{formbox}
-
+\begin{formbox}{}
+\begin{utv2} $\pi$ иррационально.
+\end{utv2}
+\end{formbox}
 \end{document}
