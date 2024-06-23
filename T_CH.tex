@@ -251,15 +251,15 @@ $b < a$, что противоречит минимальности $a$.
 \end{deff}
 \end{formbox}
 $\exists: \frac{a}{b} = \left[\frac{a}{b}\right] + \left\{\frac{a}{b}\right\}\Rightarrow a = b\overbrace{\left[\frac{a}{b}\right]}^q + \underbrace{\left\{\frac{a}{b}\right\}}_r$\\
-$!:$ все определено однозначно.\\\q\\\q\\
-$(a,b)$ -- НОД\\
+$!:$ все определено однозначно.\\\q\\
+$(a,b)$ -- НОД
 
 \begin{formbox}{}
 \begin{teo}[Теорема о представлении НОД]\q\\
 $(a,b) = d \Ra \exists u,v\in\bb{Z}: d = au+bv$
 \end{teo}
 \end{formbox}
-$\pb\\\mu = \{k\mid k=ax+by>0, x,y\in\bb{Z}\}$\\
+$\pb\mu = \{k\mid k=ax+by>0, x,y\in\bb{Z}\}$\\
 \begin{enumerate}
 \item $\mu \not= \varnothing$, т.к. $\pm a; \pm b \in\mu$
 \item $d$ -- наименьший элемент $\mu$
@@ -305,7 +305,7 @@ $\pe$
 \end{teo}
 \end{formbox}
 
-$\pb     $\\
+$\pb$
 Пусть простых чисел конечное множество: $p_1,\dots,p_n$. Рассмотрим $N = p_1\cdot p_2\cdots p_n + 1$ -- составное\\
 По теореме о разложении должно существовать $p: p\mid N$, но по построению $N$, оно не делится на все $p_i$
 $\pe$
@@ -403,7 +403,19 @@ $\Ra S_N\to \infty, N\to\infty\Ra \lim\limits_{N\to\infty}\ln(S_N) = \infty$\\
 $\SL_p[-\ln(1-\frac{1}{p})]$ расходится.\\
 При $p\to\infty: -\ln(1-\frac{1}{p}) \sim \frac{1}{p}$, значит по признаку сравнения ряды сходятся и расходятся одновременно.$\pe$\\
 Следствие -- бесконечность множества простых чисел.\\\q\\
-Оценки $n$-того простого числа. $\pi(p_n) = n$ $\pe$ \\
+
+Оценки $n$-того простого числа. $\pi(p_n) = n$\\
+\begin{formbox}{}
+\begin{utv} $\alpha n \ln(n) < p_n < \beta n \ln(n)   $
+\end{utv}
+\end{formbox}
+$\pb a \frac{p_n}{\ln(p_n)} < \pi(p_n) < b \frac{p_n}{\ln(p_n)} $\\
+$\ln(p_n)  -\ln(\ln(p_n)) + \ln_a < \ln(n) < \ln (p_n) - \ln(\ln(p_n)) + \ln(b)  $\\
+$\Ra p_n < a \frac{p_n}{\ln(p_n)} (\ln(p_n) - \ln(\ln(p_n)) + \ln(a))   < n \ln(n) <  b \frac{p_n}{\ln(p_n)} (\ln(p_n) - \ln(\ln(p_n)) + \ln(b))$\\$ \Ra \frac{1}{b} n \ln(n) < p_n < \frac{1}{a}n \ln(n)\pe $
+
+
+
+% Оценки $n$-того простого числа. $\pi(p_n) = n$ $\pe$ \\
 Другое доказательство:
 
 $ \pb \frac{1}{p_n} > \frac{1}{\beta}n \ln (n) \Ra [$по интегральному признаку Коши ряды сходятся/расходятся одновременно$] \Ra \int_{\alpha}^{+\infty}\frac{dx}{x \ln(x)} = \ln(\ln(+\infty)) - \ln(\ln(\alpha)) = +\infty $ $\pe$
@@ -1814,6 +1826,10 @@ $\exists a,b > 0: \forall x \ge 2:\q a\frac{x}{\ln(x)} <\pi(x) <b\frac{x}{\ln(x)
 \begin{formbox}{}
 \begin{teo2}[Теорема Эйлера]\q\\$\sum_p \frac{1}{p}$ расходится.
 \end{teo2}
+\end{formbox}
+\begin{formbox}{}
+\begin{utv2} $\alpha n \ln(n) < p_n < \beta n \ln(n)   $
+\end{utv2}
 \end{formbox}
 
 \begin{formbox}{}
