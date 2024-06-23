@@ -766,13 +766,14 @@ $\bb{Z}_m^* = \os \bb{Z}/m\bb{Z}  \cs^* = \{\bar{a}: \bar{a} = a + mt,\q (a,m) =
 $\chi(x) = \begin{cases} \chi(\bar{x}), (x,m)=1\\0,(x,m) \not=1 \end{cases} $\\
 $\chi_0(x) = \begin{cases} 1, (x,m)=1\\0,(x,m) \not=1 \end{cases} $\\\q\\
 $a\ee b \pmod{m} \Ra \chi(a) = \chi(b) $\\
-$\chi(ab) = \chi(a)\chi(b) $\\
-$\chi(a)\not=0 \iff (a,m)=1$\\\q\\
-$\SL_{x=1}^m \chi(x) = \begin{cases} \FI(m), \chi = \chi_0\\0 \end{cases} $\\\end{mybox2}
+\end{mybox2}
 \newpage
 \begin{mybox2}{{Билет 10}}
+$\chi(ab) = \chi(a)\chi(b) $\\
+$\chi(a)\not=0 \iff (a,m)=1$\\\q\\
+$\SL_{x=1}^m \chi(x) = \begin{cases} \FI(m), \chi = \chi_0\\0 \end{cases} $\\
 $\SL_{\chi} \chi(x) = \begin{cases} \FI(m), x = 1\\0 \end{cases} $\\
-$\left|\SL_{x=1}^{mq+r} \chi(x) \right| = \left|\SL_{x=mq+1}^{mq+r} \chi(x)\right|\le r\le m$
+$\left|\SL_{x=1}^{r} \chi(x) \right| = \left|\SL_{x=mq+1}^{mq+r} \chi(x)\right|\le r\le m$
 \end{mybox2}
 
 
@@ -1390,7 +1391,11 @@ $\pb $ Рассмотрим \(f(x) \in\bb{Q}[x]\)\\
 \end{formbox}
 $\pb$ Пусть $X$ -- натуральное число, которое будет выбрано в дальнейшем,
 и каждая из величин $x_j$ пусть независимо друг от друга принимает значения \(0, \pm1, \dots , \pm X.\)\\
-Всего получим $(2X + 1)q$ наборов $\overline{x} = (x_1, \dots , x_q)$. Каждому из этих наборов соответствует набор $\overline{L}(\overline{x}) = (L_1(\overline{x}), \dots , L_p(\overline{x}))$, причем $|L_i(\overline{x})|\le qAX$ и, следовательно, всего может быть не более \((2qAX + 1)p\) различных наборов $\overline{L}(\overline{x})$. Если $(2X+1)^q > (2qAX+1)^p$, то по принципу Дирихле можно найти два набора $\overline{x}: \overline{x}^{(1)}$ и $\overline{x}^{(2)}$, которым соответствует один и тот же набор значений $\overline{L}(\overline{x})$, т.е. $\overline{L}(\overline{x}^{(2)}) - \overline{L}(\overline{x}^{(1)}) = \overline{L}(\overline{x}^{(2)} - \overline{x}^{(1)}) = \overline{0}  $, а значит, $\overline{x}^{(0)} = \overline{x}^{(2)} - \overline{x}^{(1)} $ решение системы, причем $|\overline{x}^{(0)}| \le 2X.$\\
+Всего получим $(2X + 1)q$ наборов $\overline{x} = (x_1, \dots , x_q)$. Каждому из этих наборов соответствует набор $\overline{L}(\overline{x}) = (L_1(\overline{x}), \dots , L_p(\overline{x}))$, причем $|L_i(\overline{x})|\le qAX$ и, следовательно, всего может быть не более \((2qAX + 1)p\) различных наборов $\overline{L}(\overline{x})$. Если 
+\begin{equation}
+(2X+1)^q > (2qAX+1)^p,
+\end{equation}
+ то по принципу Дирихле можно найти два набора $\overline{x}: \overline{x}^{(1)}$ и $\overline{x}^{(2)}$, которым соответствует один и тот же набор значений $\overline{L}(\overline{x})$, т.е. $\overline{L}(\overline{x}^{(2)}) - \overline{L}(\overline{x}^{(1)}) = \overline{L}(\overline{x}^{(2)} - \overline{x}^{(1)}) = \overline{0}  $, а значит, $\overline{x}^{(0)} = \overline{x}^{(2)} - \overline{x}^{(1)} $ решение системы, причем $|\overline{x}^{(0)}| \le 2X.$\\
 Неравенство (2) выполняется, если $(2X+1)^q > ((qA)(2X+1))^p$, т.е. при $2X>(qA)^{\frac{p}{q-p}}-1$, а значит можно найти такое решение $\overline{x}^{(0)}$, что $2X\le (qA)^{\frac{p}{q-p}}+1$, откуда следует утверждение леммы. $\pe$
 
 \end{mybox2}
@@ -1419,19 +1424,21 @@ $\pb$ Пусть $X$ -- натуральное число, которое буд
 
 \begin{formbox}{}
 \begin{lem} 
-Существует такая функция $f(z) = \SL_{k=0}^{n-1}\SL_{l=0}^{n-1}a_{kl}z^ke^lz $ с коэффициентами $a_{kl} \in \bb{Z}$, что $0 < \max\limits_{k,l} |a_{kl}| < n^{\gamma_1n}$\\
+Существует такая функция 
+\begin{equation}f(z) = \SL_{k=0}^{n-1}\SL_{l=0}^{n-1}a_{kl}z^ke^lz \end{equation} с коэффициентами $a_{kl} \in \bb{Z}$, что \begin{equation}0 < \max\limits_{k,l} |a_{kl}| < n^{\gamma_1n}\end{equation}\\
 \begin{equation}
 f^{(t)}(0) = 0, \q t = \overline{0, [n^{\frac{3}{2}}]-1} \label{eq::1} \end{equation}, где $[\cdot]$ целая часть числа.
 \end{lem}
 \end{formbox}
-$\pb$ Из формулы Лейбница следует, что $f^{(t)}(z) = \SL{k,l=0}^{n-1} a_{kl} \SL_{s=0}^{\min(t,k)} C^s_t k(k - 1)\cdots(k - s + 1)z^{k-s}l^{t-s} e^{lz}$\\
-Поэтому $f^{(t)}(0) = \SL_{k,l=0, k\le t}^{n-1}C^k_t (k!)l^{t-k}a_{kl},$ и для завершения доказательства нам осталось оценить решение системы из $p = [n^{\frac{3}{2}}]$ уравнений относительно $q = n^2$ неизвестных $a_{kl}$. Их коэффициенты $|C^k_t (k!)l^{t-k}| < 2^{n^{\frac{3}{2}}}n^n n^{n^{\frac{3}{2}}} < n^{(3n^{\frac{3}{2}})} = A$.\\
-По лемме Зигеля существует ненулевое решение этой системы в целых числах $a_{kl}$, удовлетворяющих неравенству $|a_{kl}| < 1 + (qA)^{\frac{p}{q-p}} < n^{\gamma_1n}$. $\pe$\\
-
+$\pb$ Из формулы Лейбница следует, что \begin{equation}f^{(t)}(z) = \SL_{k,l=0}^{n-1} a_{kl} \SL_{s=0}^{\min(t,k)} C^s_t k(k - 1)\cdots(k - s + 1)z^{k-s}l^{t-s} e^{lz}\label{eq::5}\end{equation}
 \end{mybox}
 
 \newpage
 \begin{mybox}{{Билет 27}}
+Поэтому $f^{(t)}(0) = \SL_{k,l=0, k\le t}^{n-1}C^k_t (k!)l^{t-k}a_{kl},$ и для завершения доказательства нам осталось оценить решение системы из $p = [n^{\frac{3}{2}}]$ уравнений относительно $q = n^2$ неизвестных $a_{kl}$. Их коэффициенты $|C^k_t (k!)l^{t-k}| < 2^{n^{\frac{3}{2}}}n^n n^{n^{\frac{3}{2}}} < n^{(3n^{\frac{3}{2}})} = A$.\\
+По лемме Зигеля существует ненулевое решение этой системы в целых числах $a_{kl}$, удовлетворяющих неравенству $|a_{kl}| < 1 + (qA)^{\frac{p}{q-p}} < n^{\gamma_1n}$. $\pe$\\
+
+
 Обозначим через $ord|_{z=a} f(z)$ порядок нуля функции $f(z)$ в точке z = a.
 
 \begin{formbox}{}
@@ -1451,6 +1458,45 @@ $\pb$ Оценка снизу следует из \ref{eq::1}. Докажем п
 \begin{formbox}{}
 Оценки вспомогательной функции и завершение доказательства теоремы Линдемана. Ее связь с проблемой квадратуры круга.
 \end{formbox}
+Пусть $X$ -- не зависящее от $n$ натуральное число, которое будет выбрано в дальнейшем, 
+\begin{equation}
+T = \min\limits_{x = \overline{0,X}} ord|_{z = x\AL} f(z) \label{eq::6}
+\end{equation}
+\begin{formbox}{}
+\begin{lem} Справедливы неравенства
+\[|f^{(T)}(x\AL)|  < n^{-\gamma_2 n^{\frac{3}{2}} - \frac{1}{3} (X-6)^T},\q\q x = \overline{0,X}\]
+\end{lem}
+\end{formbox}
+$\pb$ Из \ref{eq::6} и леммы (15) следует, что функция
+\[g(z) = f(z)z^{-[n^{\frac{3}{2}}]}(z -\AL)^{-T}\cdots(z - X\AL)^{-T}\]
+имеет лишь устранимые особые точки, поэтому для нее справедлив принцип максимума модуля. Возьмем \(r = X|\AL| + 1 < \sqrt{n}\). Тогда \[\max\limits_{|z|\le r} |g(z)| \le \max\limits_{|u|=2\sqrt{n}}|g(u)|.\]
+Поэтому при достаточно большом $n$ 
+\begin{equation}
+\begin{split}
+M_r = \max\limits_{|z|\le r} |f(z)|\le\\
+\le \max\limits_{|u| = \sqrt{n}} |f(u)|\cdot \max_{|z|\le r, |u| = \sqrt{n}} \left| \left( \frac{z}{u}  \right)^{[n^\frac{3}{2}]} \os \frac{z-\AL}{u-\AL}  \cs^T\cdots \os  \frac{z-X\AL}{u-X\AL} \cs^T \right| \le\\
+\le n^2n^{\gamma_1n}(\sqrt{n})^ne^{n^{\frac{3}{2}}} \cdot n^{-0.4n^\frac{3}{2} - 0.4XT} < n^{-\frac{1}{3} n^\frac{3}{2} - \frac{1}{3}XT}
+\label{eq::7}
+\end{split}
+\end{equation}
+Далее, \[f^{(T)}(x\AL) = \frac{T!}{2\pi i}\oint\limits_{|z-x\AL|=1} \frac{f(z)dz}{(z -x\AL)^{T+1}},\]
+поэтому по лемме (15) \[f^{(T)}(x\AL) \le  (T!)M_r \le T^TM_r \le n^{2T}M_r\]
+и из \ref{eq::7} следует утверждение леммы. $\pe$\\
+
+Доказательство теоремы Линдемана. \\
+$\pb$ Из \ref{eq::6} следует, что существует такой индекс \(x0\), что \(f^{(T)}
+(x_0\AL) \not= 0\), причем эта производная является многочленом $P(\AL, e^\AL)$ с целыми коэффициентами.
+
+\end{mybox2}
+
+\newpage
+\begin{mybox2}{{Билет 28}}
+Допустим, что при некотором ненулевом $\AL$ оба числа \(\AL\) и $e^\AL$ алгебраические степеней соответственно $m_1$ и $m_2$. Тогда к многочлену $P(\AL, e^\AL)$ можно применить обобщенную теорему Лиувилля. С помощью равенства \ref{eq::5} оценим его длину и степень:
+\[L(P)\le n^2n^{\gamma_1n}(n!)x^n_0 \SL_{s=0}^\infty C^s_T (n - 1)^{T -s} \le n^{\gamma_3n+T},\q\q deg (P)\le n + Xn.\]
+Из обобщенной теоремы Лиувилля получаем, что \[|f^{(T)}(x_0\AL)| = |P(\AL, e^\AL)| \ge (L(P))^{1-m_1m_2}C^{-deg (P)} > n^{-\gamma_4n-m_1m_2T}.\]
+С другой стороны, по лемме 16 при \(X = 3m_1m_2 + 6\) выполняется неравенство
+\[|f^{(T)}(x_0\AL)| < n^{-\gamma_2n^\frac{3}{2} -m_1m_2T}.\]
+Последние две оценки при достаточно большом $n$ противоречивы. Теорема Линдемана доказана. $\pe$
 
 
 
@@ -1462,6 +1508,53 @@ $\pb$ Оценка снизу следует из \ref{eq::1}. Докажем п
 \begin{formbox}{}
 Седьмая проблема Гильберта. Формулировка теоремы Гельфонда-Шнейдера. Ее следствия. Построение вспомогательной функции для доказательства теоремы Гельфонда-Шнейдера, оценки ее порядка нуля.
 \end{formbox}
+
+В 1900 году Д.Гильберт в своем докладе на Втором международном конгрессе математиков назвал 23 проблемы "исследование которых может стимулировать дальнейшее развитие науки". Под номером семь фигурировала проблема трансцендентности алгебраических степеней алгебраических чисел. Частичное решение этой проблемы было найдено А.О.Гельфондом в 1929 году и Р.О.Кузьминым
+в 1930 году. Полностью ее решили независимо в 1934 году А.О.Гельфонд и Т.Шнейдер.
+\begin{formbox}{}
+\begin{teo}[Гельфонда Шнейдера.]
+Пусть a алгебраическое число, отличное от 0 и 1, а $\AL$ алгебраическое число, не являющееся рациональным. Тогда число $a^\beta = e^{\beta \ln (a)}$ трансцендентно.
+\end{teo}
+\end{formbox}
+Примечание. Под $\ln (a)$ понимается значение, взятое на любой ветви комплексного логарифма.\\
+Следствия. 
+\begin{enumerate}
+\item Число $e^\pi$ трансцендентно.\\
+Утверждение легко следует из равенства $(e^\pi)^i = -1.$
+\item Если $a$ и $b$ алгебраические числа, отличные от 0 и 1, то число $\log_a(b) = \frac{\ln(b)}{\ln(a)}$ либо рационально, либо трансцендентно.\\
+Утверждение следует из основного логарифмического тождества.
+\end{enumerate}
+
+\begin{formbox}{}
+\begin{lem}
+Пусть \(\beta\in Z_A\) и
+\begin{equation}
+\beta^m = b_{m-1}\beta^{m-1} + \cdots + b_1\beta + b_0, \q b_j \in \bb{Z}, |b_j| \le B. \label{eq::8}\end{equation}
+Тогда для любой натуральной степени числа $\beta$ справедливы утверждения:\\
+$$\beta^t = b_{t,m-1}\beta^{m-1} + \cdots + b_{t,1}\beta + b_{t,0},\q b_{t,j} \in \bb{Z}, |b_{t,j} | \le (B + 1)^t.$$
+Кроме того, если $k$ и $l$ неотрицательные целые числа, не превосходящие $n$, то
+\[(k + l\beta)^t = B_{t,k,l,m-1}\beta^{m-1} + \cdots + B_{t,k,l,1}\beta + B_{t,k,l,0}; B_{t,k,l,j}\in \bb{Z}, |B_{t,k,l,j} | \le (B + 2)^tnt.\]
+\end{lem}
+\end{formbox}
+
+
+
+\end{mybox}
+
+\newpage
+\begin{mybox}{{Билет 29}}
+
+$\pb$ Доказательство первого утверждения проводится по индукции. При $t \le m$ утверждение следует из \ref{eq::8}. Пусть оно верно при $t$. Тогда в силу \ref{eq::8} \[\beta^{t+1} = b_{t,m-1}(b_{m-1}\beta^{m-1} + \cdots + b_0) + b_{t,m-2}\beta^{m-1} + \cdots + b_{t,0}\beta,\]
+и из предположения индукции легко следует справедливость утверждения при $t + 1$.
+Докажем второе утверждение\[ (k+l\beta)^t = \SL_{s=0}^t C_t^s k^{t-s}l^s \SL_{j=0}^{m-1}b_{sj}\beta^j,   \]
+откуда следует, что коэффициенты при $\beta^j$ не провосходят \[\SL_{s=0}^t C_t^sk^{t-s}l^s (B+1)^s = (k+l(B+1))^t \le (B+2)^tn^t \]
+Лемма доказана. $\pe$
+\begin{formbox}{}
+\begin{lem} Пусть $\beta$ -- целое алгебраическое число степени $m$. Тогда существует такая функция \[f(z) = \SL_{k=0}^{n-1}\SL_{l=0}^{n-1} a_{kl}e^{(k+l\beta)z} \]
+с коэффициентами $a_{kl}\in\bb{Z}$, что \[0 < \max\limits_{k,l}|a_{kl}|< n^{\gamma_5n},\] \[f^{(t)}(0) = 0\q\q t = \overline{0, [n^\frac{3}{2}]-1} \]
+\end{lem}
+\end{formbox}
+
 
 \end{mybox}
 
@@ -1892,6 +1985,27 @@ $f^{(t)}(0) = 0, t = \overline{0, [n^{\frac{3}{2}}]-1}$, где $[\cdot]$ цел
 \begin{formbox}{}
 \begin{lem2}
 $[n^{\frac{3}{2}}]\le ord|_{z=0} f(z) \le n^2 $
+\end{lem2}
+\end{formbox}
+\begin{formbox}{}
+\begin{lem2} Справедливы неравенства
+\[|f^{(T)}(x\AL)|  < n^{-\gamma_2 n^{\frac{3}{2}} - \frac{1}{3} (X-6)^T},\q\q x = \overline{0,X}\]
+\end{lem2}
+\end{formbox}
+\begin{formbox}{}
+\begin{teo2}[Гельфонда Шнейдера.]
+Пусть a алгебраическое число, отличное от 0 и 1, а $\AL$ алгебраическое число, не являющееся рациональным. Тогда число $a^\beta = e^{\beta \ln (a)}$ трансцендентно.
+\end{teo2}
+\end{formbox}
+\begin{formbox}{}
+\begin{lem2}
+Пусть \(\beta\in Z_A\) и
+\begin{equation}
+\beta^m = b_{m-1}\beta^{m-1} + \cdots + b_1\beta + b_0, \q b_j \in \bb{Z}, |b_j| \le B.\end{equation}
+Тогда для любой натуральной степени числа $\beta$ справедливы утверждения:\\
+$$\beta^t = b_{t,m-1}\beta^{m-1} + \cdots + b_{t,1}\beta + b_{t,0},\q b_{t,j} \in \bb{Z}, |b_{t,j} | \le (B + 1)^t.$$
+Кроме того, если $k$ и $l$ неотрицательные целые числа, не превосходящие $n$, то
+\[(k + l\beta)^t = B_{t,k,l,m-1}\beta^{m-1} + \cdots + B_{t,k,l,1}\beta + B_{t,k,l,0}; B_{t,k,l,j}\in \bb{Z}, |B_{t,k,l,j} | \le (B + 2)^tnt.\]
 \end{lem2}
 \end{formbox}
 \end{document}
