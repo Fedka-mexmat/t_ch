@@ -1312,15 +1312,24 @@ $R_n\in\bb{Z}, 0 < R_n < 1$. Противоречие.$\pe$
 \end{formbox}
 $\pb$ Рассмотрим $f(x)\in\bb{Q}[x]$ -- многочлен с рациональными коэффициентами.\\
 Обозначим $M_0 = \IL_0^\infty f(x) e^{-x}dx = \IL_0^k f(x) e^{-x}dx + \underbrace{\IL_k^\infty f(x) e^{-x}dx}_{J_k}, \; k\in\bb{Z}_+$\\
-$= $
+$= \IL_0^k f(x)e^{-x}dx + e^{-k}\IL_0^\infty f(y+k)e^{-y}dy$\\
+Обозначим $\IL_0^\infty f(x+k)e^{-x}dx =: M_k, k\in\bb{Z}_+\Ra M_0e^k = M_k+\varepsilon_k $.\\
+Предположим, что $e$ алгебраическое, тогда $\exists A(x) = a_mx^m+\cdots+a_0\in\bb{Z}[x]:\; A(e) = 0$\\
+$M_0 \underbrace{\SL_{k=0}^m a_ke^k}_{=0} = \SL_{k=0}^m a_kM_k+\SL_{k=0}^m a_k\varepsilon_k  = 0$\\
+Возьмем $f(x) = \frac{1}{n!}x^{n_0}(x-1)^{n_1}\cdots(x-m)^{n_m},\q n_j = \left[\begin{gathered} n+1\\n\end{gathered} \right.$. Тогда $\IL_0^\infty x^ne^{-x}dx= \Gamma(n+1) = n! $.\\
+$\lim\limits_{n\to\infty}\varepsilon_k(n) = 0$, т.к. $|\varepsilon_k(n)| = \left|e^k\IL_{0}^k f(x)e^{-x}dx \right|\le |e^m|\cdot\IL_{0}^m\frac{1}{n!}m^{(n+1)\cdots(n+1)}dx = \frac{1}{n!}e^m\cdot m^{(n+1)(m+1) + 1}\to0$\\
+$f(x+k) = \frac{1}{n!}(x+k)^{n_0}\cdots(x+k-m)^{n_m}  =\frac{1}{n!}(b_{n_k}^{(k)} x^{n_k} + \cdots + b_N^{(k)}x^N) \Ra \frac{1}{n!}\IL_0^\infty f(x+k)e^{-x}dx = \SL_{j=n_k}^N b_j^{(k)}\IL_0^\infty x^j e^{-x}dx \Ra $\\
+$\Ra M_k = \frac{1}{n!}(b_{n_k}^{(k)} (n_k!) + \cdots + b_N^{(k)}N!)\in\bb{Z}$
+\end{mybox2}
+\newpage
+\begin{mybox2}{{Билет 24}}
+Добьемся того, чтобы $\varepsilon(n) =\SL_{k=1}^\infty \varepsilon_k^{(n)} a_k > 0,    \text{ т.е. } \exists n_0,\dots,n_m:\q \varepsilon^{(n)} = \SL_{k=0}^m a_ke^k\IL_0^k f(x)e^{-x}dx:=\SL_{k=0}^{m-1}b_k\IL_k^{k+1}f(x)e^{-x}dx $, где $b_{m-1} = a_me^m>0$, а остальные интегралы по меньшему отрезку.\\
+$sgn(b_k) = \underset{(k,k+1)}{sgn}(f(x)) = sgn(\IL_k^{k+1}f(x)e^{-x}dx) \Ra$ можно добиться за счет выбора чет/нечет в зависимости от знака $b_k$. Значит $\varepsilon^{(n)} > 0$.\\
+$0 < \varepsilon^{(n)}<1, \q \lim \varepsilon_k^{(n)} = 0\Ra \sum a_kM_k + \sum a_k \varepsilon_k = 0 \not=e \pe $
 
 
 
 \end{mybox2}
-
-
-
-
 
 
 
