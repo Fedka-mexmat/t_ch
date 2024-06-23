@@ -52,34 +52,40 @@
 \newcommand{\os}{\left(}
 \newcommand{\cs}{\right)}
 \newcommand{\R}{\mathbb{R}}
+\pagecolor{black}
+\color{white}
+
 \newtcolorbox{mybox}[2][]{
-    colback=white,
-    colframe=blue!50!black,
+    colback=black,
+    colframe=red,
     title=#2,
+    fontupper=\color{white},
     fonttitle=\bfseries,
     enhanced,
     breakable,
     attach boxed title to top left={yshift=-\tcboxedtitleheight/2},
-    boxed title style={size=small,colback=red,colframe=blue!50!black},
+    boxed title style={size=small,colback=black,colframe=red},
     #1
 }
 \newtcolorbox{mybox2}[2][]{
-    colback=white,
-    colframe=blue!50!black,
+    colback=black,
+    colframe=red,
     title=#2,
+    fontupper=\color{white},
     fonttitle=\bfseries,
     enhanced,
     breakable,
     attach boxed title to top left={yshift=-\tcboxedtitleheight/2},
-    boxed title style={size=small,colback=blue,colframe=blue!50!black},
+    boxed title style={size=small,colback=black,colframe=blue},
     #1
 }
 
 
 \newtcolorbox{formbox}[2][]{
-    colback=white,
-    colframe=blue!50!black,
+    colback=black,
+    colframe=red,
     title=#2,
+    fontupper=\color{white},
     fonttitle=\bfseries,
     enhanced,
     breakable,
@@ -894,7 +900,7 @@ $f(\sigma) = \SL_{k=0}^\infty \frac{f^{(k)}}{k!}(\sigma - \sigma_0)^k = \SL_{k=0
 \end{enumerate}
 \end{lem}
 \end{formbox}
-$\pb f(s) = \SL_{k=1}^\infty \frac{1}{k^s}  \SL_{d=1}^\infty \frac{\chi(d)}{d^s} = \SL_{n=1}^\infty \frac{1}{n^s} \SL_{d\mid n}\chi(d)$\\
+$\pb f(s) = \SL_{k=1}^\infty \frac{1}{k^s}  \SL_{d=1}^\infty \frac{\chi(d)}{d} = \SL_{n=1}^\infty \frac{1}{n^s} \SL_{d\mid n}\chi(d)$\\
 Если $n = p_1^{k_1}\cdots p_r^{k_k}$, то $a_n = \SL_{d\mid n}\chi_d  \prod\limits_{j=1}^n (1 + \chi(p_j) + \chi(p_j^2) + \cdots)  = \prod\limits_{j=1}^n (1 + \chi(p_j) + \chi(p_j^2) + \cdots) =  \prod\limits_{j=1}^n (1 + \chi(p_j) + \chi^2(p_j) + \cdots)$\\
 где $a_{n_j} = \begin{cases} 1, &\chi(p_j) = 0\\k_j + 1, &\chi(p_j)=1\\1, &\chi(p_j) = -1, k_j=2m\\0 &\chi(p_j) = -1, k_j=2m+1 \end{cases}$\\
 Если $n = k^2,$ то все $k_j=2m\Ra$\\
