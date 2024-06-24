@@ -1,0 +1,169 @@
+
+\documentclass[a4paper,12pt]{article}
+\usepackage[english,russian]{babel}
+\usepackage[many]{tcolorbox}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage{amssymb}
+\usepackage[unicode, pdftex]{hyperref}
+
+
+\usepackage[
+  a4paper, mag=1000, includefoot,
+  left=1.1cm, right=1.1cm, top=1.2cm, bottom=1.2cm, headsep=0.8cm, footskip=0.8cm
+]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{times}
+\usepackage{mathptmx}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{mathtools}
+\newcommand{\divisible}{\mathop{\raisebox{-2pt}{\vdots}}}
+\newtheorem{deff}{\textit{Определение}}
+\newtheorem{teo}{\textit{Теорема}}
+\newtheorem{utv}{\textit{Утверждение}}
+\newtheorem{lem}{\textit{Лемма}}
+\newtheorem{deff2}{\textit{Определение}}
+\newtheorem{teo2}{\textit{Теорема}}
+\newtheorem{utv2}{\textit{Утверждение}}
+\newtheorem{lem2}{\textit{Лемма}}
+\newcommand{\ee}{\equiv}
+
+\newcommand{\pp}{\partial}
+\newcommand{\FI}{\varphi}
+\newcommand{\TE}{\theta}
+\newcommand{\AL}{\alpha}
+\newcommand{\SI}{\psi}
+\newcommand{\q}{\quad}
+\newcommand{\pb}{\blacktriangleright}
+\newcommand{\pe}{\blacktriangleleft}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\bb}[1]{\mathbb{#1}}
+\newcommand{\dt}{\frac{d}{dt}}
+\newcommand{\fracp}[2]{\frac{\pp #1}{\pp #2}}
+
+\newcommand{\pf}{\textit{Доказательство}\\}
+\newcommand{\pfe}{\textit{Доказательство окончено}\\}
+
+\newcommand{\SL}{\sum\limits}
+\newcommand{\IL}{\int\limits}
+\newcommand{\os}{\left(}
+\newcommand{\cs}{\right)}
+\newcommand{\R}{\mathbb{R}}
+% \pagecolor{black}
+% \color{white}
+
+\newtcolorbox{mybox}[2][]{
+    colback=white,
+    colframe=red,
+    title=#2,
+    % fontupper=\color{white},
+    fonttitle=\bfseries,
+    enhanced,
+    breakable,
+    attach boxed title to top left={yshift=-\tcboxedtitleheight/2},
+    boxed title style={size=small,colback=red,colframe=blue},
+    #1
+}
+\newtcolorbox{mybox2}[2][]{
+    colback=white,
+    colframe=red,
+    title=#2,
+    % fontupper=\color{white},
+    fonttitle=\bfseries,
+    enhanced,
+    breakable,
+    attach boxed title to top left={yshift=-\tcboxedtitleheight/2},
+    boxed title style={size=small,colback=blue,colframe=red},
+    #1
+}
+
+
+\newtcolorbox{task}[2][]{
+    colback=white,
+    colframe=red,
+    title=#2,
+    % fontupper=\color{white},
+    fonttitle=\bfseries,
+    enhanced,
+    breakable,
+    attach boxed title to top left={yshift=-\tcboxedtitleheight/2},
+    boxed title style={size=small,colback=red,colframe=red},
+    #1
+}
+
+\newtcolorbox{sol}[2][]{
+    colback=white,
+    colframe=blue,
+    title=#2,
+    % fontupper=\color{white},
+    fonttitle=\bfseries,
+    enhanced,
+    breakable,
+    attach boxed title to top left={yshift=-\tcboxedtitleheight/2},
+    boxed title style={size=small,colback=blue,colframe=blue},
+    #1
+}
+
+
+\usepackage{blindtext}
+\usepackage{titlesec}
+\title{ТЧ-8 2024}
+\author{SFS}
+\date{\today}
+\begin{document}
+\maketitle
+При нахождении ошибок обращайтесь @fedorrrMM\\
+
+
+\tableofcontents
+\newpage
+\section{Раздел 1. Аналитическая теория чисел: Элементарные методы}
+\begin{mybox}{}
+\subsection{Вокруг оценок Чебышёва}
+По понятиям: Рассмотрим функции $\pi(x) = \SL_{p\le x} 1, \TE(x) = \SL_{p\le x}\ln(p), \SI(x) = \SL_{p^\AL\le x}\ln(p).$ (Если не сказано
+противное, то $x \in [1, +\infty), n \in \bb{N} = {1, 2, …}, \;p$ — простое число; в формуле $p^\AL$ подразумевается $\AL \in \bb{N}$.)
+\begin{task}{Задача 1}
+Доказать, что для функции $\SI(x)$ справедливы представления:
+\[\SI(x) = \SL_{p\le x} \left\lfloor \frac{\ln(x)}{\ln(p)}  \right\rfloor = \ln([1, 2,\dots, \lfloor x\rfloor]) = \SL_{n \le x}\Lambda(n),\] $\text{где }[a_1,\dots, a_n]$-- наименьшее общее кратное чисел $a_1,\dots, a_n \in \bb{N}$,  $\Lambda(n)$ -- функция Мангольдта, т. е.
+\[\Lambda(n) = \begin{cases} \ln(p),\q &n = p^{\AL}\\0\q&\text{иначе} \end{cases}\]
+\end{task}
+\begin{sol}{Решение задачи 1}
+По определению $\SI(x) = \SL_{p^\AL\le x}\ln(p).$ Теперь рассмотрим эту сумму и вынесем все общие $\ln(p)$. Получим: $\SL_{p^\AL \le x}\ln(p) = \SL_{p\le x}\ln(p) \cdot \left\lfloor \frac{\ln(x)}{\ln(p)}  \right\rfloor$ -- это такое число, что $p^\AL \le x, p^{\AL+1}>x$\\
+$[1,2,\dots\lfloor x\rfloor] = \prod_{p\le x}p^{m_p},\q m_p: p^{m_p} \le x,\; p^{m_p + 1} > x.$ Логарифмируем и получаем $\ln([1,2,\dots\lfloor x\rfloor]) = \SL_{p\le x} \left\lfloor \frac{\ln(x)}{\ln(p)}  \right\rfloor$\\
+$\SL_{p^\AL\le x}\ln(p) = \SL_{p^\AL\le x}\ln(p) + \SL_{\text{не степени простых} \le x} 0 = \SL_{n \le x}\Lambda(n)$
+\end{sol}
+
+\begin{task}{Задача 2}
+Доказать равенство $\SL_{d\mid n}\Lambda(d) = \ln(n).$
+\end{task}
+\begin{sol}{Решение задачи 2}
+Сначала рассмотрим случай $n = p^m$. Тогда $\SL_{d\mid n}\Lambda(d) = \SL_{p^\AL \le n}\ln(p) = m\cdot \ln(p) = \ln(p^m) = \ln(n) $\\
+Теперь пусть $n = p_1^{m_1}\cdots p_n^{m_n}. \q \SL_{d\mid n}\Lambda(d) = \SL_{i = 1}^n \SL_{p_i^\AL\le n} \ln(p) ${/*т.к. при делителе $d$, содержащем разные простые $\Lambda(d) = 0$*/}$ = \SL_{i = 1}^n \ln(p_i^{m_i}) = \ln(p_1^{m_1}\cdots p_n^{m_n}) = \ln(n)$ 
+\end{sol}
+
+\end{mybox}
+
+\begin{mybox}{}
+\begin{task}{Задача 3}
+Доказать равенства:
+\begin{enumerate}
+\item $\SI(x) = \TE(x) + \TE(x^\frac{1}{2}) + \TE(x^\frac{1}{3}) + \cdots,$ причём количество ненулевых слагаемых в сумме справа равно $\left\lfloor\frac{\ln(x)}{\ln(2)}\right\rfloor;$
+\item $\ln(\left\lfloor x\right\rfloor!) = \SI(x) + \SI(\frac{x}{2}) + \SI(\frac{x}{3}) + \cdots.$ (Указание. Использовать задачу 1.2.)
+\end{enumerate}
+\end{task}
+\begin{sol}{Решение задачи 3}
+\begin{enumerate}
+\item[1.a] По определению $\SI(x) = \SL_{p^\AL\le x}\ln(p), \TE(x) = \SL_{p\le x}\ln(p).$\\
+Рассмотрим $\TE(x^\frac{1}{\AL}) = \SL_{p \le x^\frac{1}{\AL}} \ln(p)$. Теперь распишем сумму из условия: $\SL_{\AL = 1}^\infty  \TE(x^\frac{1}{\AL}) = \SL_{p \le x}  \left\lfloor \frac{\ln(x)}{\ln(p)}  \right\rfloor \cdot \ln(p)$ -- перегруппировали по простым, не превосходящим $x$. Число такое, т.к. в сумме будет ровно $\left\lfloor \frac{\ln(x)}{\ln(p)}  \right\rfloor$ элементов таких, что $p \le x^{\AL}$\\
+\item[1.b] Как отмечено выше, в сумме будет ровно $\left\lfloor \frac{\ln(x)}{\ln(p)}  \right\rfloor$ элементов таких, что $p \le x^{\AL}$. Максимально это число при $p=2$ и равно  $\left\lfloor\frac{\ln(x)}{\ln(2)}\right\rfloor;$
+\item[2\;] t
+\end{enumerate}
+\end{sol}
+\end{mybox}
+
+
+
+\end{document}
