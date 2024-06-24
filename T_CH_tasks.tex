@@ -115,6 +115,7 @@
 \date{\today}
 \begin{document}
 \maketitle
+Этот документ -- попытка создания АнтиРочева. Решения задач частично с семинаров, частично придуманы "on fly". решения содержат опечатки, ошибки, глупости и неточности. !ПОЛЬЗУЙТЕСЬ НА СВОЙ СТРАХ И РИСК!
 При нахождении ошибок обращайтесь @fedorrrMM\\
 
 
@@ -159,11 +160,87 @@ $\SL_{p^\AL\le x}\ln(p) = \SL_{p^\AL\le x}\ln(p) + \SL_{\text{не степен�
 \item[1.a] По определению $\SI(x) = \SL_{p^\AL\le x}\ln(p), \TE(x) = \SL_{p\le x}\ln(p).$\\
 Рассмотрим $\TE(x^\frac{1}{\AL}) = \SL_{p \le x^\frac{1}{\AL}} \ln(p)$. Теперь распишем сумму из условия: $\SL_{\AL = 1}^\infty  \TE(x^\frac{1}{\AL}) = \SL_{p \le x}  \left\lfloor \frac{\ln(x)}{\ln(p)}  \right\rfloor \cdot \ln(p)$ -- перегруппировали по простым, не превосходящим $x$. Число такое, т.к. в сумме будет ровно $\left\lfloor \frac{\ln(x)}{\ln(p)}  \right\rfloor$ элементов таких, что $p \le x^{\AL}$\\
 \item[1.b] Как отмечено выше, в сумме будет ровно $\left\lfloor \frac{\ln(x)}{\ln(p)}  \right\rfloor$ элементов таких, что $p \le x^{\AL}$. Максимально это число при $p=2$ и равно  $\left\lfloor\frac{\ln(x)}{\ln(2)}\right\rfloor;$
-\item[2\;] t
+\item[2\;] $\ln(\left\lfloor x\right\rfloor!) = \SL_{i = 2}^{\lfloor x\rfloor} \ln(i)  = \SL_{i = 2}^{\lfloor x\rfloor} \SL_{d\mid i} \Lambda(d)  = \SL_{d \le x}\SL_{d \le \frac{x}{i}} \Lambda(d) = \SI(x) + \SI(\frac{x}{2}) + \SI(\frac{x}{3}) + \cdots$ \\(обратно переставили порядки суммирования и сумму заменили на многоточие.)
 \end{enumerate}
 \end{sol}
+
+\begin{task}{Задача 4}
+Используя каноническое разложение на простые множители числа $n!$ и формулу
+Стирлинга, доказать равенства:
+\begin{enumerate}
+\item $\SL_{p\le n}\os\left\lfloor\frac{n}{p}\right\rfloor + \left\lfloor\frac{n}{p^2}\right\rfloor + \left\lfloor\frac{n}{p^3}\right\rfloor + \cdots\cs\ln(p) =n\ln(n) + O(n) $
+\item $\SL_{p\le n}\left\lfloor\frac{n}{p}\right\rfloor \ln(p) = n\ln(n) + O(n)$
+\end{enumerate}
+\end{task}
+
+\begin{sol}{Решение задачи 4}
+Для тех, кто как я в танке. Формула Стирлинга: $n! = \frac{\sqrt{2\pi n} n^n}{e^n} e^{O\os\frac{1}{n}\cs}$
+\begin{enumerate}
+\item  $e^\Sigma = n! = n^n + O(e^n)$, а почему это очевидно я не знаю...\\
+$\ln(n!) =\ln(\frac{n^n}{e^n} \sqrt{2\pi n} e^O(\frac{1}{n})) = \ln(n^n) + \ln(\sqrt2\pi n) + O(\frac{1}{n}) - \ln(e^n) = n\ln(n) + O(n) $
+\item Фактически осталосб доказать, что все кроме главного члена в первой сумме есть $O(n)$.\\
+$\SL_{p\le n}\os\left\lfloor\frac{n}{p^2}\right\rfloor + \left\lfloor\frac{n}{p^3}\right\rfloor + \cdots\cs\ln(p) \le \SL_p\os \frac{n}{p^2} + \cdots  \cs \ln(p) \le \SL_p \frac{n}{p^2}\ln(p) \os 1 + \frac{1}{p} + \cdots \cs  = \SL_p \frac{n}{p^2}\ln(p) \cdot\frac{1}{1 - \frac{1}{p}}  = n\SL_{p\le n}\frac{\ln(p)}{p^2 - p} = O(n)$
+\end{enumerate}
+\end{sol}
+
 \end{mybox}
 
+\begin{mybox}{}
+
+\begin{task}{Задача 5}
+Доказать оценки
+\begin{enumerate}
+\item $\SL_{p\le 2n}\os \left\lfloor\frac{2n}{p}\right\rfloor  - 2\left\lfloor\frac{n}{p}\right\rfloor\cs \ln(p) = O(n)$
+\item $\SL_{n\le p\le 2n}\ln(p) = O(n)$
+\item $\TE(x) = O(x)$
+\end{enumerate}
+\end{task}
+
+
+\begin{sol}{Решение задачи 5}
+\begin{enumerate}
+\item $\SL_{p\le 2n} \left\lfloor\frac{2n}{p}\right\rfloor \ln(p) = 2n\ln(2n) + O(2n)$\\
+$\SL_{p\le 2n} \left\lfloor\frac{n}{p}\right\rfloor \ln(p) = \SL_{p\le n} \left\lfloor\frac{n}{p}\right\rfloor \ln(p) = n\ln(n) + O(n)$\\
+$2n\ln(2n) - 2n\ln(n) + O(n) = 2n(\ln(2n) - \ln(n))+O(n) = 2n\ln(2) + O(n) = O(n)$
+\item Очевидно, т.к. $[2x]-2[x] = \begin{cases}0\\1\end{cases}$ и это то же самое что и предыдущая сумма.
+\item $\SL_{p\le x} = O(x)$\\
+Почему?: $\SL_{k\le \log_2x}\os  \SL_{2^{k-1}<p\le 2^k}\ln(p)  \cs = \SL_k O(2^k) = O(x)$
+\end{enumerate}
+\end{sol}
+
+
+\begin{task}{Задача 6}
+Используя задачи 1.4 и 1.5, доказать равенство \[\SL_{p\le x}\frac{\ln(p)}{p} = \ln(x) + O(1)\]
+\end{task}
+\begin{sol}{Решение задачи 6}
+\[\SL_{p\le x}\left[\frac{n}{p}\right]\ln(p) = n\ln(n) + O(1)\]
+\[\SL_{p\le [x]}\frac{[x]}{p}\ln(x) + \SL_{p\le [x]} O\os\frac{1}{p}\cs = \]
+\[\SL_{p\le [x]}\os \left[\frac{[x]}{p}\right] + \left\{\frac{[x]}{p}\right\}  \cs\ln(p) = [x]\ln([x]) + O([x])\]
+Теперь разделим на $[x]$ и получим искомое.
+\end{sol}
+\end{mybox}
+\newpage
+\begin{mybox}{}
+\begin{task}{Задача 7}
+Доказать, что существуют положительные постоянные $C_i$, такие что справедливы
+утверждения:
+\begin{enumerate}
+\item $\forall x\ge 1,\AL\ge 1$ выполнено неравенство $\left| \SL_{x < p \le \AL x} \frac{\ln(p)}{p} -\ln(\AL) \right| \le C_1$
+\item $\TE(x)\ge C_2x, x\ge 2$
+\item $\forall x\ge 1: \exists p\in(x, C_3x)$
+\end{enumerate}
+\end{task}
+\begin{sol}{Решение задачи 7}
+\begin{enumerate}
+\item $\SL_{p\le\AL x}\frac{\ln(p)}{p} - \SL_{p\le x}\frac{\ln(p)}{p} = \ln(\AL x) - \ln(x) + O(1) =\ln(\AL) + O(1)\Ra \exists C_1 $
+\item $\left| \SL_{x < p \le \AL x} \frac{\ln(p)}{p} -\ln(\AL) \right| \le C_1$\\
+$N = [\log_ax]$\\
+$a^0\SL_{a^0< p\le a}\frac{\ln(p)}{p} + \cdots a^N\SL_{a^{N-1}< p\le a^N}\frac{\ln(p)}{p}$... и я хз че дальше ...
+\item :--(
+\end{enumerate}
+\end{sol}
+а после этого моя прилежность дала сбой и я ничего не записал... всем спасибо за внимание
+\end{mybox}
 
 
 \end{document}
